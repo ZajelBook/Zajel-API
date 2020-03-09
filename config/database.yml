@@ -78,6 +78,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: Zajel_API_staging
+  username: Zajel_API
+  password: <%= ENV['ZAJEL_API_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
   database: Zajel_API_production
