@@ -81,11 +81,11 @@ test:
 staging:
   <<: *default
   database: Zajel_API_staging
-  username: Zajel_API
+  username: mylestone
   password: <%= ENV['ZAJEL_API_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
   database: Zajel_API_production
-  username: Zajel_API
+  username: mylestone
   password: <%= ENV['ZAJEL_API_DATABASE_PASSWORD'] %>
