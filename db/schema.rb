@@ -10,10 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_145138) do
+ActiveRecord::Schema.define(version: 2020_03_14_083908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "book_activities", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.string "borrower_type"
+    t.integer "borrower_id"
+    t.string "lender_type"
+    t.integer "lender_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_activities_on_book_id"
+    t.index ["borrower_type", "borrower_id"], name: "index_book_activities_on_borrower_type_and_borrower_id"
+    t.index ["lender_type", "lender_id"], name: "index_book_activities_on_lender_type_and_lender_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.text "description"
+    t.date "published_at"
+    t.string "language"
+    t.integer "page_count"
+    t.string "image"
+    t.integer "status", default: 0
+    t.boolean "approved", default: false
+    t.bigint "user_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_books_on_genre_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "content"
+    t.json "payload"
+    t.string "recipient_type"
+    t.integer "recipient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
+  end
 
   create_table "rpush_apps", force: :cascade do |t|
     t.string "name", null: false
@@ -113,4 +161,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_145138) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "book_activities", "books"
+  add_foreign_key "books", "genres"
+  add_foreign_key "books", "users"
 end

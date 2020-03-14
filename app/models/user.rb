@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  has_many :books
+  has_many :book_activities, as: :borrower
+  has_many :book_activities, as: :lender
+  has_many :notifications, as: :recipient
 end
