@@ -29,6 +29,7 @@ gem 'rack-cors'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'pagy', '~> 3.5'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

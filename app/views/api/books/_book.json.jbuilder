@@ -5,6 +5,6 @@ json.description book.description
 json.published_at book.published_at
 json.language book.language
 json.page_count book.page_count
-json.image url_for book.image
+json.image polymorphic_url book.image
 json.status book.status
 json.approved book.approved
