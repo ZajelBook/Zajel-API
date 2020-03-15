@@ -8,3 +8,5 @@ json.page_count book.page_count
 json.image polymorphic_url book.image
 json.status book.status
 json.approved book.approved
+json.genre book.genre.name
+json.user_id book.user_id

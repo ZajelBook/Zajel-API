@@ -3,7 +3,7 @@ module Api
     before_action :authenticate_user!
     before_action :set_book, only: [:show, :update]
     def index
-      @books = Book.active.includes(image_attachment: :blob).order(updated_at: :desc)
+      @books = Book.active.includes(:genre, image_attachment: :blob).order(updated_at: :desc)
       @pagy, @books = pagy(@books, items: params[:per_page])
     end
 
