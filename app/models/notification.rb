@@ -9,7 +9,7 @@ class Notification < ApplicationRecord
     notification = Rpush::Gcm::Notification.new
     notification.app = app
     notification.registration_ids = recipient.fcm_token
-    notification.data = notification.payload
+    notification.data = self.payload
     notification.save!
   end
 end
