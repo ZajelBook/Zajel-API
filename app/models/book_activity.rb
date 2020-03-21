@@ -5,7 +5,12 @@ class BookActivity < ApplicationRecord
 
   enum status: [:pending, :accepted, :rejected]
 
+  before_create :set_lender
   after_create :notify_lender
+
+  def set_lender
+    self.lender = book.user
+  end
 
   def notify_lender
     Notification.create(

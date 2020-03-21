@@ -38,7 +38,7 @@ module Api
 
     private
     def book_activity_params
-      params.permit(:lender_id, :lender_type, :book_id)
+      params.permit(:book_id)
     end
   end
 end
