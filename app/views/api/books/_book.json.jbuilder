@@ -5,9 +5,9 @@ json.description book.description
 json.published_at book.published_at
 json.language book.language
 json.page_count book.page_count
-json.image polymorphic_url book.image
+json.image rails_blob_url book.image
 json.status book.status
 json.approved book.approved
 json.genre book.genre.name
 json.user_id book.user_id
-json.borrowed book.borrowed_by?(current_user)
+json.requested book.requested_by?(current_user.id)
