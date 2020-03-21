@@ -10,3 +10,4 @@ json.status book.status
 json.approved book.approved
 json.genre book.genre.name
 json.user_id book.user_id
+json.borrowed book.borrowed_by?(current_user)

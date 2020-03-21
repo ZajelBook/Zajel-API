@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :books
-  has_many :book_activities, as: :borrower
-  has_many :book_activities, as: :lender
+  has_many :borrow_requests, as: :borrower, class_name: 'BookActivity'
+  has_many :lend_requests, as: :lender, class_name: 'BookActivity'
   has_many :notifications, as: :recipient
+
+  def full_name
+    [first_name, last_name].join(' ')
+  end
 end
