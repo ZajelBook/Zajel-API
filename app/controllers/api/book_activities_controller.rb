@@ -18,7 +18,7 @@ module Api
         render json: {status: 'request sent successfully'}
       else
         @error_message = book_activity.errors
-        render 'shared/errors', @error_message
+        render 'shared/errors', status: :unprocessable_entity
       end
     end
 
@@ -32,7 +32,7 @@ module Api
         render json: {status: 'requests cancelled successfully'}
       else
         @error_message = book_activity.errors
-        render 'shared/errors', @error_message
+        render 'shared/errors', status: :unprocessable_entity
       end
     end
 
