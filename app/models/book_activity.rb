@@ -5,7 +5,7 @@ class BookActivity < ApplicationRecord
 
   enum status: [:pending, :accepted, :rejected]
 
-  before_create :set_lender
+  before_validation :set_lender
   after_create :notify_lender
 
   def set_lender
