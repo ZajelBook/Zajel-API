@@ -1,6 +1,7 @@
 module Api
   class BookActivitiesController < ApplicationController
     before_action :authenticate_user!
+    before_action :find_book_activity, only: [:update, :destroy]
 
     def index
       book_activities = if params[:type].eql?('sent')
@@ -23,15 +24,20 @@ module Api
     end
 
     def update
-
+      if params[:status].eql?('accept')
+        @book_activity.accepted!
+        render json: { status: 'request accepted' }
+      elsif params[:status].eql?('reject')
+        @book_activity.rejected!
+        render json: { status: 'request rejected' }
+      end
     end
 
     def destroy
-      book_activity = current_user.borrow_requests.find(params[:id])
-      if book_activity.destroy
-        render json: {status: 'requests cancelled successfully'}
+      if @book_activity.destroy
+        render json: { status: 'requests cancelled successfully' }
       else
-        @error_message = book_activity.errors
+        @error_message = @book_activity.errors
         render 'shared/errors', status: :unprocessable_entity
       end
     end
@@ -39,6 +45,10 @@ module Api
     private
     def book_activity_params
       params.permit(:book_id)
+    end
+
+    def find_book_activity
+      @book_activity = current_user.borrow_requests.find(params[:id])
     end
   end
 end
