@@ -40,7 +40,7 @@ covers = ["https://marketplace.canva.com/MACXC0twKgo/1/0/thumbnail_large/canva-g
       description: 'seeded data',
       author: Faker::Book.author,
       published_at: Faker::Date.between(from: 15.years.ago, to: Date.today),
-      language: 'English',
+      language: Language.pluck(:name).sample,
       page_count: rand(100..500),
       genre_id: Genre.pluck(:id).sample,
       owner_type: 'User',
@@ -50,4 +50,7 @@ covers = ["https://marketplace.canva.com/MACXC0twKgo/1/0/thumbnail_large/canva-g
   book.save!
 end
 
+Language.create([{name: 'English'},
+                 {name: 'Arabic'},
+                 {name: 'French'}])
 
