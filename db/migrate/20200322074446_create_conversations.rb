@@ -8,5 +8,8 @@ class CreateConversations < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+
+    add_index :conversations, [:borrower_type, :borrower_id]
+    add_index :conversations, [:lender_type, :lender_id]
   end
 end

@@ -66,12 +66,13 @@ ActiveRecord::Schema.define(version: 2020_03_22_074550) do
     t.integer "page_count"
     t.integer "status", default: 0
     t.boolean "approved", default: false
-    t.bigint "user_id", null: false
+    t.string "owner_type"
+    t.integer "owner_id"
     t.bigint "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genre_id"], name: "index_books_on_genre_id"
-    t.index ["user_id"], name: "index_books_on_user_id"
+    t.index ["owner_type", "owner_id"], name: "index_books_on_owner_type_and_owner_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -81,6 +82,8 @@ ActiveRecord::Schema.define(version: 2020_03_22_074550) do
     t.integer "lender_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["borrower_type", "borrower_id"], name: "index_conversations_on_borrower_type_and_borrower_id"
+    t.index ["lender_type", "lender_id"], name: "index_conversations_on_lender_type_and_lender_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -97,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_074550) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["sender_type", "sender_id"], name: "index_messages_on_sender_type_and_sender_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -211,6 +215,5 @@ ActiveRecord::Schema.define(version: 2020_03_22_074550) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "book_activities", "books"
   add_foreign_key "books", "genres"
-  add_foreign_key "books", "users"
   add_foreign_key "messages", "conversations"
 end

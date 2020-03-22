@@ -12,7 +12,7 @@ require 'faker'
   )
 end
 
-1.upto(5) do
+1.upto(7) do
   Genre.create!(
       name: Faker::Book.genre
   )
@@ -42,8 +42,9 @@ covers = ["https://marketplace.canva.com/MACXC0twKgo/1/0/thumbnail_large/canva-g
       published_at: Faker::Date.between(from: 15.years.ago, to: Date.today),
       language: 'English',
       page_count: rand(100..500),
-      genre_id: rand(1..5),
-      user_id: rand(3..10)
+      genre_id: Genre.pluck(:id).sample,
+      owner_type: 'User',
+      owner_id: User.pluck(:id).sample
   )
   book.image.attach(io: file, filename: filename)
   book.save!

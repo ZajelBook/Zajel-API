@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   has_one_attached :image
 
   has_many :book_activities
-  belongs_to :user
+  belongs_to :owner, polymorphic: true
   belongs_to :genre
 
   enum status: [:available, :unavailable, :borrowed]

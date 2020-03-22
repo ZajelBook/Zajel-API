@@ -9,5 +9,6 @@ json.image rails_blob_url book.image
 json.status book.status
 json.approved book.approved
 json.genre book.genre.name
-json.user_id book.user_id
+json.owner_type book.owner_type
+json.owner_id book.owner_id
 json.requested book.requested_by?(current_user.id)
