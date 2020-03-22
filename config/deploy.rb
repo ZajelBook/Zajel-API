@@ -10,7 +10,7 @@ set :deploy_to, '/home/mylestone/apps/zajel-staging'
 
 append :linked_files, "config/master.key"
 # append :linked_files, ".env.production"
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads storage}
 
 set :keep_releases, 2
 set :puma_threads, [5, 5]
