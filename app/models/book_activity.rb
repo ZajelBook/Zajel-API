@@ -8,9 +8,14 @@ class BookActivity < ApplicationRecord
   before_validation :set_lender
   after_create :notify_lender
   after_update :notify_borrower, if: :saved_change_to_status?
+  after_update :create_conversation, if: :accepted?
 
   def set_lender
     self.lender = book.user
+  end
+
+  def create_conversation
+    Conversation.create(borrower: borrower, lender: lender)
   end
 
   def notify_lender
