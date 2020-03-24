@@ -11,7 +11,7 @@ class BookActivity < ApplicationRecord
   after_update :create_conversation, if: :accepted?
 
   def set_lender
-    self.lender = book.user
+    self.lender = book.owner
   end
 
   def create_conversation
