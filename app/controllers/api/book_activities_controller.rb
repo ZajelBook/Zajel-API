@@ -24,10 +24,10 @@ module Api
     end
 
     def update
-      if params[:status].eql?('accept')
+      if params[:type].eql?('accept')
         @book_activity.accepted!
         render json: { status: 'request accepted' }
-      elsif params[:status].eql?('reject')
+      elsif params[:type].eql?('reject')
         @book_activity.rejected!
         render json: { status: 'request rejected' }
       end
