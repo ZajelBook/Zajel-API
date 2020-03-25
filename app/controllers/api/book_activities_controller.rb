@@ -7,7 +7,7 @@ module Api
       book_activities = if params[:type].eql?('sent')
                            current_user.borrow_requests
                          elsif params[:type].eql?('received')
-                           current_user.lend_requests
+                           current_user.lend_requests.active
                          end.includes(:borrower, :lender, book: [:genre, image_attachment: :blob]).order(created_at: :desc)
 
       @pagy, @book_activities = pagy(book_activities, items: params[:per_page])
@@ -49,7 +49,7 @@ module Api
     end
 
     def find_book_activity
-      @book_activity = current_user.borrow_requests.find(params[:id])
+      @book_activity = current_user.lend_requests.find(params[:id])
     end
   end
 end

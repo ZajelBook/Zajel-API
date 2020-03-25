@@ -3,7 +3,7 @@ module Api
     before_action :authenticate_user!
 
     def index
-      @messages = Message.where(conversation_id: params[:conversation_id])
+      @messages = Message.includes(:sender).where(conversation_id: params[:conversation_id])
     end
 
     def create

@@ -10,6 +10,8 @@ class BookActivity < ApplicationRecord
   after_update :notify_borrower, if: :saved_change_to_status?
   after_update :create_conversation, if: :accepted?
 
+  scope :active, -> { where.not(status: :rejected) }
+
   def set_lender
     self.lender = book.owner
   end

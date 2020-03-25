@@ -5,5 +5,6 @@ json.messages do
     json.content message.content
     json.sender_type message.sender_type
     json.sender_id message.sender_id
+    json.sender_name message.sender_name
   end
 end
