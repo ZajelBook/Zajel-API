@@ -1,7 +1,7 @@
 module Api
   class BookActivitiesController < ApplicationController
     before_action :authenticate_user!
-    before_action :find_book_activity, only: [:update, :destroy]
+    before_action :find_book_activity, only: [:update]
 
     def index
       book_activities = if params[:type].eql?('sent')
@@ -34,10 +34,11 @@ module Api
     end
 
     def destroy
-      if @book_activity.destroy
+      book_activity = current_user.borrow_requests.find_by(book_id: params[:id], status: :pending)
+      if book_activity.destroy
         render json: { status: 'requests cancelled successfully' }
       else
-        @error_message = @book_activity.errors
+        @error_message = book_activity.errors
         render 'shared/errors', status: :unprocessable_entity
       end
     end
