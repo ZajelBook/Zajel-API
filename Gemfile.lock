@@ -1,14 +1,14 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 7966190d46fd8165b58f3be1bffe41d37ccaea7c
+  revision: 8062374a6d9a15f609c0e2598af931c6245c4ca7
   branch: master
   specs:
-    faker (2.10.2)
+    faker (2.11.0)
       i18n (>= 1.6, < 2)
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 667d69cc5b0527d0c3d0887cd175114e9310d519
+  revision: e2cf0b1d780b2e09f5270249ca021d94ce4fff9d
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
