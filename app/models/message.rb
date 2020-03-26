@@ -12,6 +12,7 @@ class Message < ApplicationRecord
                                            sender_id: sender_id,
                                            sender_name: sender_name
                                  }
+    notify_receiver
   end
 
   def sender_name
