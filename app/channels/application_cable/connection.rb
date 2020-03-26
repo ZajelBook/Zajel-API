@@ -9,14 +9,14 @@ module ApplicationCable
       uid = request.params["uid"]
       access_token = request.params["access-token"]
 
-      self.current_user = find_verified_user(access_token, uid, client)
+      find_verified_user(access_token, uid, client)
     end
 
     private
     def find_verified_user(token, uid, client_id)
       user = User.find_by(email: uid)
       if user && user.valid_token?(token, client_id)
-        user
+        true
       else
         reject_unauthorized_connection
       end

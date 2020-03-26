@@ -3,7 +3,16 @@ class Message < ApplicationRecord
   belongs_to :sender, polymorphic: true
   belongs_to :receiver, polymorphic: true
 
+  before_validation :set_receiver
   after_create :broadcast_message
+
+  def set_receiver
+    self.receiver = if self.sender_id.eql?(conversation.borrower_id)
+      conversation.lender
+    else
+      conversation.borrower
+    end
+  end
 
   def broadcast_message
     ActionCable.server.broadcast "conversation_#{conversation.id}",
