@@ -26,7 +26,7 @@ module Api
     def update
       if params[:type].eql?('accept')
         @book_activity.accepted!
-        render json: { status: 'request accepted' }
+        render json: { status: 'request accepted', conversation_id: @book_activity.conversation_id }
       elsif params[:type].eql?('reject')
         @book_activity.rejected!
         render json: { status: 'request rejected' }

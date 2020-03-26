@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_091159) do
+ActiveRecord::Schema.define(version: 2020_03_26_142422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 2020_03_22_091159) do
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "conversation_id"
     t.index ["book_id"], name: "index_book_activities_on_book_id"
     t.index ["borrower_type", "borrower_id"], name: "index_book_activities_on_borrower_type_and_borrower_id"
+    t.index ["conversation_id"], name: "index_book_activities_on_conversation_id"
     t.index ["lender_type", "lender_id"], name: "index_book_activities_on_lender_type_and_lender_id"
   end
 
@@ -220,6 +222,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_091159) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "book_activities", "books"
+  add_foreign_key "book_activities", "conversations"
   add_foreign_key "books", "genres"
   add_foreign_key "messages", "conversations"
 end

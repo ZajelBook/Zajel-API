@@ -2,6 +2,7 @@ class BookActivity < ApplicationRecord
   belongs_to :book
   belongs_to :borrower, polymorphic: true
   belongs_to :lender, polymorphic: true
+  belongs_to :conversation, optional: true
 
   enum status: [:pending, :accepted, :rejected]
 
@@ -17,7 +18,8 @@ class BookActivity < ApplicationRecord
   end
 
   def create_conversation
-    Conversation.create(borrower: borrower, lender: lender)
+    conversation = Conversation.find_or_create_by(borrower: borrower, lender: lender)
+    self.update_columns(conversation_id: conversation.id)
   end
 
   def notify_lender
