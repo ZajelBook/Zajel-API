@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :lend_conversations, as: :lender, class_name: 'Conversation'
 
   has_many :sent_messages, as: :sender, class_name: 'Message'
+  has_many :received_messages, as: :receiver, class_name: 'Message'
 
   has_many :notifications, as: :recipient
 

@@ -1,6 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :conversation
   belongs_to :sender, polymorphic: true
+  belongs_to :receiver, polymorphic: true
 
   after_create :broadcast_message
 
@@ -15,5 +16,16 @@ class Message < ApplicationRecord
 
   def sender_name
     sender.full_name
+  end
+
+  def notify_receiver
+    Notification.create(
+        content: "#{sender_name} sent a new message",
+        payload: {
+            title: 'new message',
+            subject: "#{sender_name} sent a new message"
+        },
+        recipient: receiver
+    )
   end
 end
