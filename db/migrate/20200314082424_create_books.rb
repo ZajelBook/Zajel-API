@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :author
       t.text :description
-      t.date :published_at
+      t.string :published_at
       t.string :language
       t.integer :page_count
       t.integer :status, default: 0

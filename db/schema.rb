@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_142422) do
     t.string "title"
     t.string "author"
     t.text "description"
-    t.date "published_at"
+    t.string "published_at"
     t.string "language"
     t.integer "page_count"
     t.integer "status", default: 0
