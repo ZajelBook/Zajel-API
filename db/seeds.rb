@@ -76,7 +76,7 @@ Language.create([{name: 'English'},
                  {name: 'French'}])
 
 1.upto(10) do
-  book_id = User.find(11).books.ids.sample
+  book_id = User.first.books.ids.sample
   book = Book.find(book_id)
   borrower_id = User.ids.sample
   BookActivity.create(book: book,
@@ -85,7 +85,7 @@ Language.create([{name: 'English'},
 end
 
 1.upto(10) do
-  book_id = User.find(12).books.ids.sample
+  book_id = User.second.books.ids.sample
   book = Book.find(book_id)
   borrower_id = User.ids.sample
   BookActivity.create(book: book,
