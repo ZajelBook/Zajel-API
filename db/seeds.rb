@@ -1,16 +1,16 @@
 require 'faker'
 
-1.upto(10) do
-  User.create!(
-      email: Faker::Internet.email,
-      password: '00000000',
-      password_confirmation: '00000000',
-      first_name: Faker::Name.first_name,
-      last_name: Faker::Name.last_name,
-      birth_date: Faker::Date.birthday(min_age: 18, max_age: 40),
-      phone_number: Faker::PhoneNumber.cell_phone
-  )
-end
+# 1.upto(2) do
+#   User.create!(
+#       email: Faker::Internet.email,
+#       password: '00000000',
+#       password_confirmation: '00000000',
+#       first_name: Faker::Name.first_name,
+#       last_name: Faker::Name.last_name,
+#       birth_date: Faker::Date.birthday(min_age: 18, max_age: 40),
+#       phone_number: Faker::PhoneNumber.cell_phone
+#   )
+# end
 
 User.create!(
     email: 'mrahmoun93@gmail.com',
