@@ -20,7 +20,7 @@ class Message < ApplicationRecord
                                            sender_type: sender_type,
                                            sender_id: sender_id,
                                            sender_name: sender_name,
-                                           created_at: created_at
+                                           created_at: created_at.strftime("%Y-%m-%d %H:%M")
                                  }
     notify_receiver
   end
