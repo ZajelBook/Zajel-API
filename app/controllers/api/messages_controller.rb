@@ -3,7 +3,8 @@ module Api
     before_action :authenticate_user!
 
     def index
-      @messages = Message.includes(:sender).where(conversation_id: params[:conversation_id])
+      @messages = Message.includes(:sender).where(conversation_id: params[:conversation_id]).order(created_at: :asc)
+      @pagy, @messages = pagy(@messages, items: params[:per_page])
     end
 
     def create

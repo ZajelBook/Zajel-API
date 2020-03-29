@@ -19,7 +19,8 @@ class Message < ApplicationRecord
                                  object: { content: content,
                                            sender_type: sender_type,
                                            sender_id: sender_id,
-                                           sender_name: sender_name
+                                           sender_name: sender_name,
+                                           created_at: created_at
                                  }
     notify_receiver
   end
