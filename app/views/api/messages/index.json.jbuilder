@@ -6,5 +6,6 @@ json.messages do
     json.sender_type message.sender_type
     json.sender_id message.sender_id
     json.sender_name message.sender_name
+    json.created_at message.created_at
   end
 end

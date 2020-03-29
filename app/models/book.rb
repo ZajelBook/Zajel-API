@@ -13,7 +13,7 @@ class Book < ApplicationRecord
 
   def requested_by?(user_id)
     book_activities.select do |book_activity|
-      book_activity.borrower_type.eql?('User') && book_activity.borrower_id.eql?(user_id) && book_activity.pending?
+      book_activity.borrower_type.eql?('User') && book_activity.borrower_id.eql?(user_id) && book_activity.pending? && self.available?
     end.any?
   end
 end
