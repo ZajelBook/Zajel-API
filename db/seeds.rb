@@ -38,6 +38,10 @@ User.create!(
   )
 end
 
+Language.create([{name: 'English'},
+                 {name: 'Arabic'},
+                 {name: 'French'}])
+
 covers = ["https://marketplace.canva.com/MACXC0twKgo/1/0/thumbnail_large/canva-green-and-pink-science-fiction-book-cover-MACXC0twKgo.jpg",
  "https://emusdebuts.files.wordpress.com/2018/04/the-benefits-of-being-an-octopus.jpg?w=341&h=512",
  "https://marketplace.canva.com/MAB___U-clw/1/0/thumbnail_large/canva-yellow-lemon-children-book-cover-MAB___U-clw.jpg",
@@ -70,10 +74,6 @@ covers = ["https://marketplace.canva.com/MACXC0twKgo/1/0/thumbnail_large/canva-g
   book.image.attach(io: file, filename: filename)
   book.save!
 end
-
-Language.create([{name: 'English'},
-                 {name: 'Arabic'},
-                 {name: 'French'}])
 
 1.upto(10) do
   book_id = User.first.books.ids.sample
