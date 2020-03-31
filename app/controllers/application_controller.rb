@@ -16,6 +16,6 @@ class ApplicationController < ActionController::API
   end
 
   def render_pagination_error
-    render json: {errors: ['invalid page']}, status: 422
+    render json: {errors: []}, status: 200
   end
 end

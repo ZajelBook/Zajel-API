@@ -5,7 +5,7 @@ module Api
     def index
       @nearby_users = User.near(set_coordinates, 100000, units: :km)
 
-      @books = Book.active(@nearby_users.load.ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(owner_id: :asc)
+      @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(owner_id: :asc)
       @nearby_users.map {|user| [user.id, user.distance]}.flatten!
       @pagy, @books = pagy(@books, items: params[:per_page])
     end
@@ -44,6 +44,16 @@ module Api
 
     def set_coordinates
       user_signed_in? ? [current_user.latitude, current_user.longitude] : [params[:latitude], params[:longitude]]
+    end
+
+    def set_user_ids
+      if user_signed_in?
+        nearby_user_ids = @nearby_users.load.ids
+        nearby_user_ids.delete(current_user.id)
+        nearby_user_ids
+      else
+        @nearby_users.load.ids
+      end
     end
   end
 end
