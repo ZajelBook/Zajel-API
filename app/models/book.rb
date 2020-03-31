@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   has_one_attached :image
+  attr_accessor :distance
 
   has_many :book_activities
   belongs_to :owner, polymorphic: true
@@ -9,7 +10,7 @@ class Book < ApplicationRecord
 
   scope :approved, -> { where(approved: true) }
 
-  scope :active, -> { available.approved }
+  scope :active, -> (owner_ids) { available.approved.where(owner_id: owner_ids) }
 
   def requested_by?(user_id)
     book_activities.select do |book_activity|

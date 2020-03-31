@@ -1,13 +1,18 @@
 module Api
   class BooksController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:index, :show]
     before_action :set_book, only: [:show, :update]
     def index
-      @books = Book.active.includes(:book_activities, :genre, image_attachment: :blob).order(updated_at: :desc)
+      @nearby_users = User.near(set_coordinates, 100000, units: :km)
+
+      @books = Book.active(@nearby_users.load.ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(owner_id: :asc)
+      @nearby_users.map {|user| [user.id, user.distance]}.flatten!
       @pagy, @books = pagy(@books, items: params[:per_page])
     end
 
-    def show; end
+    def show
+      @distance = @book.owner.distance_to(set_coordinates, :km)
+    end
 
     def create
       @book = @current_user.books.new(book_params)
@@ -35,6 +40,10 @@ module Api
 
     def set_book
       @book = Book.find(params[:id])
+    end
+
+    def set_coordinates
+      user_signed_in? ? [current_user.latitude, current_user.longitude] : [params[:latitude], params[:longitude]]
     end
   end
 end

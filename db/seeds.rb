@@ -19,7 +19,9 @@ User.create!(
     first_name: 'Mohamad',
     last_name: 'Rahmoun',
     birth_date: Faker::Date.birthday(min_age: 18, max_age: 40),
-    phone_number: Faker::PhoneNumber.cell_phone
+    phone_number: Faker::PhoneNumber.cell_phone,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude
 )
 
 User.create!(
@@ -29,7 +31,9 @@ User.create!(
     first_name: 'Mohamad',
     last_name: 'Mokresh',
     birth_date: Faker::Date.birthday(min_age: 18, max_age: 40),
-    phone_number: Faker::PhoneNumber.cell_phone
+    phone_number: Faker::PhoneNumber.cell_phone,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude
 )
 
 1.upto(7) do

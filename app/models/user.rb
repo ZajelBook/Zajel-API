@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  reverse_geocoded_by :latitude, :longitude
+
   has_many :books, as: :owner
   has_many :borrow_requests, as: :borrower, class_name: 'BookActivity'
   has_many :lend_requests, as: :lender, class_name: 'BookActivity'

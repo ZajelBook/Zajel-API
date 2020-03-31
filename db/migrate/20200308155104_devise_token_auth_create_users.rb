@@ -35,8 +35,8 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
       t.date :birth_date
       t.string :fcm_token
       t.string :phone_number
-      t.float :latitude
-      t.float :longitude
+      t.decimal :latitude, precision: 10, scale: 6
+      t.decimal :longitude, precision: 10, scale: 6
 
       ## Tokens
       t.json :tokens
@@ -48,6 +48,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
     add_index :users, [:uid, :provider],     unique: true
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
+    add_index :users, [:latitude, :longitude]
     # add_index :users, :unlock_token,       unique: true
   end
 end

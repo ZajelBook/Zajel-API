@@ -11,4 +11,9 @@ json.approved book.approved
 json.genre book.genre.name
 json.owner_type book.owner_type
 json.owner_id book.owner_id
-json.requested book.requested_by?(current_user.id)
+if @nearby_users.present?
+  json.distance @nearby_users.find {|user| book.owner.id.eql?(user.id)}.distance.to_i
+else
+  json.distance @distance.to_i
+end
+json.requested book.requested_by?(current_user.id) if user_signed_in?

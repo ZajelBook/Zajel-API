@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 8062374a6d9a15f609c0e2598af931c6245c4ca7
+  revision: 185dbd9d171bc01e7509e1536d9b58290d7d5efc
   branch: master
   specs:
     faker (2.11.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: e2cf0b1d780b2e09f5270249ca021d94ce4fff9d
+  revision: c805c5ac8ad757ccdeeb6aac1495664759f8161c
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -66,7 +66,7 @@ GIT
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (~> 5.1)
-      tzinfo (~> 1.1)
+      tzinfo (~> 2.0)
       zeitwerk (~> 2.2, >= 2.2.2)
     rails (6.1.0.alpha)
       actioncable (= 6.1.0.alpha)
@@ -133,6 +133,7 @@ GEM
       rails (>= 4.2.0, < 6.1)
     erubi (1.9.0)
     ffi (1.12.2)
+    geocoder (1.6.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-2 (0.10.1)
@@ -170,7 +171,7 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    pagy (3.7.4)
+    pagy (3.7.5)
     pg (1.2.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -217,9 +218,8 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     thor (1.0.1)
-    thread_safe (0.3.6)
-    tzinfo (1.2.6)
-      thread_safe (~> 0.1)
+    tzinfo (2.0.1)
+      concurrent-ruby (~> 1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     websocket-driver (0.7.1)
@@ -240,6 +240,7 @@ DEPENDENCIES
   devise
   devise_token_auth
   faker!
+  geocoder
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   pagy (~> 3.5)
