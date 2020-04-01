@@ -1,7 +1,9 @@
 module Api
   class UsersController < ApplicationController
     before_action :authenticate_user!
-    def show; end
+    def show
+      @user = current_user
+    end
 
     def update
       if current_user.update(user_params)

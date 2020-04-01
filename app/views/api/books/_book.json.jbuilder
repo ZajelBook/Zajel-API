@@ -17,4 +17,4 @@ if @nearby_users.present?
 else
   json.distance @distance.to_i
 end
-json.requested book.requested_by?(current_user.id) if user_signed_in?
+json.requested book.requested_by?(current_user.id) if user_signed_in? && book.owner != current_user

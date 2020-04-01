@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :books do
       get 'by_name/:friendly_id', to: 'books#show', on: :collection
     end
+    resources :my_books, only: [:index]
     resources :genres
     resources :book_activities
 
