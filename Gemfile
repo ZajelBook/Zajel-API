@@ -31,6 +31,7 @@ gem 'devise_token_auth'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'pagy', '~> 3.5'
 gem 'geocoder'
+gem 'friendly_id', '~> 5.2.4'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

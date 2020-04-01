@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' }, path: '/api' do
     mount_devise_token_auth_for 'User', at: 'auth'
     resources :users
-    resources :books
+    resources :books do
+      get 'by_name/:friendly_id', to: 'books#show', on: :collection
+    end
     resources :genres
     resources :book_activities
 

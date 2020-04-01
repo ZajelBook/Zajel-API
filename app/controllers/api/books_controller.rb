@@ -39,7 +39,11 @@ module Api
     end
 
     def set_book
-      @book = Book.find(params[:id])
+      if params[:id].present?
+        @book = Book.find(params[:id])
+      elsif params[:friendly_id].present?
+        @book = Book.friendly.find(params[:friendly_id])
+      end
     end
 
     def set_coordinates

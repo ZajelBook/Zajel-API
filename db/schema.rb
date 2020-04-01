@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_142422) do
+ActiveRecord::Schema.define(version: 2020_04_01_124152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,8 +73,10 @@ ActiveRecord::Schema.define(version: 2020_03_26_142422) do
     t.bigint "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
     t.index ["genre_id"], name: "index_books_on_genre_id"
     t.index ["owner_type", "owner_id"], name: "index_books_on_owner_type_and_owner_id"
+    t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -86,6 +88,17 @@ ActiveRecord::Schema.define(version: 2020_03_26_142422) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["borrower_type", "borrower_id"], name: "index_conversations_on_borrower_type_and_borrower_id"
     t.index ["lender_type", "lender_id"], name: "index_conversations_on_lender_type_and_lender_id"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "genres", force: :cascade do |t|

@@ -1,4 +1,7 @@
 class Book < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   has_one_attached :image
   attr_accessor :distance
 
