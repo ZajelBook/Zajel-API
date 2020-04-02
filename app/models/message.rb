@@ -36,7 +36,9 @@ class Message < ApplicationRecord
         content: "#{sender_name} sent a new message",
         payload: {
             title: 'new message',
-            subject: "#{sender_name} sent a new message"
+            subject: "#{sender_name} sent a new message",
+            type: 'new_message',
+            conversation_id: conversation_id
         },
         recipient: receiver
     )

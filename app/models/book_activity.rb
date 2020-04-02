@@ -8,8 +8,8 @@ class BookActivity < ApplicationRecord
 
   before_validation :set_lender
   after_create :notify_lender
-  after_update :notify_borrower, if: :saved_change_to_status?
   after_update :create_conversation, if: :accepted?
+  after_update :notify_borrower, if: :saved_change_to_status?
   after_update :update_book_status, if: :accepted?
 
   scope :active, -> { where.not(status: :rejected) }
@@ -32,22 +32,25 @@ class BookActivity < ApplicationRecord
         content: "#{borrower.full_name} wants to borrow #{book.title}",
         payload: {
             title: 'You have got a new borrow request',
-            subject: "#{borrower.full_name} wants to borrow #{book.title}"
+            subject: "#{borrower.full_name} wants to borrow #{book.title}",
+            type: 'borrow_request'
         },
         recipient: lender
     )
   end
 
   def notify_borrower
-    content, title = if accepted?
+    content, title, type = if accepted?
                        [
                            "#{lender.full_name} accepted you request to borrow (#{book.title})",
-                           'request accepted'
+                           'request accepted',
+                           'request_accepted'
                        ]
                      elsif rejected?
                         [
                             "#{lender.full_name} rejected you request to borrow (#{book.title})",
-                            'request rejected'
+                            'request rejected',
+                            'request_rejected'
                         ]
                      else
                        return nil
@@ -56,7 +59,9 @@ class BookActivity < ApplicationRecord
         content: content,
         payload: {
             title: title,
-            subject: content
+            subject: content,
+            type: type,
+            conversation_id: conversation_id
         },
         recipient: borrower
     )
