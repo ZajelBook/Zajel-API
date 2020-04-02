@@ -3,7 +3,7 @@ module Api
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_book, only: [:show, :update]
     def index
-      @nearby_users = User.near(set_coordinates, 100000, units: :km)
+      @nearby_users = User.near(set_coordinates, 30, units: :km)
 
       @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(owner_id: :asc)
       @nearby_users.map {|user| [user.id, user.distance]}.flatten!
