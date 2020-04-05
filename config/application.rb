@@ -36,8 +36,6 @@ module ZajelApi
 
     config.autoload_paths   +=  %W(#{config.root}/lib)
 
-    config.skylight.environments << "staging"
-
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
