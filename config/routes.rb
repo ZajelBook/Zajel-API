@@ -14,7 +14,10 @@ Rails.application.routes.draw do
       resources :messages
     end
 
-    resources :notifications
+    resources :notifications do
+      get :unread, on: :collection
+      put :read, on: :collection
+    end
 
     get 'metadata', to: 'metadata#index'
   end

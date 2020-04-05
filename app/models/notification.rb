@@ -1,6 +1,8 @@
 class Notification < ApplicationRecord
   belongs_to :recipient, polymorphic: true
 
+  scope :unread, -> {where(read: false)}
+
   after_create :send_notification
 
   def send_notification

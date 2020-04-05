@@ -8,7 +8,7 @@ module Api
                            current_user.borrow_requests
                          elsif params[:type].eql?('received')
                            current_user.lend_requests.active
-                         end.includes(:conversation, :borrower, :lender, book: [:book_activities, :genre, image_attachment: :blob]).order(created_at: :desc)
+                         end.includes(:conversation, :borrower, :lender, book: [:book_activities, :genre, image_attachment: :blob]).order(updated_at: :desc)
 
       @pagy, @book_activities = pagy(book_activities, items: params[:per_page])
     end
