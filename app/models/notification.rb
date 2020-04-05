@@ -12,6 +12,9 @@ class Notification < ApplicationRecord
     notification.app = app
     notification.registration_ids = recipient.fcm_token
     notification.data = self.payload
+    notification.notification = { body: self.payload.subject,
+                       title: self.payload.title
+    }
     notification.save!
   end
 end
