@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 185dbd9d171bc01e7509e1536d9b58290d7d5efc
+  revision: 7c3956fc3e6441d3b043f4b4a06fb4f6ebcbfc5f
   branch: master
   specs:
     faker (2.11.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: d56d2e740612717334840b0d0ea979e1ca7cf5b1
+  revision: a6711d6e9d72ee72615d5c24d761dff5e94b6573
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -98,6 +98,8 @@ GEM
     bcrypt (3.1.13)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
+    bugsnag (6.13.0)
+      concurrent-ruby (~> 1.0)
     builder (3.2.4)
     capistrano (3.12.1)
       airbrussh (>= 1.0.0)
@@ -205,6 +207,10 @@ GEM
       rainbow
       thor (>= 0.18.1, < 2.0)
     ruby_dep (1.5.0)
+    skylight (4.2.3)
+      skylight-core (= 4.2.3)
+    skylight-core (4.2.3)
+      activesupport (>= 4.2.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -220,7 +226,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     thor (1.0.1)
-    tzinfo (2.0.1)
+    tzinfo (2.0.2)
       concurrent-ruby (~> 1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -234,6 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  bugsnag
   capistrano (~> 3.12)
   capistrano-rails
   capistrano-rvm
@@ -252,6 +259,7 @@ DEPENDENCIES
   rack-cors
   rails!
   rpush
+  skylight
   spring
   spring-watcher-listen (~> 2.0.0)
 

@@ -32,6 +32,8 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'pagy', '~> 3.5'
 gem 'geocoder'
 gem 'friendly_id', '~> 5.2.4'
+gem 'skylight'
+gem 'bugsnag'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
