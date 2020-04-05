@@ -22,7 +22,7 @@ class Message < ApplicationRecord
                                            sender_id: sender_id,
                                            sender_name: sender_name,
                                            conversation_id: conversation_id,
-                                           created_at: created_at.strftime("%Y-%m-%d %H:%M:%S %z")
+                                           created_at: created_at
                                  }
     notify_receiver
   end

@@ -9,6 +9,6 @@ json.notifications do
     json.id notification.id
     json.content notification.content
     json.payload notification.payload
-    json.created_at notification.created_at.strftime("%Y-%m-%d %H:%M %z")
+    json.created_at notification.created_at
   end
 end
