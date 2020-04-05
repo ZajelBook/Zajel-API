@@ -13,8 +13,8 @@ class Notification < ApplicationRecord
     notification.registration_ids = recipient.fcm_token
     notification.data = self.payload
     notification.notification = {
-        body: self.payload.dig(:subject),
-        title: self.payload.dig(:title)
+        body: self.payload.dig('subject'),
+        title: self.payload.dig('title')
     }
     notification.save!
   end
