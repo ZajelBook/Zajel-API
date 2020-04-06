@@ -7,6 +7,8 @@ class BookActivity < ApplicationRecord
   enum status: [:pending, :accepted, :rejected]
 
   before_validation :set_lender
+
+  validate :borrower_and_lender
   after_create :notify_lender
   after_update :create_conversation, if: :accepted?
   after_update :notify_borrower, if: :saved_change_to_status?
@@ -23,7 +25,8 @@ class BookActivity < ApplicationRecord
   end
 
   def create_conversation
-    conversation = Conversation.find_or_create_by(borrower: [borrower,lender], lender: [borrower,lender])
+    conversation = Conversation.find_by(borrower: [borrower, lender], lender: [borrower, lender])
+    conversation = Conversation.create(borrower: borrower, lender: lender) if conversation.nil?
     self.update_columns(conversation_id: conversation.id)
   end
 
@@ -65,5 +68,9 @@ class BookActivity < ApplicationRecord
         },
         recipient: borrower
     )
+  end
+
+  def borrower_and_lender
+    borrower_id == lender_id ? errors.add("invalid", "can't borrow your own book") : true
   end
 end
