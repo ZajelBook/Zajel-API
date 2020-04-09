@@ -1,12 +1,12 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.12.0"
+lock "~> 3.13.0"
 
 set :application, "zajel"
 set :repo_url, "git@github.com:Bernovia/Zajel-API.git"
 set :rvm_type, :user
-set :rvm_ruby_version, '2.7.0'
+set :rvm_ruby_version, '2.7.1'
 
-set :deploy_to, '/home/mylestone/apps/zajel-staging'
+set :deploy_to, '/home/mylestone/apps/zajel'
 
 append :linked_files, "config/master.key"
 # append :linked_files, ".env.production"
