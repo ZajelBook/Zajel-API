@@ -3,9 +3,9 @@ module Api
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_book, only: [:show, :update]
     def index
-      @nearby_users = User.near(set_coordinates, 50, units: :km)
+      @nearby_users = User.near(set_coordinates, 2000, units: :km)
 
-      @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(owner_id: :asc)
+      @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(created_at: :desc)
       @nearby_users.map {|user| [user.id, user.distance]}.flatten!
       @pagy, @books = pagy(@books, items: params[:per_page])
     end
