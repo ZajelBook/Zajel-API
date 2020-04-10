@@ -36,15 +36,42 @@ User.create!(
     longitude: Faker::Address.longitude
 )
 
-1.upto(7) do
-  Genre.create!(
-      name: Faker::Book.genre
-  )
-end
-
 Language.create([{name: 'English'},
                  {name: 'Arabic'},
-                 {name: 'French'}])
+                 {name: 'French'},
+                 {name: 'Malay'},
+                 {name: 'Chinese'},
+                 {name: 'Hindi'},
+                 {name: 'Spanish'},
+                 {name: 'Japanese'},
+                 {name: 'German'},
+                 {name: 'Korean'}])
+
+Genre.create([
+                 {name: 'Adventure'},
+                 {name: 'Biography'},
+                 {name: 'Cookbook'},
+                 {name: 'Dictionary'},
+                 {name: 'Detective'},
+                 {name: 'Economics'},
+                 {name: 'Entertainment'},
+                 {name: 'Fantasy'},
+                 {name: 'Finance'},
+                 {name: 'Health'},
+                 {name: 'History'},
+                 {name: 'Horror'},
+                 {name: 'Lifestyle'},
+                 {name: 'Mystery'},
+                 {name: 'Reference'},
+                 {name: 'Religion'},
+                 {name: 'Romance'},
+                 {name: 'Fiction'},
+                 {name: 'Self-help'},
+                 {name: 'Technology'},
+                 {name: 'Thriller'},
+                 {name: 'Western'},
+                 {name: 'Other'},
+             ])
 
 covers = ["https://marketplace.canva.com/MACXC0twKgo/1/0/thumbnail_large/canva-green-and-pink-science-fiction-book-cover-MACXC0twKgo.jpg",
  "https://emusdebuts.files.wordpress.com/2018/04/the-benefits-of-being-an-octopus.jpg?w=341&h=512",
