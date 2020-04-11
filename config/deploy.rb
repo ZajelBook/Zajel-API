@@ -8,7 +8,7 @@ set :rvm_ruby_version, '2.7.1'
 
 set :deploy_to, '/home/mylestone/apps/zajel'
 
-append :linked_files, "config/master.key"
+append :linked_files, "config/master.key", ".env"
 # append :linked_files, ".env.production"
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads storage}
 

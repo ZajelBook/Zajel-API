@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   include Pagy::Backend
 
   before_action :configure_permitted_parameters, if: :devise_controller?, except: :callback
+  before_action :check_user_confirmation_status, unless: :devise_controller?
   after_action { pagy_headers_merge(@pagy) if @pagy }
 
   protected
@@ -17,5 +18,11 @@ class ApplicationController < ActionController::API
 
   def render_pagination_error
     render json: {errors: []}, status: 200
+  end
+
+  def check_user_confirmation_status
+    if current_user && current_user.confirmed_at.nil?
+      render json: { error: { message: 'user not confirmed' } }, status: :forbidden
+    end
   end
 end

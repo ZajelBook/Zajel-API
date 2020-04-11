@@ -1,6 +1,8 @@
 module Api
   class UsersController < ApplicationController
     before_action :authenticate_user!
+    skip_before_action :check_user_confirmation_status
+
     def show
       @user = current_user
     end
@@ -10,6 +12,16 @@ module Api
         render json: { status: 'success' }
       else
         render json: { error: current_user.errors }, status: :unprocessable_entity
+      end
+    end
+
+    def confirm
+      if current_user.confirmation_token == params[:confirmation_code]
+        if current_user.update(confirmed_at: DateTime.now)
+          render json: { status: 'success' }
+        else
+          render json: { error: current_user.errors }, status: :unprocessable_entity
+        end
       end
     end
 

@@ -2,6 +2,8 @@ module Api
   class BooksController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_book, only: [:show, :update]
+    skip_before_action :check_user_confirmation_status, only: [:index, :show]
+
     def index
       @nearby_users = User.near(set_coordinates, 2000, units: :km)
 

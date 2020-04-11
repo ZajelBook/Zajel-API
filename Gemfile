@@ -34,6 +34,8 @@ gem 'geocoder'
 gem 'friendly_id', '~> 5.2.4'
 gem 'skylight'
 gem 'bugsnag'
+gem 'dotenv-rails'
+gem 'sendgrid-ruby'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
