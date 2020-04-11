@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
 
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
 
-    sg.client.mail._('send').post(request_body: mail.to_json)
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+
+    puts response
   end
 end
