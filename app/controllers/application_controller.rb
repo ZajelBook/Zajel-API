@@ -21,8 +21,8 @@ class ApplicationController < ActionController::API
   end
 
   def check_user_confirmation_status
-    if current_user && current_user.confirmed_at.nil?
-      render json: { error: { message: 'user not confirmed' } }, status: :forbidden
-    end
+    # if current_user && current_user.confirmed_at.nil?
+    #   render json: { error: { message: 'user not confirmed' } }, status: :forbidden
+    # end
   end
 end
