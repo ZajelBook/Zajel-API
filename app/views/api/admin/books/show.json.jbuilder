@@ -9,5 +9,7 @@ json.image rails_blob_url @book.image if @book.image.present?
 json.status @book.status
 json.approved @book.approved
 json.genre @book.genre.name
+json.genre_id @book.genre_id
 json.owner_name @book.owner.full_name
 json.owner_id @book.owner_id
+json.created_at @book.created_at

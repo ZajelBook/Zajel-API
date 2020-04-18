@@ -4,7 +4,9 @@ module Api
       before_action :set_book, only: [:show, :update]
 
       def index
-        @books = Book.includes(:owner).order(created_at: :desc)
+        scope = Book.approved
+        scope = Book.waiting_approval if params[:type].present? && params[:type].eql?('new')
+        @books = scope.includes(:owner).order(created_at: :desc)
         @pagy, @books = pagy(@books, items: params[:per_page])
       end
 
@@ -22,7 +24,7 @@ module Api
 
       private
       def book_params
-        params.permit(:title, :author, :description, :page_count, :language, :image, :published_at, :genre_id)
+        params.permit(:title, :author, :description, :page_count, :language, :image, :published_at, :genre_id, :approved, :status)
       end
 
       def set_book

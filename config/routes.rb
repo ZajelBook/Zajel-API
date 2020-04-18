@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth'
 
       resources :books
+      resources :book_activities
       resources :users
       resources :genres, only: [:index, :create, :update]
       resources :languages, only: [:index, :create, :update]
