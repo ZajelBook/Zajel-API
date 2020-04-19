@@ -1,6 +1,8 @@
 module Api
   module Admin
     class BooksController < ApplicationController
+      before_action :authenticate_admin!
+
       before_action :set_book, only: [:show, :update]
 
       def index

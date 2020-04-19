@@ -1,6 +1,8 @@
 module Api
   module Admin
     class UsersController < ApplicationController
+      before_action :authenticate_admin!
+
       def index
         @users = User.all.order(created_at: :desc)
         @pagy, @users = pagy(@users, items: params[:per_page])

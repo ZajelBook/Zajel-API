@@ -1,6 +1,8 @@
 module Api
   module Admin
     class GenresController < ApplicationController
+      before_action :authenticate_admin!
+
       def index
         @genres = Genre.all.order(name: :asc)
       end

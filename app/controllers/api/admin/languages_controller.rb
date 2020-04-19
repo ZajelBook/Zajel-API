@@ -1,6 +1,8 @@
 module Api
   module Admin
     class LanguagesController < ApplicationController
+      before_action :authenticate_admin!
+
       def index
         @languages = Language.all.order(name: :asc)
       end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_for :admins
   namespace :api, defaults: { format: 'json' }, path: '/api' do
     mount_devise_token_auth_for 'User', at: 'auth'
     resources :users do
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     get 'metadata', to: 'metadata#index'
 
     namespace :admin, defaults: { format: 'json' } do
-      mount_devise_token_auth_for 'User', at: 'auth'
+      mount_devise_token_auth_for 'Admin', at: 'auth'
 
       resources :books
       resources :book_activities
