@@ -5,7 +5,7 @@ module Api
     skip_before_action :check_user_confirmation_status, only: [:index, :show]
 
     def index
-      @nearby_users = User.near(set_coordinates, 2000, units: :km)
+      @nearby_users = User.near(set_coordinates, ENV['SEARCH_RADIUS'], units: :km)
 
       @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(created_at: :desc)
       @nearby_users.map {|user| [user.id, user.distance]}.flatten!
