@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:Bernovia/Zajel-API.git"
 set :rvm_type, :user
 set :rvm_ruby_version, '2.7.1'
 
-set :deploy_to, '/home/mylestone/apps/zajel-staging'
+set :deploy_to, '/home/mylestone/apps/zajel'
 
 append :linked_files, "config/master.key", ".env"
 # append :linked_files, ".env.production"
