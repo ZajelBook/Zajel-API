@@ -7,6 +7,8 @@ module Api
     def index
       @nearby_users = User.near(set_coordinates, ENV['SEARCH_RADIUS'].to_i, units: :km)
 
+      logger.info @nearby_users.inspect
+
       @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(created_at: :desc)
       @nearby_users.map {|user| [user.id, user.distance]}.flatten!
       @pagy, @books = pagy(@books, items: params[:per_page])
