@@ -11,5 +11,6 @@ json.books do
     json.status book.status
     json.approved book.approved
     json.owner_name book.owner.full_name
+    json.created_at book.created_at
   end
 end
