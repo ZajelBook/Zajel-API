@@ -24,7 +24,7 @@ json.terms do
 end
 
 json.about do
-  content = "about"
+  content = "<h2>About us</h2><p>Zajel is a free platform that helps readers around the globe building a community where everyone can borrow books and lend theirs instead of putting them on the shelf.</p><p>We are now living in a world where physical books are not available and affordable to everyone, so Zajel will help you get access to thousands of books without paying a cent.</p><p>Help us to grow by spreading the word and share Zajel with your friends.</p><p>Enjoy and have a good read.</p>"
 
   json.content content
 end
