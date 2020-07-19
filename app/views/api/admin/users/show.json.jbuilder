@@ -8,7 +8,7 @@ json.online @user.online
 json.confirmed @user.confirmed_at.nil?
 json.latitude @user.latitude
 json.longitude @user.longitude
-json.mobile @user.fcm_token.nil?
+json.mobile @user.fcm_token.present?
 
 json.books do
   json.array! @books do |book|
