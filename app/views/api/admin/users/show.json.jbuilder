@@ -5,7 +5,7 @@ json.birth_date @user.birth_date
 json.phone_number @user.phone_number
 json.created_at @user.created_at
 json.online @user.online
-json.confirmed @user.confirmed_at.nil?
+json.confirmed @user.confirmed_at.present?
 json.latitude @user.latitude
 json.longitude @user.longitude
 json.mobile @user.fcm_token.present?
