@@ -10,7 +10,7 @@ json.users do
     json.email user.email
     json.full_name user.full_name
     json.phone_number user.phone_number
-    json.confirmed user.confirmed_at.nil?
+    json.confirmed user.confirmed_at.present?
     json.created_at user.created_at
   end
 end
