@@ -8,12 +8,12 @@ module Api
       @nearby_users = User.near(set_coordinates, ENV['SEARCH_RADIUS'].to_i, units: :km)
 
       @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(created_at: :desc)
+      @nearby_users.map {|user| [user.id, user.distance]}.flatten!
 
       if @books.empty?
         @books = Book.mocks
         @distance = rand(100)
-      else
-        @nearby_users.map {|user| [user.id, user.distance]}.flatten!
+        @nearby_users = nil
       end
 
       @pagy, @books = pagy(@books, items: params[:per_page])
