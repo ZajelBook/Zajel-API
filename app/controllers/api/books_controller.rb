@@ -9,7 +9,7 @@ module Api
 
       @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(created_at: :desc)
 
-      if books.empty?
+      if @books.empty?
         @books = Book.mocks
         @distance = rand(100)
       else
