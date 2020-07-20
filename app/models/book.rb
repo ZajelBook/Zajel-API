@@ -11,7 +11,7 @@ class Book < ApplicationRecord
 
   enum status: [:available, :unavailable, :borrowed]
 
-  scope :approved, -> { where(approved: true) }
+  scope :approved, -> { where(approved: true, is_mock: false) }
 
   scope :active, -> (owner_ids) { available.approved.where(owner_id: owner_ids) }
 
