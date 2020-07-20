@@ -20,7 +20,11 @@ module Api
     end
 
     def show
-      @distance = @book.owner.distance_to(set_coordinates, :km)
+      if @book.is_mock?
+        @distance = rand(100)
+      else
+        @distance = @book.owner.distance_to(set_coordinates, :km)
+      end
     end
 
     def create
