@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     mount_devise_token_auth_for 'User', at: 'auth'
     resources :users do
       put :confirm, on: :collection
+      get :re_send, on: :collection
     end
     resources :books do
       get 'by_name/:friendly_id', to: 'books#show', on: :collection
