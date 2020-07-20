@@ -7,12 +7,12 @@ module Api
     def index
       @nearby_users = User.near(set_coordinates, ENV['SEARCH_RADIUS'].to_i, units: :km)
 
-      if @nearby_users.present?
-        @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(created_at: :desc)
-        @nearby_users.map {|user| [user.id, user.distance]}.flatten!
-      else
+      if @nearby_users.empty?
         @books = Book.mocks
         @distance = rand(100)
+      else
+        @books = Book.active(set_user_ids).includes(:owner, :book_activities, :genre, image_attachment: :blob).order(created_at: :desc)
+        @nearby_users.map {|user| [user.id, user.distance]}.flatten!
       end
       @pagy, @books = pagy(@books, items: params[:per_page])
     end
