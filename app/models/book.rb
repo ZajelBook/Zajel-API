@@ -17,6 +17,8 @@ class Book < ApplicationRecord
 
   scope :waiting_approval, -> { where(approved: false) }
 
+  scope :mocks, -> { where(is_mock: true) }
+
   def requested_by?(user_id)
     book_activities.select do |book_activity|
       book_activity.borrower_type.eql?('User') && book_activity.borrower_id.eql?(user_id) && book_activity.pending? && self.available?

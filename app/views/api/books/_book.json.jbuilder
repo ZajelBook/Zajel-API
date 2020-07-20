@@ -13,6 +13,7 @@ json.genre_id book.genre_id
 json.owner_type book.owner_type
 json.owner_id book.owner_id
 json.friendly_id book.slug
+json.is_mock book.is_mock
 if @nearby_users.present?
   json.distance @nearby_users.find {|user| book.owner.id.eql?(user.id)}.distance.to_i
 else
