@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :notifications, as: :recipient
 
   before_create :set_confirmation_code
+  after_create -> { notify_admins("We just got a new user: #{self.full_name}") }
   after_create_commit :send_confirmation_code
 
   def full_name

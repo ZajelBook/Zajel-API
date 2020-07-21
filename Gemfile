@@ -36,6 +36,8 @@ gem 'skylight'
 gem 'bugsnag'
 gem 'dotenv-rails'
 gem 'sendgrid-ruby'
+gem 'telegram-bot-ruby'
+gem 'sidekiq'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -48,4 +50,5 @@ group :development do
   gem 'capistrano-rvm',     require: false
   gem 'capistrano3-nginx'
   gem 'capistrano3-puma'
+  gem 'capistrano-sidekiq'
 end

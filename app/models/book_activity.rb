@@ -14,6 +14,8 @@ class BookActivity < ApplicationRecord
   after_update :notify_borrower, if: :saved_change_to_status?
   after_update :update_book_status, if: :accepted?
 
+  after_create -> { notify_admins("a new borrow request has been sent") }
+
   scope :active, -> { where.not(status: :rejected) }
 
   def set_lender

@@ -95,6 +95,10 @@ GEM
   specs:
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.13)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
@@ -114,15 +118,22 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano-sidekiq (1.0.2)
+      capistrano (>= 3.9.0)
+      sidekiq (>= 3.4)
     capistrano3-nginx (3.0.4)
       capistrano (~> 3.0)
     capistrano3-puma (4.0.0)
       capistrano (~> 3.7)
       capistrano-bundler
       puma (~> 4.0)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.6)
     connection_pool (2.2.3)
     crass (1.0.6)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -138,7 +149,10 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    equalizer (0.0.11)
     erubi (1.9.0)
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
@@ -148,6 +162,8 @@ GEM
     http-2 (0.10.2)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
+    ice_nine (0.11.2)
+    inflecto (0.0.2)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jwt (2.2.1)
@@ -169,6 +185,7 @@ GEM
     minitest (5.14.1)
     msgpack (1.3.3)
     multi_json (1.15.0)
+    multipart-post (2.1.1)
     net-http-persistent (4.0.0)
       connection_pool (~> 2.2)
     net-http2 (0.18.2)
@@ -187,6 +204,8 @@ GEM
     rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-protection (2.0.8.1)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails-dom-testing (2.0.3)
@@ -216,6 +235,11 @@ GEM
     ruby_http_client (3.5.0)
     sendgrid-ruby (6.3.2)
       ruby_http_client (~> 3.4)
+    sidekiq (6.0.7)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      rack-protection (>= 2.0.0)
+      redis (>= 4.1.0)
     skylight (4.3.1)
       skylight-core (= 4.3.1)
     skylight-core (4.3.1)
@@ -234,9 +258,19 @@ GEM
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    telegram-bot-ruby (0.12.0)
+      faraday
+      inflecto
+      virtus
     thor (1.0.1)
+    thread_safe (0.3.6)
     tzinfo (2.0.2)
       concurrent-ruby (~> 1.0)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.8)
       rack (>= 2.0.6)
     websocket-driver (0.7.3)
@@ -253,6 +287,7 @@ DEPENDENCIES
   capistrano (~> 3.12)
   capistrano-rails
   capistrano-rvm
+  capistrano-sidekiq
   capistrano3-nginx
   capistrano3-puma
   devise
@@ -271,9 +306,11 @@ DEPENDENCIES
   redis (~> 4.0)
   rpush
   sendgrid-ruby
+  sidekiq
   skylight
   spring
   spring-watcher-listen (~> 2.0.0)
+  telegram-bot-ruby
 
 RUBY VERSION
    ruby 2.7.1p83

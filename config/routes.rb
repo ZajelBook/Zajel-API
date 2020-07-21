@@ -1,4 +1,8 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
+
   devise_for :users
   devise_for :admins
   namespace :api, defaults: { format: 'json' }, path: '/api' do
