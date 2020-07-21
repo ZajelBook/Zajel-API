@@ -50,5 +50,4 @@ group :development do
   gem 'capistrano-rvm',     require: false
   gem 'capistrano3-nginx'
   gem 'capistrano3-puma'
-  gem 'capistrano-sidekiq'
 end

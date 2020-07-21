@@ -118,9 +118,6 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano-sidekiq (1.0.2)
-      capistrano (>= 3.9.0)
-      sidekiq (>= 3.4)
     capistrano3-nginx (3.0.4)
       capistrano (~> 3.0)
     capistrano3-puma (4.0.0)
@@ -287,7 +284,6 @@ DEPENDENCIES
   capistrano (~> 3.12)
   capistrano-rails
   capistrano-rvm
-  capistrano-sidekiq
   capistrano3-nginx
   capistrano3-puma
   devise

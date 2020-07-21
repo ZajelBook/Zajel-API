@@ -28,18 +28,7 @@ set :puma_role, :app
 set :puma_preload_app, false
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
-
-set :sidekiq_roles => :app
-set :sidekiq_default_hooks => true
-set :sidekiq_pid => File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid') # ensure this path exists in production before deploying.
-set :sidekiq_env => fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
-set :sidekiq_log => File.join(shared_path, 'log', 'sidekiq.log')
-
-# sidekiq systemd options
-set :sidekiq_service_unit_name => 'sidekiq'
-set :sidekiq_service_unit_user => :user # :system
-set :sidekiq_enable_lingering => true
-set :sidekiq_lingering_user => nil
+set :sidekiq_user, fetch(:user)
 
 namespace :deploy do
 
