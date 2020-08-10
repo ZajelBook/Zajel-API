@@ -47,13 +47,13 @@ class BookActivity < ApplicationRecord
   def notify_borrower
     content, title, type = if accepted?
                        [
-                           "#{lender.full_name} accepted you request to borrow (#{book.title})",
+                           "#{lender.full_name} accepted your request to borrow (#{book.title})",
                            'request accepted',
                            'request_accepted'
                        ]
                      elsif rejected?
                         [
-                            "#{lender.full_name} rejected you request to borrow (#{book.title})",
+                            "#{lender.full_name} rejected your request to borrow (#{book.title})",
                             'request rejected',
                             'request_rejected'
                         ]

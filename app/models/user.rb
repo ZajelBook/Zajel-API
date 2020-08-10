@@ -38,7 +38,7 @@ class User < ApplicationRecord
     from = Email.new(email: 'info@zajelbook.com')
     to = Email.new(email: self.email)
     subject = 'Zajel confirmation code'
-    content = Content.new(type: 'text/plain', value: 'Your confirmation code is: ' + self.confirmation_token)
+    content = Content.new(type: 'text/plain', value: 'Your Zajel confirmation code is: ' + self.confirmation_token)
     mail = Mail.new(from, subject, to, content)
 
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
