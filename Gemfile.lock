@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: f094e2bfe437700335a6ec8f9d7340968283f350
+  revision: 35ec5ed4e8a7f7477a6583a8de9a70256d4192a2
   branch: master
   specs:
     faker (2.13.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: f9315d2ead9e41713e9b2f3e44df5ee499ba3849
+  revision: 8a578c468530dbcc6126757aabb711956cf4852f
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -100,9 +100,9 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.15)
-    bootsnap (1.4.7)
+    bootsnap (1.4.8)
       msgpack (~> 1.0)
-    bugsnag (6.15.0)
+    bugsnag (6.16.0)
       concurrent-ruby (~> 1.0)
     builder (3.2.4)
     capistrano (3.14.1)

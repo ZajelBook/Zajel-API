@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :admins
   namespace :api, defaults: { format: 'json' }, path: '/api' do
-    mount_devise_token_auth_for 'User', at: 'auth'
+    mount_devise_token_auth_for 'User', at: 'auth', :controllers => { :passwords => "api/passwords" }
     resources :users do
       put :confirm, on: :collection
       get :re_send, on: :collection
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :books do
       get 'by_name/:friendly_id', to: 'books#show', on: :collection
     end
+    resources :mock_books, only: [:index]
     resources :my_books, only: [:index]
     resources :genres
     resources :book_activities

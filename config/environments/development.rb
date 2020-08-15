@@ -51,4 +51,17 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_cable.disable_request_forgery_protection = true
+
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+      domain:         'zajelbook.com',
+      address:        "smtp.sendgrid.net",
+      port:            587,
+      authentication: :plain,
+      user_name:      'apikey',
+      password:       ENV['SENDGRID_API_KEY']
+  }
 end

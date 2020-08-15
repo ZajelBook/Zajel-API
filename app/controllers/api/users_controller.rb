@@ -33,6 +33,7 @@ module Api
       end
     end
 
+    protected
     def user_params
       params.permit(:first_name, :last_name, :birth_date, :phone_number, :latitude, :longitude, :fcm_token)
     end
