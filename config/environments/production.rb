@@ -110,11 +110,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
       domain:         'zajelbook.com',
-      address:        "smtp.sendgrid.net",
+      address:        "smtp-relay.sendinblue.com",
       port:            587,
-      authentication: :plain,
-      user_name:      'apikey',
-      password:       ENV['SENDGRID_API_KEY']
+      authentication: :login,
+      user_name:      'mrahmoun93@gmail.com',
+      password:       ENV['SENDINBLUE_PASSWORD']
   }
 
 end

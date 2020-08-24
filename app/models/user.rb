@@ -6,7 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
-  include SendGrid
 
   reverse_geocoded_by :latitude, :longitude
 
@@ -35,14 +34,19 @@ class User < ApplicationRecord
   end
 
   def send_confirmation_code
-    from = Email.new(email: 'info@zajelbook.com')
-    to = Email.new(email: self.email)
-    subject = 'Zajel confirmation code'
-    content = Content.new(type: 'text/plain', value: 'Your Zajel confirmation code is: ' + self.confirmation_token)
-    mail = Mail.new(from, subject, to, content)
+    SibApiV3Sdk.configure do |config|
+      config.api_key['api-key'] = ENV['SENDINBLUE_API_KEY']
+    end
 
-    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    api_instance = SibApiV3Sdk::SMTPApi.new
 
-    sg.client.mail._('send').post(request_body: mail.to_json)
+    send_smtp_email = SibApiV3Sdk::SendSmtpEmail.new(
+        sender: { email: ENV['SENDER_EMAIL'] },
+        to: [{ email: self.email }],
+        subject: 'Zajel confirmation code',
+        textContent: 'Your Zajel confirmation code is: ' + self.confirmation_token,
+    )
+
+    api_instance.send_transac_email(send_smtp_email)
   end
 end

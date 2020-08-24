@@ -35,7 +35,7 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'skylight'
 gem 'bugsnag'
 gem 'dotenv-rails'
-gem 'sendgrid-ruby'
+gem 'sib-api-v3-sdk'
 gem 'telegram-bot-ruby'
 gem 'sidekiq'
 
