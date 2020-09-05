@@ -18,7 +18,7 @@ class Book < ApplicationRecord
 
   scope :mocks, -> { where(is_mock: true) }
 
-  scope :nearby, -> (coordinates) { joins('INNER JOIN users ON books.owner_id = users.id').where(books: {owner_type: 'User'}).merge(User.nearby(coordinates)).select('books.*, books.id AS id') }
+  scope :nearby, -> (coordinates, except_user_id) { joins('INNER JOIN users ON books.owner_id = users.id').where(books: {owner_type: 'User'}).merge(User.where.not(id: except_user_id).nearby(coordinates)).select('books.*, books.id AS id') }
 
   before_create :skip_verification, if: Proc.new { owner.verified? }
 

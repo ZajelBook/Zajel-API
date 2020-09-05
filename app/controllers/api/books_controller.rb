@@ -5,7 +5,7 @@ module Api
     skip_before_action :check_user_confirmation_status, only: [:index, :show]
 
     def index
-      @books = Book.nearby(set_coordinates)
+      @books = Book.nearby(set_coordinates, current_user.try(:id))
 
       if @books.empty?
         @books = Book.mocks
@@ -58,16 +58,6 @@ module Api
 
     def set_coordinates
       user_signed_in? ? [current_user.latitude, current_user.longitude] : [params[:latitude], params[:longitude]]
-    end
-
-    def set_user_ids
-      if user_signed_in?
-        nearby_user_ids = @nearby_users.load.ids
-        nearby_user_ids.delete(current_user.id)
-        nearby_user_ids
-      else
-        @nearby_users.load.ids
-      end
     end
   end
 end

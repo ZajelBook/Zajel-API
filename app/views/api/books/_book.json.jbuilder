@@ -14,5 +14,5 @@ json.owner_type book.owner_type
 json.owner_id book.owner_id
 json.friendly_id book.slug
 json.is_mock book.is_mock
-json.distance book.try(:distance) ? book.distance : @distance.to_i
+json.distance book.try(:distance) ? book.distance.to_i : @distance.to_i
 json.requested book.requested_by?(current_user.id) if user_signed_in? && book.owner != current_user
