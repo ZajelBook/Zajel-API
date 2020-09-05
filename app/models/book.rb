@@ -3,7 +3,6 @@ class Book < ApplicationRecord
   friendly_id :title, use: :slugged
 
   has_one_attached :image
-  attr_accessor :distance
 
   has_many :book_activities
   belongs_to :owner, polymorphic: true
@@ -19,11 +18,19 @@ class Book < ApplicationRecord
 
   scope :mocks, -> { where(is_mock: true) }
 
+  scope :nearby, -> (coordinates) { joins('INNER JOIN users ON books.owner_id = users.id').where(books: {owner_type: 'User'}).merge(User.nearby(coordinates)).select('books.*, books.id AS id') }
+
+  before_create :skip_verification, if: Proc.new { owner.verified? }
+
   after_create -> { notify_admins("We just got a new book: #{self.title}") }
 
   def requested_by?(user_id)
     book_activities.select do |book_activity|
       book_activity.borrower_type.eql?('User') && book_activity.borrower_id.eql?(user_id) && book_activity.pending? && self.available?
     end.any?
+  end
+
+  def skip_verification
+    self.approved = true
   end
 end

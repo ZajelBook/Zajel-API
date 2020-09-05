@@ -25,6 +25,8 @@ class User < ApplicationRecord
   after_create -> { notify_admins("We just got a new user: #{self.full_name}") }
   after_create_commit :send_confirmation_code
 
+  scope :nearby, -> (coordinates) { near(coordinates, ENV['SEARCH_RADIUS'].to_i, units: :km)}
+
   def full_name
     [first_name, last_name].join(' ')
   end
