@@ -32,17 +32,19 @@ class Message < ApplicationRecord
   end
 
   def notify_receiver
-    Notification.create(
-        content: t('notifications.messages.new_message.content',
-                   sender_name: sender_name),
-        payload: {
-            title: I18n.t('notifications.messages.new_message.title'),
-            subject: I18n.t('notifications.messages.new_message.content',
-                       sender_name: sender_name),
-            type: 'new_message',
-            conversation_id: conversation_id
-        },
-        recipient: receiver
-    )
+    I18n.with_locale(receiver.locale || I18n.default_locale) do
+      Notification.create(
+          content: I18n.t('notifications.messages.new_message.content',
+                     sender_name: sender_name),
+          payload: {
+              title: I18n.t('notifications.messages.new_message.title'),
+              subject: I18n.t('notifications.messages.new_message.content',
+                         sender_name: sender_name),
+              type: 'new_message',
+              conversation_id: conversation_id
+          },
+          recipient: receiver
+      )
+    end
   end
 end

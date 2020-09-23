@@ -16,7 +16,7 @@ module Api
     def create
       book_activity = current_user.borrow_requests.new(book_activity_params)
       if book_activity.save
-        render json: {status: t('book_activities.request_sent')}
+        render json: {status: I18n.t('book_activities.request_sent')}
       else
         @error_message = book_activity.errors
         render 'shared/errors', status: :unprocessable_entity
@@ -26,17 +26,17 @@ module Api
     def update
       if params[:type].eql?('accept')
         @book_activity.accepted!
-        render json: { status: t('book_activities.request_accepted'), conversation_id: @book_activity.conversation_id }
+        render json: { status: I18n.t('book_activities.request_accepted'), conversation_id: @book_activity.conversation_id }
       elsif params[:type].eql?('reject')
         @book_activity.rejected!
-        render json: { status: t('book_activities.request_rejected') }
+        render json: { status: I18n.t('book_activities.request_rejected') }
       end
     end
 
     def destroy
       book_activity = current_user.borrow_requests.find_by(book_id: params[:id], status: :pending)
       if book_activity.destroy
-        render json: { status: t('book_activities.request_cancelled') }
+        render json: { status: I18n.t('book_activities.request_cancelled') }
       else
         @error_message = book_activity.errors
         render 'shared/errors', status: :unprocessable_entity

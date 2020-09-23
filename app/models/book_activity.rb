@@ -33,51 +33,55 @@ class BookActivity < ApplicationRecord
   end
 
   def notify_lender
-    Notification.create(
-        content: I18n.t('notifications.book_activities.notify_lender.content',
-                   borrower_full_name: borrower.full_name,
-                   book_title: book.title),
-        payload: {
-            title: I18n.t('notifications.book_activities.notify_lender.title'),
-            subject: I18n.t('notifications.book_activities.notify_lender.content',
-                       borrower_full_name: borrower.full_name,
-                       book_title: book.title),
-            type: 'borrow_request'
-        },
-        recipient: lender
-    )
+    I18n.with_locale(borrower.locale || I18n.default_locale) do
+      Notification.create(
+          content: I18n.t('notifications.book_activities.notify_lender.content',
+                     borrower_full_name: borrower.full_name,
+                     book_title: book.title),
+          payload: {
+              title: I18n.t('notifications.book_activities.notify_lender.title'),
+              subject: I18n.t('notifications.book_activities.notify_lender.content',
+                         borrower_full_name: borrower.full_name,
+                         book_title: book.title),
+              type: 'borrow_request'
+          },
+          recipient: lender
+      )
+    end
   end
 
   def notify_borrower
-    content, title, type = if accepted?
-                       [
-                           I18n.t('notifications.book_activities.notify_borrower.accepted.content',
-                             lender_full_name: lender.full_name,
-                             book_title: book.title),
-                           I18n.t('notifications.book_activities.notify_borrower.accepted.title'),
-                           'request_accepted'
-                       ]
-                     elsif rejected?
-                        [
-                            t('notifications.book_activities.notify_borrower.rejected.content',
-                              lender_full_name: lender.full_name,
-                              book_title: book.title),
-                            I18n.t('notifications.book_activities.notify_borrower.rejected.title'),
-                            'request_rejected'
-                        ]
-                     else
-                       return nil
+    I18n.with_locale(lender.locale || I18n.default_locale) do
+      content, title, type = if accepted?
+                         [
+                             I18n.t('notifications.book_activities.notify_borrower.accepted.content',
+                               lender_full_name: lender.full_name,
+                               book_title: book.title),
+                             I18n.t('notifications.book_activities.notify_borrower.accepted.title'),
+                             'request_accepted'
+                         ]
+                       elsif rejected?
+                          [
+                              I18n.t('notifications.book_activities.notify_borrower.rejected.content',
+                                lender_full_name: lender.full_name,
+                                book_title: book.title),
+                              I18n.t('notifications.book_activities.notify_borrower.rejected.title'),
+                              'request_rejected'
+                          ]
+                       else
+                         return nil
+      end
+      Notification.create(
+          content: content,
+          payload: {
+              title: title,
+              subject: content,
+              type: type,
+              conversation_id: conversation_id
+          },
+          recipient: borrower
+      )
     end
-    Notification.create(
-        content: content,
-        payload: {
-            title: title,
-            subject: content,
-            type: type,
-            conversation_id: conversation_id
-        },
-        recipient: borrower
-    )
   end
 
   def borrower_and_lender

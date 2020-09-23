@@ -12,7 +12,7 @@ module Api
     def create
       @message = current_user.sent_messages.new(message_params.merge(conversation_id: params[:conversation_id]))
       if @message.save
-        render json: {status: t('messages.message_sent')}
+        render json: {status: I18n.t('messages.message_sent')}
       else
         @error_message = @message.errors
         render 'shared/errors', status: :unprocessable_entity

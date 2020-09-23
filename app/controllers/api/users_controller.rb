@@ -9,7 +9,7 @@ module Api
 
     def update
       if current_user.update(user_params)
-        render json: { status: t('users.successful_request') }
+        render json: { status: I18n.t('users.successful_request') }
       else
         render json: { error: current_user.errors }, status: :unprocessable_entity
       end
@@ -18,7 +18,7 @@ module Api
     def confirm
       if current_user.confirmation_token == params[:confirmation_code]
         if current_user.update(confirmed_at: DateTime.now)
-          render json: { status: t('users.successful_request') }
+          render json: { status: I18n.t('users.successful_request') }
         else
           render json: { error: current_user.errors }, status: :unprocessable_entity
         end
@@ -27,7 +27,7 @@ module Api
 
     def re_send
       if current_user.send_confirmation_code
-        render json: { status: t('users.successful_request') }
+        render json: { status: I18n.t('users.successful_request') }
       else
         render json: { error: 'cannot send confirmation code' }, status: :unprocessable_entity
       end
