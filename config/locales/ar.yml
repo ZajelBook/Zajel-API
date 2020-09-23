@@ -29,7 +29,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+ar:
   book_activities:
     request_sent: "تم إرسال الطلب بنجاح"
     request_accepted: "تمت الموافقة"
