@@ -12,13 +12,13 @@ class Book < ApplicationRecord
 
   scope :approved, -> { where(approved: true) }
 
-  scope :active, -> (owner_id) { available.approved.where(owner_id: owner_id, is_mock: false) }
+  scope :active, -> { available.approved.where(is_mock: false) }
 
   scope :waiting_approval, -> { where(approved: false) }
 
   scope :mocks, -> { where(is_mock: true) }
 
-  scope :nearby, -> (coordinates, except_user_id) { joins('INNER JOIN users ON books.owner_id = users.id').where(books: {owner_type: 'User'}).merge(User.where.not(id: except_user_id).nearby(coordinates)).active(except_user_id).select('books.*, books.id AS id') }
+  scope :nearby, -> (coordinates, except_user_id) { joins('INNER JOIN users ON books.owner_id = users.id').where(books: {owner_type: 'User'}).merge(User.where.not(id: except_user_id).nearby(coordinates)).active.select('books.*, books.id AS id') }
 
   before_create :skip_verification, if: Proc.new { owner.verified? }
 
