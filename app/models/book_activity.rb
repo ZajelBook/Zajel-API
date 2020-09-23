@@ -34,12 +34,12 @@ class BookActivity < ApplicationRecord
 
   def notify_lender
     Notification.create(
-        content: t('notifications.book_activities.notify_lender.content',
+        content: I18n.t('notifications.book_activities.notify_lender.content',
                    borrower_full_name: borrower.full_name,
                    book_title: book.title),
         payload: {
-            title: t('notifications.book_activities.notify_lender.title'),
-            subject: t('notifications.book_activities.notify_lender.content',
+            title: I18n.t('notifications.book_activities.notify_lender.title'),
+            subject: I18n.t('notifications.book_activities.notify_lender.content',
                        borrower_full_name: borrower.full_name,
                        book_title: book.title),
             type: 'borrow_request'
@@ -51,10 +51,10 @@ class BookActivity < ApplicationRecord
   def notify_borrower
     content, title, type = if accepted?
                        [
-                           t('notifications.book_activities.notify_borrower.accepted.content',
+                           I18n.t('notifications.book_activities.notify_borrower.accepted.content',
                              lender_full_name: lender.full_name,
                              book_title: book.title),
-                           t('notifications.book_activities.notify_borrower.accepted.title'),
+                           I18n.t('notifications.book_activities.notify_borrower.accepted.title'),
                            'request_accepted'
                        ]
                      elsif rejected?
@@ -62,7 +62,7 @@ class BookActivity < ApplicationRecord
                             t('notifications.book_activities.notify_borrower.rejected.content',
                               lender_full_name: lender.full_name,
                               book_title: book.title),
-                            t('notifications.book_activities.notify_borrower.rejected.title'),
+                            I18n.t('notifications.book_activities.notify_borrower.rejected.title'),
                             'request_rejected'
                         ]
                      else

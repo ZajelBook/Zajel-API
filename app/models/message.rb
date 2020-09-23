@@ -36,8 +36,8 @@ class Message < ApplicationRecord
         content: t('notifications.messages.new_message.content',
                    sender_name: sender_name),
         payload: {
-            title: t('notifications.messages.new_message.title'),
-            subject: t('notifications.messages.new_message.content',
+            title: I18n.t('notifications.messages.new_message.title'),
+            subject: I18n.t('notifications.messages.new_message.content',
                        sender_name: sender_name),
             type: 'new_message',
             conversation_id: conversation_id
