@@ -33,7 +33,7 @@ class BookActivity < ApplicationRecord
   end
 
   def notify_lender
-    I18n.with_locale(borrower.locale || I18n.default_locale) do
+    I18n.with_locale(lender.locale || I18n.default_locale) do
       Notification.create(
           content: I18n.t('notifications.book_activities.notify_lender.content',
                      borrower_full_name: borrower.full_name,
@@ -51,7 +51,7 @@ class BookActivity < ApplicationRecord
   end
 
   def notify_borrower
-    I18n.with_locale(lender.locale || I18n.default_locale) do
+    I18n.with_locale(borrower.locale || I18n.default_locale) do
       content, title, type = if accepted?
                          [
                              I18n.t('notifications.book_activities.notify_borrower.accepted.content',
