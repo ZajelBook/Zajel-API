@@ -24,7 +24,6 @@ class Message < ApplicationRecord
                                            conversation_id: conversation_id,
                                            created_at: created_at
                                  }
-    puts receiver.online?
     notify_receiver unless receiver.online?
   end
 
@@ -34,10 +33,12 @@ class Message < ApplicationRecord
 
   def notify_receiver
     Notification.create(
-        content: "#{sender_name} sent a new message",
+        content: t('notifications.messages.new_message.content',
+                   sender_name: sender_name),
         payload: {
-            title: 'new message',
-            subject: "#{sender_name} sent a new message",
+            title: t('notifications.messages.new_message.title'),
+            subject: t('notifications.messages.new_message.content',
+                       sender_name: sender_name),
             type: 'new_message',
             conversation_id: conversation_id
         },

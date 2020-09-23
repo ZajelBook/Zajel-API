@@ -34,10 +34,14 @@ class BookActivity < ApplicationRecord
 
   def notify_lender
     Notification.create(
-        content: "#{borrower.full_name} wants to borrow #{book.title}",
+        content: t('notifications.book_activities.notify_lender.content',
+                   borrower_full_name: borrower.full_name,
+                   book_title: book.title),
         payload: {
-            title: 'You have got a new borrow request',
-            subject: "#{borrower.full_name} wants to borrow #{book.title}",
+            title: t('notifications.book_activities.notify_lender.title'),
+            subject: t('notifications.book_activities.notify_lender.content',
+                       borrower_full_name: borrower.full_name,
+                       book_title: book.title),
             type: 'borrow_request'
         },
         recipient: lender
@@ -47,14 +51,18 @@ class BookActivity < ApplicationRecord
   def notify_borrower
     content, title, type = if accepted?
                        [
-                           "#{lender.full_name} accepted your request to borrow (#{book.title})",
-                           'request accepted',
+                           t('notifications.book_activities.notify_borrower.accepted.content',
+                             lender_full_name: lender.full_name,
+                             book_title: book.title),
+                           t('notifications.book_activities.notify_borrower.accepted.title'),
                            'request_accepted'
                        ]
                      elsif rejected?
                         [
-                            "#{lender.full_name} rejected your request to borrow (#{book.title})",
-                            'request rejected',
+                            t('notifications.book_activities.notify_borrower.rejected.content',
+                              lender_full_name: lender.full_name,
+                              book_title: book.title),
+                            t('notifications.book_activities.notify_borrower.rejected.title'),
                             'request_rejected'
                         ]
                      else

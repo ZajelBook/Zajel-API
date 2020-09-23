@@ -22,7 +22,7 @@ class Book < ApplicationRecord
 
   before_create :skip_verification, if: Proc.new { owner.verified? }
 
-  after_create -> { notify_admins("We just got a new book: #{self.title}") }
+  after_create -> { notify_admins("We just got a new book: #{self.title} added by #{self.owner.full_name}") }
 
   def requested_by?(user_id)
     book_activities.select do |book_activity|

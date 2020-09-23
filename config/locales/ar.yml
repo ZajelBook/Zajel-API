@@ -31,27 +31,27 @@
 
 en:
   book_activities:
-    request_sent: "request sent successfully"
-    request_accepted: "request accepted"
-    request_rejected: "request rejected"
-    request_cancelled: "requests cancelled successfully"
+    request_sent: "تم إرسال الطلب بنجاح"
+    request_accepted: "تمت الموافقة"
+    request_rejected: "تم الرفض"
+    request_cancelled: "تم إلغاء الطلب بنجاح"
   messages:
-    message_sent: "message sent"
+    message_sent: "تم إرسال الرسالة"
   users:
-    successful_request: "success"
+    successful_request: "تم"
   notifications:
     book_activities:
       notify_lender:
-        title: "You have got a new borrow request"
-        content: "%{borrower_full_name} wants to borrow %{book_title}"
+        title: "لديك طلب استعارة جديد"
+        content: "%{borrower_full_name} يرغب باستعارة الكتاب %{book_title}"
       notify_borrower:
         accepted:
-          title: "request accepted"
-          content: "%{lender_full_name} accepted your request to borrow %{book_title}"
+          title: "طلب استعارة مقبول"
+          content: "%{lender_full_name} وافق على طلبك لاستعارة الكتاب %{book_title}"
         rejected:
-          title: "request rejected"
-          content: "%{lender_full_name} rejected your request to borrow %{book_title}"
+          title: "طلب استعارة مرفوض"
+          content: "%{lender_full_name} رفض طلبك لاستعارة الكتاب %{book_title}"
     messages:
       new_message:
-        title: "new message"
-        content: "%{sender_name} sent you a new message"
+        title: "رسالة جديدة"
+        content: "%{sender_name} أرسل لك رسالة جديدة"

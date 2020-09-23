@@ -3,6 +3,8 @@ class ApplicationController < ActionController::API
   rescue_from Pagy::OverflowError, with: :render_pagination_error
   include Pagy::Backend
 
+  around_action :switch_locale
+
   before_action :configure_permitted_parameters, if: :devise_controller?, except: :callback
   before_action :check_user_confirmation_status, unless: :devise_controller?
   after_action { pagy_headers_merge(@pagy) if @pagy }
@@ -18,6 +20,11 @@ class ApplicationController < ActionController::API
 
   def render_pagination_error
     render json: {errors: []}, status: 200
+  end
+
+  def switch_locale(&action)
+    locale = request.headers['locale'] || I18n.default_locale
+    I18n.with_locale(locale, &action)
   end
 
   def check_user_confirmation_status
