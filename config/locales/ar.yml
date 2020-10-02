@@ -55,3 +55,6 @@ ar:
       new_message:
         title: "رسالة جديدة"
         content: "%{sender_name} أرسل لك رسالة جديدة"
+  devise_token_auth:
+    sessions:
+      bad_credentials: "معلومات تسجيل الدخول خاطئة .. يرجى المحاولة مرة أخرى"
