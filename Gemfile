@@ -8,7 +8,7 @@ gem 'rails', github: 'rails/rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -38,6 +38,7 @@ gem 'dotenv-rails'
 gem 'sib-api-v3-sdk'
 gem 'telegram-bot-ruby'
 gem 'sidekiq'
+gem 'globalize', '~> 6.0.0.alpha.1'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -49,5 +50,5 @@ group :development do
   gem "capistrano-rails", require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano3-nginx'
-  gem 'capistrano3-puma'
+  gem 'capistrano3-puma', '~> 4.0'
 end

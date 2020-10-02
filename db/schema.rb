@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_152558) do
+ActiveRecord::Schema.define(version: 2020_10_02_185359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,10 +119,30 @@ ActiveRecord::Schema.define(version: 2020_09_23_152558) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "genre_translations", force: :cascade do |t|
+    t.bigint "genre_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["genre_id"], name: "index_genre_translations_on_genre_id"
+    t.index ["locale"], name: "index_genre_translations_on_locale"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "language_translations", force: :cascade do |t|
+    t.bigint "language_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["language_id"], name: "index_language_translations_on_language_id"
+    t.index ["locale"], name: "index_language_translations_on_locale"
   end
 
   create_table "languages", force: :cascade do |t|
