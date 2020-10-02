@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: ef44b03a5e45f7cdd05fb363d3d226985d952264
+  revision: 6d83f8590726fd2d0fba7da8455ed2cf4dea79a2
   branch: master
   specs:
     faker (2.14.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: e3bc380f0cd4506d9f7281d90549c509bf730d09
+  revision: ab9cb600769acc6007521930857efd5699420f8d
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -67,7 +67,6 @@ GIT
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
-      rexml
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     rails (6.1.0.alpha)
@@ -222,13 +221,12 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rexml (3.2.4)
-    rpush (5.0.0)
+    rpush (5.1.0)
       activesupport (>= 5.0)
       jwt (>= 1.5.6)
       multi_json (~> 1.0)
       net-http-persistent
-      net-http2 (~> 0.14)
+      net-http2 (~> 0.18, >= 0.18.3)
       railties
       rainbow
       thor (>= 0.18.1, < 2.0)
@@ -258,7 +256,7 @@ GEM
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    telegram-bot-ruby (0.12.0)
+    telegram-bot-ruby (0.13.0)
       faraday
       inflecto
       virtus
