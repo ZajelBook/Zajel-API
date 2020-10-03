@@ -58,3 +58,8 @@ ar:
   devise_token_auth:
     sessions:
       bad_credentials: "معلومات تسجيل الدخول خاطئة .. يرجى المحاولة مرة أخرى"
+  book:
+    status:
+      available: "متوفر"
+      unavailable: "غير متوفر"
+      borrowed: "مُعار"

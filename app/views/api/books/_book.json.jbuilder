@@ -3,10 +3,10 @@ json.title book.title
 json.author book.author
 json.description book.description
 json.published_at book.published_at
-json.language book.language
+json.language book.display_language
 json.page_count book.page_count
 json.image rails_blob_url book.image if book.image.present?
-json.status book.status
+json.status I18n.t("book.status.#{book.status}")
 json.approved book.approved
 json.genre book.genre.name
 json.genre_id book.genre_id

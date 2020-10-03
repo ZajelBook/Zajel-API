@@ -55,3 +55,8 @@ en:
       new_message:
         title: "new message"
         content: "%{sender_name} sent you a new message"
+  book:
+    status:
+      available: "available"
+      unavailable: "unavailable"
+      borrowed: "borrowed"

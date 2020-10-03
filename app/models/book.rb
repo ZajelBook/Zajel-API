@@ -33,4 +33,10 @@ class Book < ApplicationRecord
   def skip_verification
     self.approved = true
   end
+
+  def display_language
+    translation = Language::Translation.find_by(name: self.language)
+    language = Language.find_by(id: translation.language_id)
+    language.presence || self.language
+  end
 end
