@@ -37,6 +37,6 @@ class Book < ApplicationRecord
   def display_language
     translation = Language::Translation.find_by(name: self.language)
     language = Language.find_by(id: translation.language_id)
-    language.presence || self.language
+    language&.name || self.language
   end
 end
