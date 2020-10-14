@@ -58,6 +58,9 @@ ar:
   devise_token_auth:
     sessions:
       bad_credentials: "معلومات تسجيل الدخول خاطئة .. يرجى المحاولة مرة أخرى"
+  devise:
+    failure:
+      unauthenticated: "الرجاء تسجيل الدخول قبل المتابعة"
   book:
     status:
       available: "متوفر"

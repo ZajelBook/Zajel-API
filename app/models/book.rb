@@ -1,5 +1,13 @@
 class Book < ApplicationRecord
   extend FriendlyId
+  include PgSearch::Model
+
+  pg_search_scope :search_by_title,
+                  against: :title,
+                  using: {
+                      tsearch: { prefix: true }
+                  }
+
   friendly_id :title, use: :slugged
 
   has_one_attached :image
@@ -32,6 +40,14 @@ class Book < ApplicationRecord
 
   def skip_verification
     self.approved = true
+  end
+
+  def self.search(user_id, query)
+    user = User.find(user_id)
+
+    return user.books if query.blank?
+
+    search_by_title(query).where(owner_id: user_id)
   end
 
   def display_language

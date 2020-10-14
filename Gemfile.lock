@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 6d83f8590726fd2d0fba7da8455ed2cf4dea79a2
+  revision: 6ab57e58c78f7c71745b0948b227ce40ad5a3329
   branch: master
   specs:
     faker (2.14.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: ab9cb600769acc6007521930857efd5699420f8d
+  revision: c9357cd3e3a248fe89863c3953bc178c0a51b9c1
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -156,7 +156,7 @@ GEM
     ffi (1.13.1)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
-    geocoder (1.6.3)
+    geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     globalize (6.0.0.alpha.1)
@@ -204,6 +204,9 @@ GEM
     orm_adapter (0.5.0)
     pagy (3.8.3)
     pg (1.2.3)
+    pg_search (2.3.4)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     puma (4.3.6)
       nio4r (~> 2.0)
     rack (2.2.3)
@@ -227,7 +230,7 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rpush (5.1.0)
+    rpush (5.2.0)
       activesupport (>= 5.0)
       jwt (>= 1.5.6)
       multi_json (~> 1.0)
@@ -306,6 +309,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pagy (~> 3.5)
   pg (>= 0.18, < 2.0)
+  pg_search
   puma
   rack-cors
   rails!
