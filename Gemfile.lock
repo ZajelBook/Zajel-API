@@ -185,6 +185,7 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
     mimemagic (0.3.5)
+    mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
@@ -307,6 +308,7 @@ DEPENDENCIES
   globalize (~> 6.0.0.alpha.1)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
+  mini_magick
   pagy (~> 3.5)
   pg (>= 0.18, < 2.0)
   pg_search

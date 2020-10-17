@@ -40,6 +40,7 @@ gem 'telegram-bot-ruby'
 gem 'sidekiq'
 gem 'globalize', '~> 6.0.0.alpha.1'
 gem 'pg_search'
+gem "mini_magick"
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

@@ -7,5 +7,6 @@ production:
 :queues:
   - critical
   - active_storage_analysis
+  - active_storage_purge
   - default
   - low
