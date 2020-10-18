@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 6ab57e58c78f7c71745b0948b227ce40ad5a3329
+  revision: 17a50f8608aa8367598ab5f7f0eda6982afc73ec
   branch: master
   specs:
     faker (2.14.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: c9357cd3e3a248fe89863c3953bc178c0a51b9c1
+  revision: bd90ed16303ee7a71d513fbb7e44377469bb4f44
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -151,8 +151,9 @@ GEM
     erubi (1.9.0)
     ethon (0.12.0)
       ffi (>= 1.3.0)
-    faraday (1.0.1)
+    faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     ffi (1.13.1)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
@@ -240,6 +241,7 @@ GEM
       railties
       rainbow
       thor (>= 0.18.1, < 2.0)
+    ruby2_keywords (0.0.2)
     ruby_dep (1.5.0)
     sib-api-v3-sdk (7.0.0)
       json (~> 2.1, >= 2.1.0)
