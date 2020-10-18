@@ -40,7 +40,7 @@ class User < ApplicationRecord
       config.api_key['api-key'] = ENV['SENDINBLUE_API_KEY']
     end
 
-    api_instance = SibApiV3Sdk::SMTPApi.new
+    api_instance = SibApiV3Sdk::TransactionalEmailsApi.new
 
     send_smtp_email = SibApiV3Sdk::SendSmtpEmail.new(
         sender: { email: ENV['SENDER_EMAIL'] },
