@@ -39,6 +39,7 @@ en:
     message_sent: "message sent"
   users:
     successful_request: "success"
+    failed_request: "wrong pin"
   notifications:
     book_activities:
       notify_lender:

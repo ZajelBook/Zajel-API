@@ -39,6 +39,7 @@ ar:
     message_sent: "تم إرسال الرسالة"
   users:
     successful_request: "تم"
+    failed_request: "الرمز خاطئ"
   notifications:
     book_activities:
       notify_lender:

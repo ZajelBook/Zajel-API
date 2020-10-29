@@ -22,6 +22,8 @@ module Api
         else
           render json: { error: current_user.errors }, status: :unprocessable_entity
         end
+      else
+        render json: { error: I18n.t('users.failed_request') }, status: :unprocessable_entity
       end
     end
 
