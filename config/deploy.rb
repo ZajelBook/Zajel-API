@@ -13,6 +13,7 @@ append :linked_files, "config/master.key", ".env"
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads storage}
 
 set :keep_releases, 2
+set :puma_user, fetch(:user)
 set :puma_threads, [5, 5]
 set :puma_workers, 1
 set :puma_conf, "#{shared_path}/puma.rb"
@@ -28,6 +29,9 @@ set :puma_role, :app
 set :puma_preload_app, false
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
+set :puma_restart_command, 'bundle exec puma'
+set :puma_service_unit_name, "puma_#{fetch(:application)}_#{fetch(:stage)}"
+
 set :sidekiq_user, fetch(:user)
 
 namespace :deploy do
