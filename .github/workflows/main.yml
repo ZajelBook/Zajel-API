@@ -17,3 +17,4 @@ jobs:
     - uses: miloserdow/capistrano-deploy@master
       with:
         target: production
+        deploy_key: ${{ secrets.DEPLOY_ENC_KEY }}
