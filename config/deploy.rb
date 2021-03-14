@@ -31,6 +31,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_restart_command, 'bundle exec puma'
 set :puma_service_unit_name, "puma"
+set :puma_systemctl_user, :user # accepts :user
 
 set :sidekiq_user, fetch(:user)
 
