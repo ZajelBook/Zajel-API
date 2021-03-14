@@ -6,9 +6,10 @@ module Api
 
     def index
       @books = Book.nearby(set_coordinates, current_user.try(:id))
+                 .includes(:genre, image_attachment: :blob)
 
       if @books.empty?
-        @books = Book.mocks
+        @books = Book.mocks.includes(:genre, image_attachment: :blob)
         @distance = rand(100)
         @nearby_users = nil
       end
