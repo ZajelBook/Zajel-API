@@ -42,6 +42,7 @@ gem 'globalize', '~> 6.0'
 gem 'pg_search'
 gem "mini_magick"
 gem 'oj'
+gem "anycable-rails", "~> 1.0"
 
 group :development do
   gem 'listen'

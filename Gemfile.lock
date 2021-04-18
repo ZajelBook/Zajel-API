@@ -90,6 +90,15 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    anycable (1.0.3)
+      anyway_config (>= 1.4.2)
+      grpc (~> 1.17)
+    anycable-rails (1.0.7)
+      actioncable (>= 5)
+      anycable (>= 1.0.0)
+      globalid
+    anyway_config (2.1.0)
+      ruby-next-core (>= 0.11.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -162,6 +171,12 @@ GEM
       activemodel (>= 4.2, < 7.0)
       activerecord (>= 4.2, < 7.0)
       request_store (~> 1.0)
+    google-protobuf (3.15.8)
+    googleapis-common-protos-types (1.0.6)
+      google-protobuf (~> 3.14)
+    grpc (1.37.0)
+      google-protobuf (~> 3.15)
+      googleapis-common-protos-types (~> 1.0)
     hkdf (0.3.0)
     http-2 (0.11.0)
     i18n (1.8.10)
@@ -263,6 +278,7 @@ GEM
       rainbow
       thor (>= 0.18.1, < 2.0)
       webpush (~> 1.0)
+    ruby-next-core (0.12.0)
     ruby2_keywords (0.0.4)
     sidekiq (6.2.1)
       connection_pool (>= 2.2.2)
@@ -313,6 +329,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anycable-rails (~> 1.0)
   bootsnap (>= 1.4.2)
   bugsnag
   capistrano (~> 3.12)
