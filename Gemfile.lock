@@ -172,9 +172,9 @@ GEM
       activesupport (>= 5.0.0)
     json (2.5.1)
     jwt (2.2.2)
-    listen (3.0.8)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
+    listen (3.5.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -202,7 +202,7 @@ GEM
       racc (~> 1.4)
     oj (3.11.5)
     orm_adapter (0.5.0)
-    pagy (3.11.0)
+    pagy (4.2.0)
     pg (1.2.3)
     pg_search (2.3.5)
       activerecord (>= 5.2)
@@ -326,12 +326,12 @@ DEPENDENCIES
   faker!
   friendly_id (~> 5.2.4)
   geocoder
-  globalize (~> 6.0.0.alpha.1)
+  globalize (~> 6.0)
   jbuilder (~> 2.7)
-  listen (>= 3.0.5, < 3.2)
+  listen
   mini_magick
   oj
-  pagy (~> 3.5)
+  pagy (~> 4.0)
   pg (>= 0.18, < 2.0)
   pg_search
   puma
