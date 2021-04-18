@@ -17,12 +17,12 @@ class Message < ApplicationRecord
   def broadcast_message
     conversation_id = conversation.id
     ActionCable.server.broadcast "conversation_#{conversation_id}",
-                                 object: { content: content,
+                                 { object: { content: content,
                                            sender_type: sender_type,
                                            sender_id: sender_id,
                                            sender_name: sender_name,
                                            conversation_id: conversation_id,
-                                           created_at: created_at
+                                           created_at: created_at }
                                  }
     notify_receiver unless receiver.online?
   end
