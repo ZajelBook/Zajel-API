@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
   around_action :switch_locale
 
   before_action :configure_permitted_parameters, if: :devise_controller?, except: :callback
-  after_action :get_request
+  before_action :get_request
   before_action :check_user_confirmation_status, unless: :devise_controller?
   after_action { pagy_headers_merge(@pagy) if @pagy }
 
