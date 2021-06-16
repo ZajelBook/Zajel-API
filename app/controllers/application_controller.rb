@@ -36,10 +36,12 @@ class ApplicationController < ActionController::API
   end
 
   def get_request
-    Request.create(user_email: current_user&.email,
-                   remote_ip: request.remote_ip,
-                   controller_class: request.controller_class,
-                   original_path: request.original_fullpath,
-                   method: request.method)
+    unless request.original_fullpath.include?('api/admin/')
+      Request.create(user_email: current_user&.email,
+                     remote_ip: request.remote_ip,
+                     controller_class: request.controller_class,
+                     original_path: request.original_fullpath,
+                     method: request.method)
+    end
   end
 end
