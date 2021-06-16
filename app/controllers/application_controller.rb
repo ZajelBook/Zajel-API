@@ -6,6 +6,7 @@ class ApplicationController < ActionController::API
   around_action :switch_locale
 
   before_action :configure_permitted_parameters, if: :devise_controller?, except: :callback
+  after_action :get_request
   before_action :check_user_confirmation_status, unless: :devise_controller?
   after_action { pagy_headers_merge(@pagy) if @pagy }
 
@@ -32,5 +33,13 @@ class ApplicationController < ActionController::API
     # if current_user && current_user.confirmed_at.nil?
     #   render json: { error: { message: 'user not confirmed' } }, status: :forbidden
     # end
+  end
+
+  def get_request
+    Request.create(user_email: current_user&.email,
+                   remote_ip: request.remote_ip,
+                   controller_class: request.controller_class,
+                   original_path: request.original_fullpath,
+                   method: request.method)
   end
 end

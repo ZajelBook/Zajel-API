@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_185359) do
+ActiveRecord::Schema.define(version: 2021_06_16_135254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,16 @@ ActiveRecord::Schema.define(version: 2020_10_02_185359) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "read", default: false
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "user_email"
+    t.string "remote_ip"
+    t.string "controller_class"
+    t.string "original_path"
+    t.string "method"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rpush_apps", force: :cascade do |t|
