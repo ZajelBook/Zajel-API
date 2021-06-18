@@ -13,5 +13,7 @@ json.requests do
     json.original_path request.original_path
     json.method request.method
     json.created_at request.created_at
+    json.country request.country
+    json.city request.city
   end
 end
