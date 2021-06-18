@@ -12,5 +12,6 @@ json.requests do
     json.controller_class request.controller_class
     json.original_path request.original_path
     json.method request.method
+    json.created_at request.created_at
   end
 end

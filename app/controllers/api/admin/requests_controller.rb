@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_admin!
 
       def index
-        @requests = Request.all
+        @requests = Request.all.order(created_at: :desc)
         @pagy, @requests = pagy(@requests, items: params[:per_page])
       end
     end

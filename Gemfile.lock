@@ -27,6 +27,10 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    IPinfo (1.0.1)
+      faraday (~> 1.0)
+      json (~> 2.1)
+      lru_redux (~> 1.1)
     actioncable (6.1.3.2)
       actionpack (= 6.1.3.2)
       activesupport (= 6.1.3.2)
@@ -188,6 +192,7 @@ GEM
     loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    lru_redux (1.1.0)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
@@ -323,6 +328,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  IPinfo
   anycable-rails (~> 1.0)
   bootsnap (>= 1.4.2)
   bugsnag

@@ -43,6 +43,7 @@ gem 'pg_search'
 gem "mini_magick"
 gem 'oj'
 gem "anycable-rails", "~> 1.0"
+gem 'IPinfo'
 
 group :development do
   gem 'listen'
