@@ -10,7 +10,7 @@ json.metadata do
   end
 
   json.request_per_country_count @request_per_country_count do |country, count|
-    json.date country
+    json.country country
     json.count count
   end
 end
