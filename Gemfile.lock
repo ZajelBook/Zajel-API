@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/lynndylanhurley/devise_token_auth.git
-  revision: b1ceb54f33841eafffc31f1e47de378296fa990b
+  revision: ea2b04f2d9395eb45d669429194b4a5cb72441ef
   specs:
     devise_token_auth (1.1.4)
       bcrypt (~> 3.0)
@@ -166,7 +166,7 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
-    ffi (1.15.1)
+    ffi (1.15.3)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
     geocoder (1.6.7)
@@ -215,9 +215,9 @@ GEM
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    oj (3.11.5)
+    oj (3.11.6)
     orm_adapter (0.5.0)
-    pagy (4.8.0)
+    pagy (4.9.0)
     pg (1.2.3)
     pg_search (2.3.5)
       activerecord (>= 5.2)
@@ -262,7 +262,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.2.5)
+    redis (4.3.1)
     request_store (1.5.0)
       rack (>= 1.4)
     responders (3.0.1)
@@ -319,7 +319,7 @@ GEM
     webpush (1.1.0)
       hkdf (~> 0.2)
       jwt (~> 2.0)
-    websocket-driver (0.7.4)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.4.2)
