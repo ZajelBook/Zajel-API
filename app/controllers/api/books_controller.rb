@@ -5,11 +5,8 @@ module Api
     skip_before_action :check_user_confirmation_status, only: [:index, :show]
 
     def index
-      @books = if params[:nearby].present?
-                 Book.nearby(set_coordinates, current_user.try(:id))
-               else
-                 Book.active(current_user.try(:id))
-               end.includes(genre: :translations, image_attachment: :blob)
+      @books = Book.nearby(set_coordinates, current_user.try(:id))
+                   .includes(genre: :translations, image_attachment: :blob)
 
       if @books.empty?
         @books = Book.mocks.includes(:genre, image_attachment: :blob)
