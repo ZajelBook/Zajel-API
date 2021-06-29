@@ -20,7 +20,7 @@ class Book < ApplicationRecord
 
   scope :approved, -> { where(approved: true) }
 
-  scope :active, -> (owner_id) { approved.where(is_mock: false).where.not(owner_id: owner_id) }
+  scope :active, -> (owner_id) { available.approved.where(is_mock: false).where.not(owner_id: owner_id) }
 
   scope :waiting_approval, -> { where(approved: false) }
 
