@@ -3,3 +3,11 @@
 require_relative 'config/environment'
 
 run Rails.application
+
+if defined?(Rails)
+  ActiveSupport.on_load(:after_initialize) do
+    Rpush.embed
+  end
+else
+  Rpush.embed
+end
