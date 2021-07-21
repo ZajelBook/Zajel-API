@@ -4,9 +4,9 @@ lock "~> 3.16.0"
 set :application, "zajel"
 set :repo_url, "git@github.com:Bernovia/Zajel-API.git"
 set :rvm_type, :user
-set :rvm_ruby_version, '3.0.1'
+set :rvm_ruby_version, '3.0.2'
 
-set :deploy_to, '/home/mylestone/apps/zajel'
+set :deploy_to, '/home/ubuntu/apps/zajel'
 
 append :linked_files, "config/master.key", ".env"
 # append :linked_files, ".env.production"

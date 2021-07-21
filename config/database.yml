@@ -87,5 +87,5 @@ staging:
 production:
   <<: *default
   database: Zajel_API_production
-  username: mylestone
+  username: postgres
   password: <%= ENV['ZAJEL_API_DATABASE_PASSWORD'] %>
