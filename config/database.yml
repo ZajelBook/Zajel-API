@@ -89,3 +89,4 @@ production:
   database: Zajel_API_production
   username: postgres
   password: <%= ENV['ZAJEL_API_DATABASE_PASSWORD'] %>
+  host: <%= ENV['ZAJEL_API_DATABASE_HOST'] %>
