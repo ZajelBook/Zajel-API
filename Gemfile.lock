@@ -227,7 +227,7 @@ GEM
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    oj (3.12.1)
+    oj (3.12.2)
     orm_adapter (0.5.0)
     pagy (4.10.1)
     pg (1.2.3)
