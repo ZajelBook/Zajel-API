@@ -1,4 +1,4 @@
-class SendTelegramNotificationJob
+class SendTelegramNotificationJob < ApplicationJob
   def perform(message)
     TelegramNotifier.send_notification(message)
   end
