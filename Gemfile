@@ -37,7 +37,6 @@ gem 'bugsnag'
 gem 'dotenv-rails'
 gem 'sib-api-v3-sdk', github: 'mhdrahmoun/APIv3-ruby-library'
 gem 'telegram-bot-ruby'
-gem 'sidekiq'
 gem 'globalize', '~> 6.0'
 gem 'pg_search'
 gem "mini_magick"

@@ -1,8 +1,6 @@
 require 'ipinfo'
 
 class GetIpInfoJob
-  include Sidekiq::Worker
-
   def perform(request_id)
     request = Request.find_by(id: request_id)
 

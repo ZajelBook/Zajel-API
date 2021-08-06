@@ -31,14 +31,11 @@ set :puma_restart_command, 'bundle exec puma'
 set :puma_service_unit_name, "zajel-puma"
 set :puma_systemctl_user, :user # accepts :user
 
-set :sidekiq_user, fetch(:user)
-
 namespace :deploy do
 
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute 'systemctl --user restart zajel-sidekiq'
       execute :touch, release_path.join('tmp/restart.txt')
     end
   end
