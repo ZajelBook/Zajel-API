@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/mhdrahmoun/APIv3-ruby-library.git
-  revision: 652dddb74a98bbce2db4dbb2a5c557dbf50d9493
+  revision: fbd9c3ec8494b6c8126277b5d0ed6877ad0de605
   specs:
     sib-api-v3-sdk (7.4.0)
-      addressable (~> 2.7.0)
+      addressable (~> 2.8.0)
       json (~> 2.1, >= 2.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
@@ -90,7 +90,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
