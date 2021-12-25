@@ -42,6 +42,7 @@ gem "mini_magick"
 gem 'oj'
 gem "anycable-rails", "~> 1.0"
 gem 'IPinfo'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'listen'
