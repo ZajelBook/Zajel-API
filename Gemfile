@@ -32,7 +32,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'pagy', '~> 4.0'
 gem 'geocoder'
 gem 'friendly_id', '~> 5.2.4'
-gem 'skylight'
 gem 'dotenv-rails'
 gem 'sib-api-v3-sdk', github: 'mhdrahmoun/APIv3-ruby-library'
 gem 'telegram-bot-ruby'
