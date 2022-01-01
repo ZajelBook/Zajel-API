@@ -1,3 +1,5 @@
+require 'ipinfo'
+
 class GetIpInfoJob < ApplicationJob
   def perform(request_id)
     request = Request.find_by(id: request_id)
