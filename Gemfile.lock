@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 869641999b268ef154e6e112dd21cb7b2ba9a09e
+  revision: 0603a87e08878322e8de357b2715a6bd126088ba
   branch: master
   specs:
     faker (2.19.0)
@@ -8,12 +8,12 @@ GIT
 
 GIT
   remote: https://github.com/lynndylanhurley/devise_token_auth.git
-  revision: 6d7780ee0b9750687e7e2871b9a1c6368f2085a9
+  revision: 5b1a5e19450f3755ce5ebe2f631b40c876ffc22d
   specs:
     devise_token_auth (1.2.0)
       bcrypt (~> 3.0)
       devise (> 3.5.2, < 5)
-      rails (>= 4.2.0, < 6.2)
+      rails (>= 4.2.0, < 7.1)
 
 GIT
   remote: https://github.com/mhdrahmoun/APIv3-ruby-library.git
@@ -176,7 +176,7 @@ GEM
     ffi (1.15.4)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
-    geocoder (1.7.0)
+    geocoder (1.7.1)
     globalid (1.0.0)
       activesupport (>= 5.0)
     globalize (6.0.1)
@@ -292,7 +292,7 @@ GEM
       rainbow
       thor (>= 0.18.1, < 2.0)
       webpush (~> 1.0)
-    ruby-next-core (0.13.3)
+    ruby-next-core (0.14.0)
     ruby2_keywords (0.0.5)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
@@ -330,7 +330,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.5.1)
+    zeitwerk (2.5.3)
 
 PLATFORMS
   ruby
