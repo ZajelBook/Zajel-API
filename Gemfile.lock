@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: b553111b5211a63ed61a9b689d015e731287ac1f
+  revision: 3116adb3c17cd610fc8b28864364493b015a3e70
   branch: master
   specs:
     faker (2.19.0)
@@ -14,15 +14,6 @@ GIT
       bcrypt (~> 3.0)
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 7.1)
-
-GIT
-  remote: https://github.com/mhdrahmoun/APIv3-ruby-library.git
-  revision: fbd9c3ec8494b6c8126277b5d0ed6877ad0de605
-  specs:
-    sib-api-v3-sdk (7.4.0)
-      addressable (~> 2.8.0)
-      json (~> 2.1, >= 2.1.0)
-      typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -187,7 +178,7 @@ GEM
       activemodel (>= 4.2, < 7.0)
       activerecord (>= 4.2, < 7.0)
       request_store (~> 1.0)
-    google-protobuf (3.19.3)
+    google-protobuf (3.19.4)
     googleapis-common-protos-types (1.3.0)
       google-protobuf (~> 3.14)
     grpc (1.43.1)
@@ -195,7 +186,7 @@ GEM
       googleapis-common-protos-types (~> 1.0)
     hkdf (0.3.0)
     http-2 (0.11.0)
-    i18n (1.8.11)
+    i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jbuilder (2.11.5)
@@ -241,7 +232,7 @@ GEM
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     public_suffix (4.0.6)
-    puma (5.6.0)
+    puma (5.6.1)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -298,6 +289,10 @@ GEM
       webpush (~> 1.0)
     ruby-next-core (0.14.1)
     ruby2_keywords (0.0.5)
+    sib-api-v3-sdk (8.0.0)
+      addressable (~> 2.3, >= 2.3.0)
+      json (~> 2.1, >= 2.1.0)
+      typhoeus (~> 1.0, >= 1.0.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -330,7 +325,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.5.3)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   ruby
@@ -364,7 +359,7 @@ DEPENDENCIES
   rails (~> 6.1.0)
   redis (~> 4.0)
   rpush
-  sib-api-v3-sdk!
+  sib-api-v3-sdk
   telegram-bot-ruby
 
 RUBY VERSION
