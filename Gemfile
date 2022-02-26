@@ -41,6 +41,8 @@ gem "mini_magick"
 gem 'oj'
 gem 'IPinfo'
 gem 'newrelic_rpm'
+gem 'bundler-audit'
+gem 'brakeman'
 
 group :development do
   gem 'listen'
