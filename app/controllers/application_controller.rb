@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include DeviseApiMode if :devise_controller?
   include DeviseTokenAuth::Concerns::SetUserByToken
   rescue_from Pagy::OverflowError, with: :render_pagination_error
   include Pagy::Backend
