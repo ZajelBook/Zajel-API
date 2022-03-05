@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :book do
-    owner { build :user }
-    genre { build :genre }
+    owner { create :user }
+    genre { create :genre }
     title { 'Book Title' }
     author  { 'Book Author' }
     description  { 'Book Description goes here' }
@@ -22,7 +22,7 @@ FactoryBot.define do
     end
 
     trait :approved do
-      status { 'approved' }
+      approved { true }
     end
 
     factory :approved_book, traits: [:available, :approved]

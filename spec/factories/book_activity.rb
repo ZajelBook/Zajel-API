@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :book_activity do
-    book { build :approved_book }
-    borrower { build :user }
-    lender { build :user }
+    book { create :approved_book }
+    borrower { create :user }
 
     trait :accepted do
       status { 'accepted' }
