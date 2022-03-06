@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Book do
-  before { allow_any_instance_of(User).to receive(:send_confirmation_code).and_return(true) }
-
+RSpec.describe Message do
   describe 'Sending a message' do
     let(:borrower) { create :verified_user }
     let(:book) { create :approved_book }
