@@ -4,7 +4,7 @@ class Message < ApplicationRecord
   belongs_to :receiver, polymorphic: true
 
   before_validation :set_receiver
-  after_create :broadcast_message
+  after_create_commit :broadcast_message
 
   def set_receiver
     self.receiver = if self.sender_id.eql?(conversation.borrower_id)
