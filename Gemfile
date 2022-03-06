@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -28,7 +28,7 @@ gem 'rpush'
 gem 'rack-cors'
 gem 'devise'
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'faker'
 gem 'pagy', '~> 5.0'
 gem 'geocoder'
 gem 'friendly_id', '~> 5.2.4'

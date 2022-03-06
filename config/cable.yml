@@ -3,7 +3,6 @@
 # environments (by setting `ACTION_CABLE_ADAPTER=redis`).
 development:
   adapter: async
-
 test:
   adapter: test
 
