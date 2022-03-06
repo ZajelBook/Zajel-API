@@ -9,12 +9,13 @@ class BookActivity < ApplicationRecord
   before_validation :set_lender
 
   validate :borrower_and_lender
+  validate :book_availability, on: :update, if: :accepted?
   after_create :notify_lender
   after_update :create_conversation, if: :accepted?
   after_update :notify_borrower, if: :saved_change_to_status?
   after_update :update_book_status, if: :accepted?
 
-  after_create -> { notify_admins("a new borrow request has been sent") }
+  after_create_commit -> { notify_admins("a new borrow request has been sent") }
 
   scope :active, -> { where.not(status: :rejected) }
 
@@ -86,5 +87,9 @@ class BookActivity < ApplicationRecord
 
   def borrower_and_lender
     borrower_id == lender_id ? errors.add("invalid", "can't borrow your own book") : true
+  end
+
+  def book_availability
+    errors.add("invalid", "Book is not available") unless book.available?
   end
 end
