@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     end
 
     get 'metadata', to: 'metadata#index'
+    get 'status', to: 'status#show'
 
     namespace :admin, defaults: { format: 'json' } do
       mount_devise_token_auth_for 'Admin', at: 'auth'

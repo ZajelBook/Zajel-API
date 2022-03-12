@@ -4,10 +4,10 @@ class ApplicationController < ActionController::API
   rescue_from Pagy::OverflowError, with: :render_pagination_error
   include Pagy::Backend
 
-  around_action :switch_locale
+  around_action :switch_locale, unless: :status_controller?
 
   before_action :configure_permitted_parameters, if: :devise_controller?, except: :callback
-  before_action :get_request
+  before_action :get_request, unless: :status_controller?
   before_action :check_user_confirmation_status, unless: :devise_controller?
   after_action { pagy_headers_merge(@pagy) if @pagy }
 
@@ -44,5 +44,9 @@ class ApplicationController < ActionController::API
                      original_path: request.original_fullpath,
                      method: request.method)
     end
+  end
+
+  def status_controller?
+    is_a?(::Api::StatusController)
   end
 end
