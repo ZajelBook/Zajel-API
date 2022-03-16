@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/lynndylanhurley/devise_token_auth.git
-  revision: 23d6b81b14fe39b5e4ce2b0dde897e4abcd850e8
+  revision: 798255ee7e3fee5cfa2fdc519fd90e281bd9b6f5
   specs:
     devise_token_auth (1.2.0)
       bcrypt (~> 3.0)
@@ -87,7 +87,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    bcrypt (3.1.16)
+    bcrypt (3.1.17)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
     brakeman (5.2.1)
@@ -95,7 +95,7 @@ GEM
     bundler-audit (0.9.0.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
-    capistrano (3.16.0)
+    capistrano (3.17.0)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -170,7 +170,7 @@ GEM
     ffi (1.15.5)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
-    geocoder (1.7.3)
+    geocoder (1.7.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
     globalize (6.1.0)
@@ -191,7 +191,7 @@ GEM
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.14.0)
+    loofah (2.15.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lru_redux (1.1.0)
@@ -323,7 +323,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     strscan (3.0.1)
-    telegram-bot-ruby (0.17.0)
+    telegram-bot-ruby (0.18.0)
       dry-inflector
       faraday (~> 1.0)
       virtus (~> 2.0)
