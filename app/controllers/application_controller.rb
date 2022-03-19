@@ -37,6 +37,8 @@ class ApplicationController < ActionController::API
   end
 
   def get_request
+    return if Rails.env.development?
+
     unless request.original_fullpath.include?('api/admin/')
       Request.create(user_email: current_user&.email,
                      remote_ip: request.remote_ip,
