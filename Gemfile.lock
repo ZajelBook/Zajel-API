@@ -321,7 +321,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     strscan (3.0.1)
-    telegram-bot-ruby (0.18.0)
+    telegram-bot-ruby (0.19.2)
       dry-inflector
       faraday (~> 1.0)
       virtus (~> 2.0)
