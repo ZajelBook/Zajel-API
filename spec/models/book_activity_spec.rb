@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe BookActivity do
+  include ActiveJob::TestHelper
+
   before do
     allow_any_instance_of(Notification).to receive(:send_notification).and_return(true)
     allow_any_instance_of(User).to receive(:send_confirmation_code).and_return(true)
+    clear_enqueued_jobs
   end
 
   describe 'create book activity' do
@@ -28,7 +31,7 @@ RSpec.describe BookActivity do
       it { expect(book_activity).to be_accepted  }
       it { expect(book_activity.conversation).to be_present  }
       it { expect(book_activity.book).to be_borrowed  }
-      it { expect(book_activity.lender.notifications.count).to eq(1)  }
+      it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq(2) }
     end
 
     context 'when lender reject the request' do
@@ -36,7 +39,7 @@ RSpec.describe BookActivity do
 
       it { expect(book_activity).to be_rejected  }
       it { expect(book_activity.conversation).not_to be_present  }
-      it { expect(book_activity.lender.notifications.count).to eq(1)  }
+      it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq(2) }
     end
   end
 
@@ -54,7 +57,7 @@ RSpec.describe BookActivity do
 
       it { expect(book_activity).to be_pending  }
       it { expect(book_activity.conversation).not_to be_present  }
-      it { expect(book_activity.borrower.notifications.count).to eq(0)  }
+      it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq(1) }
     end
 
     context 'when lender reject the request' do
@@ -62,7 +65,7 @@ RSpec.describe BookActivity do
 
       it { expect(book_activity).to be_rejected  }
       it { expect(book_activity.conversation).not_to be_present  }
-      it { expect(book_activity.lender.notifications.count).to eq(1)  }
+      it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq(2) }
     end
   end
 
