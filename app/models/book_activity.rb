@@ -42,11 +42,11 @@ class BookActivity < ApplicationRecord
   end
 
   def notify_lender
-    BookActivityNotificationJob.perform_later(self.id, 'lender_notification', wait: 1.minute)
+    BookActivityNotificationJob.set(wait: 1.minute).perform_later(self.id, 'lender_notification')
   end
 
   def notify_borrower
-    BookActivityNotificationJob.perform_later(self.id, 'borrower_notification', wait: 1.minute)
+    BookActivityNotificationJob.set(wait: 1.minute).perform_later(self.id, 'borrower_notification')
   end
 
   def borrower_and_lender
