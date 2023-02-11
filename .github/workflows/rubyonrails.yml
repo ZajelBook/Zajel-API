@@ -49,12 +49,6 @@ jobs:
         uses: pi-chan/simplecov-report-group-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: reek
-        uses: reviewdog/action-reek@v1
-        with:
-          reek_version: gemfile
-          reek_flags: app/
-          reporter: github-pr-review
 
   lint:
     runs-on: ubuntu-latest
