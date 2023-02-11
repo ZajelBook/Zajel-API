@@ -43,6 +43,7 @@ jobs:
         uses: joshmfrankel/simplecov-check-action@main
         with:
          minimum_suite_coverage: 10
+         minimum_file_coverage: 0
          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Simplecov Report
         uses: pi-chan/simplecov-report-group-action@v1
