@@ -321,6 +321,9 @@ GEM
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
+    simplecov-json (0.2.3)
+      json
+      simplecov
     simplecov_json_formatter (0.1.4)
     sshkit (1.21.3)
       net-scp (>= 1.1.2)
@@ -387,6 +390,7 @@ DEPENDENCIES
   rspec-rails
   sib-api-v3-sdk
   simplecov
+  simplecov-json
   telegram-bot-ruby
 
 RUBY VERSION
