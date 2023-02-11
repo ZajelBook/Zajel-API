@@ -57,8 +57,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem "rails_best_practices"
-  gem 'rubocop', require: false
 end
 
 group :test do
