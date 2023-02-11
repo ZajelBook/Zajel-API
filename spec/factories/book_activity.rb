@@ -11,7 +11,6 @@ FactoryBot.define do
       status { 'rejected' }
     end
 
-
     factory :accepted_request, traits: [:accepted]
     factory :rejected_request, traits: [:rejected]
   end

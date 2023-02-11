@@ -49,7 +49,7 @@ group :development do
 
   gem "capistrano", "~> 3.12", require: false
   gem "capistrano-rails", require: false
-  gem 'capistrano-rbenv',     require: false
+  gem 'capistrano-rbenv', require: false
   gem 'capistrano3-nginx'
   gem 'capistrano3-puma', '~> 5.0'
 end
@@ -57,6 +57,8 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem "rails_best_practices"
+  gem 'rubocop', require: false
 end
 
 group :test do

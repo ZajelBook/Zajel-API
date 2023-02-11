@@ -6,8 +6,7 @@ namespace :rpush_app do
     n.registration_ids = User.find_by(email: 'dr.rich4444@gmail.com').fcm_token
     n.data = { message: "hi dr.rich!" }
     n.notification = { body: 'test!',
-                       title: 'ZajelApp'
-    }
+                       title: 'ZajelApp' }
     n.save!
   end
 end

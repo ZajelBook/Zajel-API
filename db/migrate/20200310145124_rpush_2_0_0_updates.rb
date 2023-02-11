@@ -21,7 +21,8 @@ class Rpush200Updates < ActiveRecord::Migration[5.0]
       remove_index :rpush_notifications, name: :index_rpush_notifications_multi
     end
 
-    add_index :rpush_notifications, [:delivered, :failed], name: 'index_rpush_notifications_multi', where: 'NOT delivered AND NOT failed'
+    add_index :rpush_notifications, [:delivered, :failed], name: 'index_rpush_notifications_multi',
+                                                           where: 'NOT delivered AND NOT failed'
 
     rename_column :rpush_feedback, :app, :app_id
 
@@ -33,14 +34,16 @@ class Rpush200Updates < ActiveRecord::Migration[5.0]
 
     [:Apns, :Gcm, :Wpns, :Adm].each do |service|
       update_type(Rpush200Updates::Rpush::App, "Rpush::#{service}::App", "Rpush::Client::ActiveRecord::#{service}::App")
-      update_type(Rpush200Updates::Rpush::Notification, "Rpush::#{service}::Notification", "Rpush::Client::ActiveRecord::#{service}::Notification")
+      update_type(Rpush200Updates::Rpush::Notification, "Rpush::#{service}::Notification",
+                  "Rpush::Client::ActiveRecord::#{service}::Notification")
     end
   end
 
   def self.down
     [:Apns, :Gcm, :Wpns, :Adm].each do |service|
       update_type(Rpush200Updates::Rpush::App, "Rpush::Client::ActiveRecord::#{service}::App", "Rpush::#{service}::App")
-      update_type(Rpush200Updates::Rpush::Notification, "Rpush::Client::ActiveRecord::#{service}::Notification", "Rpush::#{service}::Notification")
+      update_type(Rpush200Updates::Rpush::Notification, "Rpush::Client::ActiveRecord::#{service}::Notification",
+                  "Rpush::#{service}::Notification")
     end
 
     change_column :rpush_feedback, :app_id, :string
@@ -50,7 +53,8 @@ class Rpush200Updates < ActiveRecord::Migration[5.0]
       remove_index :rpush_notifications, name: :index_rpush_notifications_multi
     end
 
-    add_index :rpush_notifications, [:app_id, :delivered, :failed, :deliver_after], name: 'index_rpush_notifications_multi'
+    add_index :rpush_notifications, [:app_id, :delivered, :failed, :deliver_after],
+              name: 'index_rpush_notifications_multi'
 
     remove_column :rpush_notifications, :priority
     remove_column :rpush_notifications, :processing
@@ -58,7 +62,7 @@ class Rpush200Updates < ActiveRecord::Migration[5.0]
 
   def self.adapter_name
     env = (defined?(Rails) && Rails.env) ? Rails.env : 'development'
-    Hash[ActiveRecord::Base.configurations[env].map { |k,v| [k.to_sym,v] }][:adapter]
+    Hash[ActiveRecord::Base.configurations[env].map { |k, v| [k.to_sym, v] }][:adapter]
   end
 
   def self.postgresql?

@@ -8,8 +8,7 @@ class BookActivity < ApplicationRecord
 
   ANDROID_NOTIFICATION_TYPES = { accepted: 'request_accepted',
                                  rejected: 'request_rejected',
-                                 pending: 'borrow_request'
-  }
+                                 pending: 'borrow_request' }
 
   before_validation :set_lender
 

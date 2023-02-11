@@ -6,8 +6,8 @@ RSpec.describe User do
   describe 'create a new user' do
     let(:user) { create :user }
 
-    it { expect(user.confirmation_token).not_to be_nil  }
-    it { expect(user.confirmed_at).to be_nil  }
-    it { expect(user.full_name).to eq 'Test User'  }
+    it { expect(user.confirmation_token).not_to be_nil }
+    it { expect(user.confirmed_at).to be_nil }
+    it { expect(user.full_name).to eq 'Test User' }
   end
 end

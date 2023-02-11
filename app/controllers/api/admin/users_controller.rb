@@ -26,6 +26,5 @@ module Api
         params.permit(:first_name, :last_name, :birth_date, :phone_number, :latitude, :longitude, :fcm_token)
       end
     end
-
   end
 end

@@ -7,4 +7,3 @@ class Rpush420Updates < ActiveRecord::Migration["#{ActiveRecord::VERSION::MAJOR}
     remove_column :rpush_notifications, :sound_is_json
   end
 end
-

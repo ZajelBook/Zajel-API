@@ -28,6 +28,7 @@ module Api
       end
 
       private
+
       def language_params
         params.permit(:name)
       end

@@ -29,16 +29,16 @@ RSpec.describe BookActivity do
       before { book_activity.accepted! }
 
       it { expect(book_activity).to be_accepted  }
-      it { expect(book_activity.conversation).to be_present  }
-      it { expect(book_activity.book).to be_borrowed  }
+      it { expect(book_activity.conversation).to be_present }
+      it { expect(book_activity.book).to be_borrowed }
       it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq(2) }
     end
 
     context 'when lender reject the request' do
       before { book_activity.rejected! }
 
-      it { expect(book_activity).to be_rejected  }
-      it { expect(book_activity.conversation).not_to be_present  }
+      it { expect(book_activity).to be_rejected }
+      it { expect(book_activity.conversation).not_to be_present }
       it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq(2) }
     end
   end
@@ -55,18 +55,17 @@ RSpec.describe BookActivity do
         book_activity.reload
       end
 
-      it { expect(book_activity).to be_pending  }
-      it { expect(book_activity.conversation).not_to be_present  }
+      it { expect(book_activity).to be_pending }
+      it { expect(book_activity.conversation).not_to be_present }
       it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq(1) }
     end
 
     context 'when lender reject the request' do
       before { book_activity.rejected! }
 
-      it { expect(book_activity).to be_rejected  }
-      it { expect(book_activity.conversation).not_to be_present  }
+      it { expect(book_activity).to be_rejected }
+      it { expect(book_activity.conversation).not_to be_present }
       it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq(2) }
     end
   end
-
 end

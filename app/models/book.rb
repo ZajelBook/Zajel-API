@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   pg_search_scope :search_by_title,
                   against: :title,
                   using: {
-                      tsearch: { prefix: true }
+                    tsearch: { prefix: true }
                   }
 
   friendly_id :title, use: :slugged
@@ -20,13 +20,15 @@ class Book < ApplicationRecord
 
   scope :approved, -> { where(approved: true) }
 
-  scope :active, -> (owner_id) { available.approved.where(is_mock: false).where.not(owner_id: owner_id) }
+  scope :active, ->(owner_id) { available.approved.where(is_mock: false).where.not(owner_id: owner_id) }
 
   scope :waiting_approval, -> { where(approved: false) }
 
   scope :mocks, -> { where(is_mock: true) }
 
-  scope :nearby, -> (coordinates, except_user_id) { joins('INNER JOIN users ON books.owner_id = users.id').where(books: {owner_type: 'User'}).merge(User.where.not(id: except_user_id).nearby(coordinates)).active(except_user_id).select('books.*, books.id AS id') }
+  scope :nearby, ->(coordinates, except_user_id) {
+                   joins('INNER JOIN users ON books.owner_id = users.id').where(books: { owner_type: 'User' }).merge(User.where.not(id: except_user_id).nearby(coordinates)).active(except_user_id).select('books.*, books.id AS id')
+                 }
 
   before_create :skip_verification, if: Proc.new { owner.verified? }
 

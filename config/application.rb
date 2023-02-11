@@ -29,6 +29,6 @@ module ZajelApi
     config.middleware.use config.session_store, config.session_options
     config.api_only = true
 
-    config.autoload_paths   +=  %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

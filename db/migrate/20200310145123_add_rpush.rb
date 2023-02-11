@@ -189,7 +189,8 @@ class AddRpush < ActiveRecord::Migration[5.0]
         remove_index :rapns_notifications, name: "index_rapns_notifications_on_delivered_failed_deliver_after"
       end
 
-      add_index :rapns_notifications, [:app_id, :delivered, :failed, :deliver_after], name: "index_rapns_notifications_multi"
+      add_index :rapns_notifications, [:app_id, :delivered, :failed, :deliver_after],
+                name: "index_rapns_notifications_multi"
     end
 
     def self.down

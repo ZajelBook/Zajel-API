@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2022_01_01_224718) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,7 +21,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness",
+                                                             unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -114,7 +114,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.string "sluggable_type", limit: 50
     t.string "scope"
     t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope",
+                                                 unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
@@ -254,7 +255,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.string "thread_id"
     t.boolean "dry_run", default: false, null: false
     t.boolean "sound_is_json", default: false
-    t.index ["delivered", "failed", "processing", "deliver_after", "created_at"], name: "index_rpush_notifications_multi", where: "((NOT delivered) AND (NOT failed))"
+    t.index ["delivered", "failed", "processing", "deliver_after", "created_at"],
+            name: "index_rpush_notifications_multi", where: "((NOT delivered) AND (NOT failed))"
   end
 
   create_table "users", force: :cascade do |t|

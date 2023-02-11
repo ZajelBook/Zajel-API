@@ -11,6 +11,7 @@ class ApplicationController < ActionController::API
   after_action { pagy_headers_merge(@pagy) if @pagy }
 
   protected
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,
                                                        :last_name,
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::API
   end
 
   def render_pagination_error
-    render json: {errors: []}, status: 200
+    render json: { errors: [] }, status: 200
   end
 
   def switch_locale(&action)

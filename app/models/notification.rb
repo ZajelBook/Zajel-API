@@ -1,7 +1,7 @@
 class Notification < ApplicationRecord
   belongs_to :recipient, polymorphic: true
 
-  scope :unread, -> {where(read: false)}
+  scope :unread, -> { where(read: false) }
 
   after_create :send_notification
 
@@ -13,8 +13,8 @@ class Notification < ApplicationRecord
     notification.registration_ids = recipient.fcm_token
     notification.data = self.payload
     notification.notification = {
-        body: self.payload.dig('subject'),
-        title: self.payload.dig('title')
+      body: self.payload.dig('subject'),
+      title: self.payload.dig('title')
     }
     notification.save!
   end

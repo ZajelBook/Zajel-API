@@ -13,6 +13,7 @@ module ApplicationCable
     end
 
     private
+
     def find_verified_user(token, uid, client_id)
       user = User.find_by(email: uid)
       if user && user.valid_token?(token, client_id)
@@ -21,6 +22,5 @@ module ApplicationCable
         reject_unauthorized_connection
       end
     end
-
   end
 end

@@ -28,6 +28,7 @@ module Api
       end
 
       private
+
       def genre_params
         params.permit(:name)
       end

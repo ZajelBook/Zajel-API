@@ -53,7 +53,6 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
@@ -71,11 +70,11 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-      domain:         'zajelbook.com',
-      address:        "smtp-relay.sendinblue.com",
-      port:            587,
-      authentication: :login,
-      user_name:      'mrahmoun93@gmail.com',
-      password:       ENV['SENDINBLUE_PASSWORD']
+    domain: 'zajelbook.com',
+    address: "smtp-relay.sendinblue.com",
+    port: 587,
+    authentication: :login,
+    user_name: 'mrahmoun93@gmail.com',
+    password: ENV['SENDINBLUE_PASSWORD']
   }
 end
