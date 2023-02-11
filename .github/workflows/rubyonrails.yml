@@ -44,6 +44,10 @@ jobs:
         with:
          minimum_suite_coverage: 10
          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Simplecov Report
+        uses: pi-chan/simplecov-report-group-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   lint:
     runs-on: ubuntu-latest
