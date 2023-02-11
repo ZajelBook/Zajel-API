@@ -22,3 +22,5 @@
 /config/master.key
 .idea/*
 .env
+coverage/*
+!/coverage/.keep

@@ -38,7 +38,17 @@ jobs:
         run: bin/rails db:schema:load
       # Add or replace test runners here
       - name: Run tests
-        run: bin/rake
+        run: bin/bundle exec rspec
+      - name: Run code coverage
+        uses: joshmfrankel/simplecov-check-action@main
+        with:
+         minimum_suite_coverage: 10
+         minimum_file_coverage: 0
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Simplecov Report
+        uses: pi-chan/simplecov-report-group-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   lint:
     runs-on: ubuntu-latest
