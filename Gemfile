@@ -12,7 +12,7 @@ gem 'puma'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -29,7 +29,7 @@ gem 'rack-cors'
 gem 'devise'
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 gem 'faker'
-gem 'pagy', '~> 5.0'
+gem 'pagy', '~> 6.0'
 gem 'geocoder'
 gem 'friendly_id', '~> 5.2.4'
 gem 'dotenv-rails'
