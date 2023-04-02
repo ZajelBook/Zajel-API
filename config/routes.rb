@@ -1,8 +1,36 @@
 Rails.application.routes.draw do
-  devise_for :users
-  devise_for :admins
+  root 'web/home#index'
+
+  devise_for :users, controllers: {
+    sessions: 'web/users/sessions',
+    registrations: 'web/users/registrations',
+    passwords: 'web/users/passwords'
+  }
+
+  scope module: 'web' do
+    get '/about', to: 'static_pages#about'
+    get '/policy', to: 'static_pages#policy'
+    get '/terms', to: 'static_pages#terms'
+
+    resources :books do
+      get 'by_name/:friendly_id', to: 'books#show', on: :collection
+    end
+    resources :mock_books, only: [:index]
+    resources :my_books, only: [:index]
+    resources :book_activities
+
+    resources :notifications do
+      get :unread, on: :collection
+      put :read, on: :collection
+    end
+  end
+
   namespace :api, defaults: { format: 'json' }, path: '/api' do
-    mount_devise_token_auth_for 'User', at: 'auth', :controllers => { :passwords => "api/passwords" }
+    mount_devise_token_auth_for 'User', at: 'auth',
+                                :controllers => {
+                                  :passwords => "api/passwords"
+                                }
+
     resources :users do
       put :confirm, on: :collection
       get :re_send, on: :collection

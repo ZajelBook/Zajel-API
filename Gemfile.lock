@@ -201,6 +201,10 @@ GEM
       railties (>= 6.0.0)
     json (2.6.3)
     jwt (2.7.0)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -415,6 +419,7 @@ DEPENDENCIES
   globalize (~> 6.1)
   jbuilder (~> 2.7)
   jsbundling-rails
+  letter_opener
   mini_magick
   newrelic_rpm
   oj
