@@ -1,0 +1,52 @@
+<div>
+  <div class="bradcam_area bradcam_bg_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="bradcam_text text-center">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explorer_europe list_wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12">
+          <h3 class="exp_title text-center">Notification Center</h3>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col" class="text-center">Message</th>
+              <th scope="col">Time</th>
+            </tr>
+            </thead>
+            <tbody>
+              <% if @notifications.empty? %>
+                <tr>
+                  <td colspan="2" class="text-center">No notifications found</td>
+                </tr>
+              <% else %>
+                <% @notifications.each do |notification| %>
+                  <tr>
+                    <td scope="row" class="text-center"><%= link_to notification.content, notification_path(notification) %></td>
+                    <td><%= notification.created_at %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="col-xl-12 page_nation text-center">
+            <%== pagy_bootstrap_nav(@pagy) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    td a {
+        display: block;
+    }
+</style>

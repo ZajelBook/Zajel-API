@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :my_books, only: [:index]
     resources :book_activities
 
+    resources :conversations, only: [:show] do
+      resources :messages
+    end
+
     resources :notifications do
       get :unread, on: :collection
       put :read, on: :collection
