@@ -18,27 +18,27 @@
                 <% if user_signed_in? %>
                   <div class="offset-2 col-9 collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav text-center">
-                      <li class="nav-item"><%= link_to 'Home', root_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to 'Books', books_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to 'My Books', my_books_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to 'Borrow Requests', book_activities_path(type: 'sent'), class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to 'Lend Requests', book_activities_path(type: 'received'), class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to 'Add book', new_book_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Home', root_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Books', books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'My Books', my_books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Borrow Requests', book_activities_path(type: 'sent'), class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Lend Requests', book_activities_path(type: 'received'), class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Add book', new_book_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
                       <li class="nav-item">
-                        <%= link_to notifications_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } do %>
+                        <%= link_to notifications_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } do %>
                           Notifications <span class="badge badge-pill badge-danger"><%= current_user.notifications.unread.count %></span>
                         <% end %>
                       </li>
-                      <li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete, toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete, bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
                     </ul>
                   </div>
                 <% else %>
                   <div class="offset-4 col-7 collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav text-center">
-                      <li class="nav-item"><%= link_to 'Home', root_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to 'Books', books_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to 'Login', new_user_session_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to 'Register', new_user_registration_path, class: 'nav-link', data: { toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Home', root_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Books', books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Login', new_user_session_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to 'Register', new_user_registration_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
                     </ul>
                   </div>
                 <% end %>

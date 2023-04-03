@@ -4,10 +4,12 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.2.5",
-    "@popperjs/core": "^2.11.6",
-    "bootstrap": "^4.6.2",
+    "bootstrap": "^4.5.3",
     "bootstrap-icons": "^1.10.3",
     "esbuild": "^0.17.9",
+    "jquery": "^3.6.1",
+    "js-cookie": "^3.0.1",
+    "popper.js": "^1.16.1",
     "sass": "^1.58.3"
   },
   "scripts": {

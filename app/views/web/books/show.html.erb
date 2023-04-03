@@ -1,0 +1,38 @@
+<div>
+  <div class="bradcam_area bradcam_bg_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="bradcam_text text-center">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="whole-wrap">
+    <div class="container box_1170">
+      <div class="section-top-border">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="mb-20">
+              <%= image_tag @book.image, class: 'img-fluid' %>
+              <p class="text-center mt-2"><i style="font-size:24px; color: red" class="fa fa-map-marker"></i> <%= book_distance(@distance) %></p>
+            </div>
+            <%= book_buttons(@book) %>
+          </div>
+          <div class="col-md-8 mt-sm-20">
+            <div class="mb-30">
+              <h2><%= @book.title %></h2>
+              <small>By: <b><%= @book.author %></b></small>
+              |
+              <%= book_status(@book) %>
+            </div>
+
+            <p><%= @book.language %> | <%= @book.genre.name %></p>
+            <span style="white-space: pre-wrap;"><%= @book.description %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

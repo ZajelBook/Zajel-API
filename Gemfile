@@ -57,6 +57,7 @@ group :development do
   gem 'capistrano3-nginx'
   gem 'capistrano3-puma', '~> 5.0'
   gem 'letter_opener'
+  gem 'web-console'
 end
 
 group :development, :test do

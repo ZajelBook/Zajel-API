@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get '/terms', to: 'static_pages#terms'
 
     resources :books do
-      get 'by_name/:friendly_id', to: 'books#show', on: :collection
+      get 'by_name/:friendly_id', to: 'books#show', on: :collection, as: :by_friendly_id
     end
     resources :mock_books, only: [:index]
     resources :my_books, only: [:index]

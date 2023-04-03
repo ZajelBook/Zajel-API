@@ -1,7 +1,7 @@
 module Web
   class BooksController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :set_book, only: [:show, :update]
+    before_action :set_book, only: [:show, :edit, :update]
 
     def index
       @books = Book.nearby(set_coordinates, current_user.try(:id))
@@ -24,28 +24,32 @@ module Web
       end
     end
 
+    def new
+      @book = @current_user.books.new
+    end
+
     def create
       @book = @current_user.books.new(book_params)
       if @book.save
-        render 'show'
+        redirect_to book_path(@book.id)
       else
-        @error_message = @book.errors
-        render 'shared/errors', status: :unprocessable_entity
+        render :new, status: :unprocessable_entity
       end
     end
 
+    def edit; end
+
     def update
       if @book.update(book_params)
-        render 'show'
+        redirect_to book_path(@book.id)
       else
-        @error_message = @book.errors
-        render 'shared/errors', status: :unprocessable_entity
+        render :edit, status: :unprocessable_entity
       end
     end
 
     private
     def book_params
-      params.permit(:title, :author, :description, :page_count, :language, :image, :published_at, :genre_id, :status)
+      params.require(:book).permit(:title, :author, :description, :page_count, :language, :image, :published_at, :genre_id, :status)
     end
 
     def set_book
@@ -57,7 +61,8 @@ module Web
     end
 
     def set_coordinates
-      user_signed_in? ? [current_user.latitude, current_user.longitude] : [params[:latitude], params[:longitude]]
+      [cookies['latitude'], cookies['longitude']]
+      # user_signed_in? ? [current_user.latitude, current_user.longitude] : [params[:latitude], params[:longitude]]
     end
   end
 end

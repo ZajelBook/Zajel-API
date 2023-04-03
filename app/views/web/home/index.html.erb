@@ -5,8 +5,8 @@
         <div class="col-xl-10">
           <div class="slider_text text-center justify-content-center">
             <h3>Zajel - Book Sharing</h3>
-            <a href="/books" class="genric-btn danger circle">Find Nearby Books</a>
-            <div class="quality">
+            <div data-controller="geolocation">
+              <a href="/books" class="genric-btn danger circle" data-action="geolocation#search">Find Nearby Books</a>
             </div>
           </div>
         </div>
@@ -14,4 +14,3 @@
     </div>
   </div>
 </div>
-
