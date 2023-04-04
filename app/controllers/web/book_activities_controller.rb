@@ -26,11 +26,11 @@ module Web
     def update
       if params[:type].eql?('accept')
         @book_activity.accepted!
-        render json: { status: I18n.t('book_activities.request_accepted'), conversation_id: @book_activity.conversation_id }
       elsif params[:type].eql?('reject')
         @book_activity.rejected!
-        render json: { status: I18n.t('book_activities.request_rejected') }
       end
+
+      redirect_to lend_requests_path
     end
 
     def destroy

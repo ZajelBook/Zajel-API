@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get '/about', to: 'static_pages#about'
     get '/policy', to: 'static_pages#policy'
     get '/terms', to: 'static_pages#terms'
+    get '/borrow_requests', to: 'borrow_requests#index'
+    get '/lend_requests', to: 'lend_requests#index'
 
     resources :books do
       get 'by_name/:friendly_id', to: 'books#show', on: :collection, as: :by_friendly_id

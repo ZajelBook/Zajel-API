@@ -1,0 +1,93 @@
+<div>
+  <div class="bradcam_area bradcam_bg_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="bradcam_text text-center">
+            <h3></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="whole-wrap">
+    <div class="container box_1170">
+      <div class="section-top-border">
+        <div class="row">
+          <% @lend_requests.each do |request| %>
+            <div class="offset-sm-3 col-sm-9 offset-md-2 col-md-8 col-12">
+              <div class="row">
+                <div class="col-sm-3 col-3">
+                  <div class="mb-20 text-center">
+                    <%= image_tag request.book.image, class: 'img-fluid mb-3' %>
+                    <%= lend_request_status(request.status) %>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <h3><%= link_to request.book.title, by_friendly_id_books_path(request.book.friendly_id) %></h3>
+                  <p><b><%= request.borrower.full_name %></b> requested your book <%= time_ago_in_words(request.created_at) %></p>
+
+                  <div class="text-center">
+                    <% if request.pending? %>
+                      <%= link_to "Accept", book_activity_path(request, type: 'accept'), data: { turbo_method: :put }, class: 'm-2 genric-btn info circle' %>
+                      <%= link_to "Reject", book_activity_path(request, type: 'reject'), data: { turbo_method: :put }, class: 'm-2 genric-btn primary circle' %>
+                    <% elsif request.accepted? %>
+                      <%= link_to 'Go to Conversation', conversation_messages_path(request.conversation_id), class: 'genric-btn success circle' %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    export default {
+        data () {
+            return {
+                received_requests: []
+            }
+        },
+        watch: {
+            received_requests(value) {
+                this.received_requests = value
+            }
+        },
+        created () {
+            if(this.$store.state.signedIn){
+                this.fetchReceivedRequests()
+            } else {
+                this.$router.push('/login')
+            }
+        },
+        methods: {
+            accept (event) {
+                this.$http.put('book_activities/' + event.target.id, {
+                    type: 'accept'
+                }).then(() => {
+                    this.fetchReceivedRequests()
+                })
+            },
+            reject (event) {
+                if(confirm("Do you really want to reject this request? this action is not reversible")){
+                    this.$http.put('book_activities/' + event.target.id, {
+                        type: 'reject'
+                    }).then(() => {
+                        this.fetchReceivedRequests()
+                    })
+                }
+            },
+            fetchReceivedRequests () {
+                this.$http.get('book_activities?type=received')
+                    .then(response => {
+                        this.received_requests = response.data['book_activities']
+                    })
+            }
+        }
+    }
+</script>

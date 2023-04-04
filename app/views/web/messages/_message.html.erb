@@ -1,0 +1,16 @@
+<% if sender_id == current_user.id %>
+  <div class="d-flex justify-content-end mb-4">
+    <div class="msg_cotainer_send text-center">
+      <%= content %>
+      <span class="msg_time_send"><%= time_ago_in_words(created_at) %></span>
+    </div>
+  </div>
+
+<% else %>
+  <div class="d-flex justify-content-start mb-4">
+    <div class="msg_cotainer text-center">
+      <span class="msg_time"><%= time_ago_in_words(created_at) %></span>
+      <%= content %>
+    </div>
+  </div>
+<% end %>

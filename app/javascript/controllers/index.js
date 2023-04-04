@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import ClearMessageBoxController from "./clear_message_box_controller"
+application.register("clear-message-box", ClearMessageBoxController)
+
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)

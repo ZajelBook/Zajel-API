@@ -1,0 +1,57 @@
+<div>
+  <div class="bradcam_area bradcam_bg_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="bradcam_text text-center">
+            <h3></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="whole-wrap">
+    <div class="container box_1170">
+      <div class="section-top-border">
+        <div class="row">
+          <% if @borrow_requests.size.eql?(0) %>
+            <div class="offset-3 col-6 mt-5 text-center" style="height: 300px">
+              <h3>No sent requests</h3>
+              <%= link_to "Explore nearby books", books_path, class: 'mt-4 genric-btn primary circle arrow' %>
+            </div>
+          <% else %>
+            <% @borrow_requests.each do |request| %>
+              <div class="offset-sm-3 col-sm-9 offset-md-2 col-md-8 col-12">
+                <div class="row">
+                  <div class="col-sm-3 col-3">
+                    <div class="mb-20 text-center">
+                      <%= image_tag request.book.image, class: 'img-fluid mb-3' %>
+                      <%= borrow_request_status(request.status) %>
+                    </div>
+                  </div>
+                  <div class="col-9">
+                    <h3><%= link_to request.book.title, by_friendly_id_books_path(request.book.friendly_id) %></h3>
+                    <p>You have requested this book <%= time_ago_in_words(request.created_at) %></p>
+
+                    <div class="text-center">
+                      <% if request.accepted? %>
+                        <%= link_to 'Go to Conversation', conversation_messages_path(request.conversation_id), class: 'genric-btn success circle' %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .whole-wrap {
+        min-height: 300px;
+    }
+</style>
