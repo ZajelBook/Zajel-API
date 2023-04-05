@@ -26,11 +26,13 @@
       </div>
     <% end %>
 
-    <div class="text-center">
-      <%= f.submit "Log in", class: 'genric-btn primary circle btn-block text-center mb-3' %>
+    <div class="text-center justify-content-center btn-margin">
+      <%= f.submit 'Register', class: 'genric-btn btn-block danger circle' %>
+    </div>
 
-      <p><u><%= link_to 'Create new account', new_user_registration_path, class: 'text-center' %></u></p>
-      <p><u><%= link_to 'Forgot your password?', new_user_password_path, class: 'text-center' %></u></p>
+    <div class="text-center mt-10">
+      <%= link_to "Don't have an account? Create one now!", new_user_registration_path, class: 'text-center link' %>
+      <%= link_to 'Forgot your password?', new_user_password_path, class: 'text-center link' %>
     </div>
 
 <% end %>
@@ -39,7 +41,7 @@
 <style scoped>
     .form-signin {
         width: 100%;
-        max-width: 330px;
+        max-width: 350px;
         padding: 15px;
         margin: auto;
     }

@@ -13,7 +13,7 @@
   <div class="section-top-border">
     <div class="row">
       <div class="col-lg-6 col-md-6 offset-md-3 col-10 offset-1">
-        <u><h3 class="mb-30">Register for new account</h3></u>
+        <h3 class="mb-30">Create a new account</h3>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "web/users/shared/error_messages", resource: resource %>
 
@@ -52,8 +52,8 @@
             <%= f.date_field :birth_date, class: 'form-control', required: true, max: Date.current - 18.years %>
           </div>
 
-          <div class="mt-10">
-            <%= f.submit 'Register', class: 'genric-btn primary circle arrow' %>
+          <div class="text-center justify-content-center btn-margin">
+            <%= f.submit 'Register', class: 'genric-btn btn-block danger circle' %>
           </div>
 
         <% end %>

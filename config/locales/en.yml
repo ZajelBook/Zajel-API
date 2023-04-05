@@ -135,6 +135,10 @@ en:
          <p>
          You agree to defend, indemnify, and hold harmless the platform, its officers, directors, employees and agents, from and against any claims, actions or demands, including without limitation reasonable legal and accounting fees, alleging or resulting from your use of the Material or your breach of the terms of these Terms and Conditions or your representations and warranties or your violation of any rights of third parties, including without limitation, any proprietary or intellectual property rights.
          </p>"
+    users:
+      passwords:
+        new:
+          password_reset: To reset your password, please enter the email address associated with your account. We will send you an email with instructions on how to reset your password. If you don't receive an email within a few minutes, please check your spam folder or try again with a different email address.
   layouts:
     web:
       header:

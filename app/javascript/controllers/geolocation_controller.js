@@ -10,7 +10,6 @@ const options = {
 // Connects to data-controller="geolocation"
 export default class extends Controller {
     connect() {
-        console.log('i am here')
     }
 
     success(pos) {

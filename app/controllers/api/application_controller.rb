@@ -12,22 +12,9 @@ module Api
     after_action { pagy_headers_merge(@pagy) if @pagy }
 
     protected
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,
-                                                         :last_name,
-                                                         :birth_date,
-                                                         :phone_number,
-                                                         :fcm_token])
-    end
 
     def render_pagination_error
       render json: {errors: []}, status: 200
-    end
-
-    def switch_locale(&action)
-      current_user.update_columns(locale: request.headers['locale']) if current_user && current_user.locale != request.headers['locale']
-      locale = request.headers['locale'] || I18n.default_locale
-      I18n.with_locale(locale, &action)
     end
 
     def check_user_confirmation_status

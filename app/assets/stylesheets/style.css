@@ -5442,3 +5442,14 @@ h6 {
   direction: rtl;
   text-align: right;
 }
+
+.btn-margin {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2rem;
+}
+
+.link {
+  color: #f44a40;
+  font-weight: bold;
+}
