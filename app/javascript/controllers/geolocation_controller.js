@@ -9,25 +9,42 @@ const options = {
 
 // Connects to data-controller="geolocation"
 export default class extends Controller {
+    static targets = ["loadingIndicator"];
+
     connect() {
-    }
+        const nextTimestamp = Date.now() - 24 * 60 * 60 * 1000;
 
-    success(pos) {
-        const crd = pos.coords;
+        if (Cookies.get('latitude') && Cookies.get('crdTimestamp') > nextTimestamp) {
+            return;
+        }
 
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
-        Cookies.set('latitude', `${crd.latitude}`)
-        Cookies.set('longitude', `${crd.longitude}`)
-    }
+        $('#myModal').modal('show')
 
-    error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                // Do something with the location
+                const crd = position.coords;
+                const timestamp = Date.now();
 
-    search () {
-        navigator.geolocation.getCurrentPosition(this.success, this.error, options);
+                Cookies.set('latitude', `${crd.latitude}`)
+                Cookies.set('longitude', `${crd.longitude}`)
+                Cookies.set('crdTimestamp', `${timestamp}`)
+
+                const params = new URLSearchParams(window.location.search);
+                const redirectUrl = params.get('redirect');
+
+                if (redirectUrl) {
+                    window.location.href = redirectUrl;
+                } else {
+                    location.reload();
+                }
+            },
+            error => {
+                // Hide the loading indicator
+                const modal = document.querySelector('#myModal');
+                const body = modal.querySelector('.modal-content');
+                body.innerHTML = `ERROR(${error.code}): ${error.message}`;
+            }
+        );
     }
 }

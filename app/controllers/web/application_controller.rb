@@ -4,6 +4,7 @@ class Web::ApplicationController < ActionController::Base
   before_action :get_request
   before_action :set_cookies
   before_action :turbo_frame_request_variant
+  before_action :set_location
 
   after_action { pagy_headers_merge(@pagy) if @pagy }
 
@@ -26,5 +27,12 @@ class Web::ApplicationController < ActionController::Base
                      original_path: request.original_fullpath,
                      method: request.method)
     end
+  end
+
+  def set_location
+    return redirect_to root_path(redirect: request.referer || request.url) if cookies['latitude'].nil? && cookies['longitude'].nil? && params[:redirect].nil?
+    return unless current_user
+
+    current_user.update(latitude: cookies['latitude'], longitude: cookies['longitude'])
   end
 end

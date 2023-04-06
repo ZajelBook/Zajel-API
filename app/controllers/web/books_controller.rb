@@ -61,8 +61,7 @@ module Web
     end
 
     def set_coordinates
-      [cookies['latitude'], cookies['longitude']]
-      # user_signed_in? ? [current_user.latitude, current_user.longitude] : [params[:latitude], params[:longitude]]
+      user_signed_in? ? [current_user.latitude, current_user.longitude] : [cookies['latitude'], cookies['longitude']]
     end
   end
 end

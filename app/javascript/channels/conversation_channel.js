@@ -9,7 +9,6 @@ let user_id = Cookies.get('user_id');
 consumer.subscriptions.create({ channel: 'ConversationChannel', id: id }, {
     connected() {
         // Called when the subscription is ready for use on the server
-        console.log("ConversationChannel");
     },
 
     disconnected() {
