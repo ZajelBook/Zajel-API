@@ -1,12 +1,12 @@
 module NotificationsHelper
   def notification_path(notification)
-    case notification.payload.type
-    when 'new_message'
-      conversation_messages_path(notification.payload.conversation_id)
+    case notification.payload['type']
+    when 'request_accepted'
+      conversation_messages_path(notification.payload['conversation_id'])
     when 'borrow_request'
-      book_activities_path(type: 'received')
+      lend_requests_path
     when 'lend_requests'
-      book_activities_path(type: 'sent')
+      borrow_requests_path
     end
   end
 end

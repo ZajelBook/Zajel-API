@@ -14,19 +14,13 @@
       <div class="row">
         <div class="col-xl-12 col-lg-12">
           <h3 class="exp_title text-center">We have found <%= @books.count %> books</h3>
-          <%= form_for my_books_path, method: :get do %>
-            <div class="mb-3">
+          <%= form_for my_books_path, method: :get, html: { class: 'form-inline justify-content-center' } do %>
+            <div class="mb-5">
               <%= text_field_tag :query, nil, placeholder: 'Search...', class: 'form-control' %>
-            </div>
-            <div class="mt-10">
-              <%= submit_tag 'Search', class: 'genric-btn primary circle arrow' %>
+              <%= submit_tag 'Search', class: 'genric-btn danger circle' %>
             </div>
           <% end %>
-
-          <div class="col-xl-12 page_nation text-center">
-            <%== pagy_bootstrap_nav(@pagy) %>
-          </div>
-          <div class="row">
+          <div class="row mx-xl-5 mx-lg-5 mx-md-3 mx-sm-3 mx-3 mt-5">
             <% @books.each do |book| %>
               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
                 <%= link_to by_friendly_id_books_path(book.friendly_id) do %>
@@ -44,6 +38,11 @@
                   </div>
                 <% end %>
               </div>
+            <% end %>
+          </div>
+          <div class="col-xl-12 page_nation text-center mt-5">
+            <% if @books.size > 0 %>
+              <%== render partial: 'web/pagy/bootstrap_nav', locals: { pagy: @pagy } %>
             <% end %>
           </div>
         </div>

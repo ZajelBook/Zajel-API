@@ -8,16 +8,16 @@ module BooksHelper
   def book_buttons(book)
     content = if user_signed_in?
                 if book.owner == current_user
-                  link_to "update book details", edit_book_path(book.id), class: 'genric-btn primary circle arrow'
+                  link_to "Update", edit_book_path(book.id), class: 'genric-btn btn-block danger circle'
                 else
                   if book.available? && !book.requested_by?(current_user.id)
-                    link_to "Send borrow request", book_activities_path(book_id: book.id), data: { turbo_method: :post }, class: 'genric-btn primary circle arrow'
+                    link_to "Request", book_activities_path(book_id: book.id), data: { turbo_method: :post }, class: 'genric-btn btn-block danger circle'
                   elsif book.available? && book.requested_by?(current_user.id)
-                    link_to "Cancel borrow request", book_activity_path(book.id), data: { turbo_method: :delete }, class: 'genric-btn primary circle arrow'
+                    link_to "Cancel request", book_activity_path(book.id), data: { turbo_method: :delete }, class: 'genric-btn btn-block danger circle'
                   end
                 end
               else
-                link_to "Log in", new_user_session_path, class: 'genric-btn primary circle arrow'
+                link_to "Log in", new_user_session_path, class: 'genric-btn btn-block danger circle'
               end
 
     tag.div class: 'text-center mb-20' do

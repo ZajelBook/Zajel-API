@@ -1,10 +1,10 @@
 <div id="pager" class="min-w-full my-8 flex justify-center">
-  <div>
+  <div class="d-flex align-items-center justify-content-center">
     <% if pagy.next %>
       <%= link_to(
             "Load more messages",
             conversation_messages_path(page: pagy.next),
-            class: "rounded py-3 px-5 bg-gray-600 text-white block hover:bg-gray-800",
+            class: "text-center genric-btn default circle",
             data: {
               turbo_frame: "page_handler"
             }

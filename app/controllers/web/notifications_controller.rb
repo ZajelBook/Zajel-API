@@ -3,6 +3,8 @@ module Web
     before_action :authenticate_user!
 
     def index
+      current_user.notifications.unread.update_all(read: true)
+
       @notifications = current_user.notifications.order(created_at: :desc)
       @pagy, @notifications = pagy(@notifications, items: params[:per_page])
     end

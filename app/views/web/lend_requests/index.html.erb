@@ -29,10 +29,10 @@
 
                   <div class="text-center">
                     <% if request.pending? %>
-                      <%= link_to "Accept", book_activity_path(request, type: 'accept'), data: { turbo_method: :put }, class: 'm-2 genric-btn info circle' %>
+                      <%= link_to "Accept", book_activity_path(request, type: 'accept'), data: { turbo_method: :put }, class: 'm-2 genric-btn success circle' %>
                       <%= link_to "Reject", book_activity_path(request, type: 'reject'), data: { turbo_method: :put }, class: 'm-2 genric-btn primary circle' %>
                     <% elsif request.accepted? %>
-                      <%= link_to 'Go to Conversation', conversation_messages_path(request.conversation_id), class: 'genric-btn success circle' %>
+                      <%= link_to 'Go to Conversation', conversation_messages_path(request.conversation_id), class: 'genric-btn info circle' %>
                     <% end %>
                   </div>
                 </div>
