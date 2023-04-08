@@ -6,8 +6,6 @@ class Web::ApplicationController < ActionController::Base
   before_action :turbo_frame_request_variant
   before_action :set_location
 
-  after_action { pagy_headers_merge(@pagy) if @pagy }
-
   protected
   def turbo_frame_request_variant
     request.variant = :turbo_frame if turbo_frame_request?

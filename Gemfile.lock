@@ -124,6 +124,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    cocoon (1.2.15)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.2.2)
@@ -414,6 +415,7 @@ DEPENDENCIES
   capistrano3-nginx
   capistrano3-puma (~> 5.0)
   capybara
+  cocoon
   cssbundling-rails
   devise
   devise_token_auth!

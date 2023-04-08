@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Add new Genre</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <%= form_for @genre, url: admins_genres_path do |f| %>
+        <div class="card-body">
+          <div class="form-group">
+            <%= f.label 'Name' %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <%= f.submit "Submit", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Genres</h3>
+        <%= link_to "New", new_admins_genre_path, class: 'btn btn-info btn-sm mx-3' %>
+        <div class="card-tools">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body p-0">
+        <table class="table table-responsive-md">
+          <thead>
+          <tr>
+            <th style="width: 10px">#</th>
+            <th>Name (EN)</th>
+            <th>Name (AR)</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.id %></td>
+              <td><%= locale_content(genre, :name, :en) %></td>
+              <td><%= locale_content(genre, :name, :ar) %></td>
+              <td class="project-actions text-right">
+                <%= link_to edit_admins_genre_path(genre), class: 'btn btn-info btn-sm' do %>
+                  <i class="fas fa-pencil-alt">
+                  </i>
+                  Edit
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

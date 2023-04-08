@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="container-fluid">
+  <!-- Content Header (Page header) -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- Default box -->
+    <div class="card card-solid">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            <div class="col-12">
+              <%= image_tag @book.image, class: 'product-image' %>
+            </div>
+          </div>
+          <div class="col-9">
+            <h3 class="my-3"><%= @book.title %></h3>
+            <small> | by: <b><%= @book.author %></b></small>
+            | <%= book_status(@book) %>
+
+            <p>Language: <%= @book.language %></p>
+            <p>Genre: <%= @book.genre.name %></p>
+            <p>Added at: <%= @book.created_at %></p>
+            <p>Owned by: <%= link_to @book.owner.full_name, admins_user_path(@book.owner_id) %></p>
+            <hr>
+
+            <div class="mt-4">
+              <%= link_to edit_admins_book_path(@book.id), class: 'btn btn-primary btn-lg btn-flat' do %>
+                <i class="fas fa-edit fa-lg mr-2"></i>
+                Update
+              <% end %>
+
+              <% unless @book.approved? %>
+                <%= link_to approve_admins_book_path(@book.id), data: { turbo_method: :put }, class: 'btn btn-success btn-lg btn-flat' do %>
+                  <i class="fas fa-thumbs-up fa-lg mr-2"></i>
+                  Approve
+                <% end %>
+              <% end %>
+
+              <% if @book.available? %>
+                <%= link_to mark_as_unavailable_admins_book_path(@book.id), data: { turbo_method: :put }, class: 'btn btn-danger btn-lg btn-flat' do %>
+                  <i class="fas fa-ban fa-lg mr-2"></i>
+                  Hide
+                <% end %>
+                <% else %>
+                <%= link_to mark_as_available_admins_book_path(@book.id), data: { turbo_method: :put }, class: 'btn btn-success btn-lg btn-flat' do %>
+                  <i class="fas fa-eye fa-lg mr-2"></i>
+                  Show
+                <% end %>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+        <div class="row mt-4">
+          <nav class="w-100">
+            <div class="nav nav-tabs" id="product-tab" role="tablist">
+              <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
+            </div>
+          </nav>
+          <div class="tab-content p-3" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"><%= @book.description %></div>
+          </div>
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+  </div>
+</div>
+
+
+<style>
+    .product-image {
+        width: 300px
+    }
+</style>

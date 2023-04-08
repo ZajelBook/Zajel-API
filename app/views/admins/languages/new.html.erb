@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Add new Language</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <%= form_for @language, url: admins_languages_path do |f| %>
+        <div class="card-body">
+          <div class="form-group">
+            <%= f.label 'Name' %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <%= f.submit "Submit", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

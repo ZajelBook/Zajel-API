@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Update Genre</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <%= form_for @genre, url: admins_genre_path do |f| %>
+        <%= f.fields_for :translations do |ff| %>
+          <%= render 'translation_fields', f: ff %>
+        <% end %>
+
+        <div class="link card-body">
+          <%= link_to_add_association 'add translation', f, :translations %>
+        </div>
+
+        <div class="card-footer">
+          <%= f.submit "Submit", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 // Entry point for the build script in your package.json
 import "@hotwired/turbo-rails"
 import './shared/jquery'
-import "./controllers"
 import * as bootstrap from "bootstrap"
-import "./channels"
+import './admins/adminlte.min'
+import '@nathanvda/cocoon'

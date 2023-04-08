@@ -7,6 +7,25 @@ Rails.application.routes.draw do
     passwords: 'web/users/passwords'
   }
 
+  devise_for :admins, controllers: {
+    sessions: 'admins/admins/sessions',
+  }
+
+  namespace :admins do
+    get '/', to: 'dashboard#index', as: :root
+    resources :books do
+      put :approve, on: :member
+      put :mark_as_unavailable, on: :member
+      put :mark_as_available, on: :member
+    end
+    resources :book_activities
+    resources :users
+    resources :genres, only: [:index, :new, :create, :edit, :update]
+    resources :languages, only: [:index, :new, :create, :edit, :update]
+    resources :metadata, only: [:index]
+    resources :requests, only: [:index]
+  end
+
   scope module: 'web' do
     get '/about', to: 'static_pages#about'
     get '/policy', to: 'static_pages#policy'
@@ -60,18 +79,6 @@ Rails.application.routes.draw do
 
     get 'metadata', to: 'metadata#index'
     get 'status', to: 'status#show'
-
-    namespace :admin, defaults: { format: 'json' } do
-      mount_devise_token_auth_for 'Admin', at: 'auth'
-
-      resources :books
-      resources :book_activities
-      resources :users
-      resources :genres, only: [:index, :create, :update]
-      resources :languages, only: [:index, :create, :update]
-      resources :metadata, only: [:index]
-      resources :requests, only: [:index]
-    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

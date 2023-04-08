@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Users</h3>
+
+        <div class="card-tools">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body p-0">
+        <table class="table table-responsive-md">
+          <thead>
+          <tr>
+            <th style="width: 10px">#</th>
+            <th>User Email</th>
+            <th>Remote IP</th>
+            <th>Location</th>
+            <th style="width: 30px">Path</th>
+            <th>Method</th>
+            <th>Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @requests.each do |request| %>
+            <tr>
+              <td><%= request.id %></td>
+              <td><%= request.user_email %></td>
+              <td><%= request.remote_ip %></td>
+              <td><%= request.country %>, <%= request.city %></td>
+              <td><%= request.original_path %></td>
+              <td><%= request.method %></td>
+              <td><%= request.created_at %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
