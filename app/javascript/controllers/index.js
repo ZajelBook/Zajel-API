@@ -9,3 +9,6 @@ application.register("clear-message-box", ClearMessageBoxController)
 
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
+
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)

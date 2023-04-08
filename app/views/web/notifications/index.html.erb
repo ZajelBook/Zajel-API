@@ -38,6 +38,8 @@
           </table>
           <% if @notifications.size > 0 %>
             <div class="col-xl-12 page_nation text-center mt-5">
+              <%= tag.template data: { controller: 'notification', notification_url_value: read_notifications_url } %>
+
               <%== render partial: 'web/pagy/bootstrap_nav', locals: { pagy: @pagy } %>
             </div>
           <% end %>

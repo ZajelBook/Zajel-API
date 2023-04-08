@@ -6,6 +6,7 @@
     "@hotwired/turbo-rails": "^7.2.5",
     "@nathanvda/cocoon": "^1.2.14",
     "@rails/actioncable": "^7.0.4-3",
+    "@rails/request.js": "^0.0.8",
     "bootstrap": "^4.5.3",
     "bootstrap-icons": "^1.10.3",
     "chart.js": "^4.2.1",
