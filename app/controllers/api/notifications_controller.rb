@@ -1,8 +1,6 @@
 module Api
   class NotificationsController < ApplicationController
     before_action :authenticate_user!
-    skip_before_action :check_user_confirmation_status, only: [:unread]
-
     def index
       @notifications = current_user.notifications.order(created_at: :desc)
       @pagy, @notifications = pagy(@notifications, items: params[:per_page])
