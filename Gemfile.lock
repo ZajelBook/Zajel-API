@@ -124,6 +124,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chartkick (5.0.1)
     cocoon (1.2.15)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -191,6 +192,8 @@ GEM
       activemodel (>= 4.2, < 7.1)
       activerecord (>= 4.2, < 7.1)
       request_store (~> 1.0)
+    groupdate (6.2.0)
+      activesupport (>= 5.2)
     hkdf (0.3.0)
     http-2 (0.11.0)
     i18n (1.12.0)
@@ -415,6 +418,7 @@ DEPENDENCIES
   capistrano3-nginx
   capistrano3-puma (~> 5.0)
   capybara
+  chartkick
   cocoon
   cssbundling-rails
   devise
@@ -425,6 +429,7 @@ DEPENDENCIES
   friendly_id (~> 5.2.4)
   geocoder
   globalize (~> 6.1)
+  groupdate
   jbuilder (~> 2.7)
   jsbundling-rails
   letter_opener

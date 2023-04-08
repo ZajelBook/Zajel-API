@@ -1,6 +1,5 @@
-<section class="content">
+<div class="container">
   <div class="container-fluid">
-    <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-lg-3 col-6">
         <!-- small box -->
@@ -47,7 +46,65 @@
       </div>
       <!-- ./col -->
     </div>
-    <!-- /.row -->
 
-  </div><!-- /.container-fluid -->
-</section>
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">Requests/Month</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart">
+              <%= line_chart @requests_per_month %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">Requests/Country</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart">
+              <%= bar_chart @requests_per_country %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">Users locales</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart">
+              <%= pie_chart @users_locales %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">Users clients</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart">
+              <%= pie_chart @users_clients %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

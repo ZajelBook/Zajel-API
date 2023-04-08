@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     locale = request.headers['locale'] || I18n.default_locale
     I18n.with_locale(locale, &action)
   end
+
+  def after_sign_out_path_for(_scope)
+    admins_root_path
+  end
 end

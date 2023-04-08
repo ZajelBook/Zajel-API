@@ -8,6 +8,8 @@
     "@rails/actioncable": "^7.0.4-3",
     "bootstrap": "^4.5.3",
     "bootstrap-icons": "^1.10.3",
+    "chart.js": "^4.2.1",
+    "chartkick": "^5.0.1",
     "date-fns": "^2.29.3",
     "esbuild": "^0.17.9",
     "jquery": "^3.6.1",

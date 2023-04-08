@@ -50,6 +50,8 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 gem "cocoon"
+gem "chartkick"
+gem "groupdate"
 
 group :development do
   gem "capistrano", "~> 3.12", require: false
