@@ -1,0 +1,22 @@
+<div>
+  <div class="bradcam_area bradcam_bg_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="bradcam_text text-center">
+            <h3></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-top-border">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 offset-md-3 col-10 offset-1 ">
+        <%= form_for @book, url: book_path(@book.id) do |f| %>
+          <%= render 'form', f: f %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div>
+  <div class="bradcam_area bradcam_bg_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="bradcam_text text-center">
+            <h3></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-top-border">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 offset-md-3 col-10 offset-1">
+        <h3 class="mb-30">Create a new account</h3>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "web/users/shared/error_messages", resource: resource %>
+
+          <div class="mb-3">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email address', required: true %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Password', required: true, minlength: 8 %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Password confirmation', required: true %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, autocomplete: "First Name", class: 'form-control', placeholder: 'First name', required: true %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, autocomplete: "Last Name", class: 'form-control', placeholder: 'Last name', required: true %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :phone_number %>
+            <%= f.phone_field :phone_number, autocomplete: "Phone Number", class: 'form-control', placeholder: 'Phone number', required: true %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :birth_date %>
+            <%= f.date_field :birth_date, class: 'form-control', required: true, max: Date.current - 18.years %>
+          </div>
+
+          <div class="text-center justify-content-center btn-margin">
+            <%= f.submit 'Register', class: 'genric-btn btn-block danger circle' %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

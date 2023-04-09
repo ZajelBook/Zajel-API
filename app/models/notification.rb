@@ -1,9 +1,9 @@
 class Notification < ApplicationRecord
   belongs_to :recipient, polymorphic: true
 
-  scope :unread, -> {where(read: false)}
+  scope :unread, -> { where(read: false) }
 
-  after_create :send_notification
+  after_create_commit :send_notification, if: -> { Rails.env.production? }
 
   def send_notification
     app = Rpush::Gcm::App.find_by_name('android_app')

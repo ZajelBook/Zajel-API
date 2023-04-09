@@ -44,14 +44,23 @@ gem 'newrelic_rpm'
 gem 'bundler-audit'
 gem 'brakeman'
 
-group :development do
-  gem 'listen'
+gem "sprockets-rails"
+gem "jsbundling-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+gem "cssbundling-rails"
+gem "cocoon"
+gem "chartkick"
+gem "groupdate"
 
+group :development do
   gem "capistrano", "~> 3.12", require: false
   gem "capistrano-rails", require: false
   gem 'capistrano-rbenv',     require: false
   gem 'capistrano3-nginx'
   gem 'capistrano3-puma', '~> 5.0'
+  gem 'letter_opener'
+  gem 'web-console'
 end
 
 group :development, :test do
@@ -62,4 +71,8 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'simplecov-json', :require => false
+
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end

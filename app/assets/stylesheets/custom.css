@@ -1,0 +1,42 @@
+.loading-btn {
+    color: transparent !important;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading-btn:after {
+    animation: spinAround 500ms infinite linear;
+    border: 2px solid white;
+    border-radius: 290486px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    height: 1em;
+    width: 1em;
+    left: calc(50% - (1em / 2));
+    top: calc(50% - (1em / 2));
+    position: absolute !important;
+}
+
+@-webkit-keyframes spinAround {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(359deg)
+    }
+}
+
+@keyframes spinAround {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(359deg)
+    }
+}
+
+

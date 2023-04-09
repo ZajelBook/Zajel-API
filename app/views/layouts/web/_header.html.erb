@@ -1,0 +1,75 @@
+<header>
+  <div class="header-area">
+    <div id="sticky-header" class="main-header-area">
+      <div class="container-fluid ">
+        <div class="header_bottom_border">
+          <div class="row align-items-center">
+            <div class="col-xl-12 col-lg-12 col-sm-12">
+              <nav class="main-menu navbar navbar-expand-lg navbar-dark">
+                <div class="logo">
+                  <%= link_to root_path do %>
+                    <%= image_tag 'logo.png', width: '60px' %>
+                  <% end %>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <% if user_signed_in? %>
+                  <div class="offset-2 col-9 collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav text-center">
+                      <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.books'), books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.my_books'), my_books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.borrow_requests'), borrow_requests_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.lend_requests'), lend_requests_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.add_book'), new_book_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item">
+                        <%= link_to notifications_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } do %>
+                          <%= t('.notifications') %> <span class="badge badge-pill badge-danger"><%= current_user.notifications.unread.count %></span>
+                        <% end %>
+                      </li>
+                      <li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete, bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                    </ul>
+                  </div>
+                <% else %>
+                  <div class="offset-4 col-7 collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav text-center">
+                      <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.books'), books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.login'), new_user_session_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.register'), new_user_registration_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                    </ul>
+                  </div>
+                <% end %>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+    @media only screen and (max-width : 768px) {
+        .navbar-collapse {
+            background: white;
+        }
+        .navbar-dark .navbar-toggler {
+            border-color: white;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .navbar-collapse {
+            background: white;
+        }
+        .navbar-dark .navbar-toggler {
+            border-color: white;
+        }
+    }
+    .logo {
+        margin-top: -10px;
+    }
+</style>

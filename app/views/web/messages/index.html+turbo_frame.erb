@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "page_handler" do %>
+  <%= turbo_stream_action_tag(
+        "prepend",
+        target: "list",
+        template: %(#{render 'web/messages/messages', messages: @messages})
+      ) %>
+  <%= turbo_stream_action_tag(
+        "remove",
+        target: "pager",
+        template: %(#{render "pager", pagy: @pagy})
+      ) %>
+  <%= turbo_stream_action_tag(
+        "prepend",
+        target: "list",
+        template: %(#{render "pager", pagy: @pagy})
+      ) %>
+<% end %>

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Activities list</h3>
+        <div class="card-tools">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <table class="table table-responsive">
+          <thead>
+          <tr>
+            <th style="width: 10px">#</th>
+            <th style="width: 20rem">Book</th>
+            <th>Borrower</th>
+            <th>Lender</th>
+            <th>Status</th>
+            <th>requested at</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @book_activities.each do |book_activity| %>
+            <tr>
+              <td><%= book_activity.id %></td>
+              <td><%= link_to book_activity.book.title, admins_book_path(book_activity.book.id) %></td>
+              <td><%= link_to book_activity.borrower.full_name, admins_user_path(book_activity.borrower_id) %></td>
+              <td><%= link_to book_activity.lender.full_name, admins_user_path(book_activity.lender_id) %></td>
+              <td><%= book_activity_badge(book_activity) %></td>
+              <td><%= book_activity.created_at %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<footer class="footer text-center">
+  <div class="footer_top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-4 col-md-6 col-lg-4">
+          <div class="footer_widget">
+            <p><%= t('.footer_text').html_safe %></p>
+            <p><b style="color: rgb(248, 25, 67);">zajelbooks@gmail.com</b></p>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6 col-lg-3">
+          <div class="footer_widget">
+            <h3 class="footer_title">
+              <%= t('.more_info') %>
+            </h3>
+            <ul>
+              <li><a href="/about"><%= t('.about') %></a></li>
+              <li><a href="/policy"><%= t('.privacy_policy') %></a></li>
+              <li><a href="/terms"><%= t('.terms_of_use') %></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6 col-lg-4">
+          <div class="footer_widget">
+            <h3 class="footer_title">
+              <%= t('.play_store_text') %>
+            </h3>
+            <a href="https://play.google.com/store/apps/details?id=com.bernovia.zajel&hl=en">
+              <%= image_tag 'google-play-badge.svg', width: '50%', alt: 'google_play_badge' %>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copy-right_text">
+    <div class="container">
+      <div class="footer_border"></div>
+      <div class="row">
+        <div class="col-xl-12">
+          <p class="copy_right text-center">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <%= t('.copyright', current_year: Date.current.year).html_safe %>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

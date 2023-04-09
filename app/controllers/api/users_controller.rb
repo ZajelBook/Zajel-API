@@ -1,7 +1,6 @@
 module Api
   class UsersController < ApplicationController
     before_action :authenticate_user!
-    skip_before_action :check_user_confirmation_status
 
     def show
       @user = current_user

@@ -1,0 +1,121 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+
+        <!-- Profile Image -->
+        <div class="card card-primary card-outline">
+          <div class="card-body box-profile">
+
+            <h3 class="profile-username text-center"><%= @user.full_name %></h3>
+
+            <p class="text-muted text-center"><%= @user.email %></p>
+
+            <ul class="list-group list-group-unbordered mb-3">
+              <li class="list-group-item">
+                <b>Confirmed?</b> <a class="float-right"><%= @user.confirmed_at? %></a>
+              </li>
+              <li class="list-group-item">
+                <b>Mobile User?</b> <a class="float-right"><%= @user.fcm_token? %></a>
+              </li>
+              <li class="list-group-item">
+                <b>Online?</b> <a class="float-right"><%= @user.online %></a>
+              </li>
+            </ul>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+        <!-- About Me Box -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">About Me</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <strong><i class="fas fa-book mr-1"></i> Phone number</strong>
+
+            <p class="text-muted">
+              <%= @user.phone_number %>
+            </p>
+
+            <hr>
+
+            <strong><i class="fas fa-map-marker-alt mr-1"></i> Birth date</strong>
+
+            <p class="text-muted"><%= @user.birth_date %></p>
+
+            <hr>
+
+            <strong><i class="fas fa-pencil-alt mr-1"></i> Registerd at</strong>
+
+            <p class="text-muted"><%= @user.created_at %></p>
+
+            <hr>
+
+            <strong><i class="far fa-file-alt mr-1"></i> Location</strong>
+
+            <p class="text-muted"><%= @user.latitude %>, <%= @user.longitude %></p>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header p-2">
+            <ul class="nav nav-pills">
+              <li class="nav-item"><a class="nav-link active" href="#books" data-toggle="tab">Books</a></li>
+              <li class="nav-item"><a class="nav-link" href="#requests" data-toggle="tab">Borrow requests</a></li>
+            </ul>
+          </div><!-- /.card-header -->
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active show" id="books">
+                <div class="row">
+                  <% @books.each do |book| %>
+                    <div class="col-6 mb-3">
+                      <div class="user-block">
+                        <%= image_tag book.image, class: 'img-bordered-sm' %>
+                        <span class="username">
+                          <%= link_to book.title, admins_book_path(book.id) %>
+                         </span>
+                        <span class="description">Added at <%= book.created_at %></span>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="requests">
+                <!-- The timeline -->
+                <div class="timeline timeline-inverse">
+                  <!-- timeline item -->
+                  <% @borrow_requests.each do |borrow_request| %>
+                  <div>
+                    <div class="timeline-item">
+                      <span class="time"><i class="far fa-clock"></i> <%= borrow_request.created_at %></span>
+
+                      <h3 class="timeline-header border-0">
+                        <%= link_to borrow_request.book.title, admins_book_path(borrow_request.book.id) %>
+                        | <%= borrow_request.status %>
+                      </h3>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div><!-- /.card-body -->
+        </div>
+        <!-- /.nav-tabs-custom -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>

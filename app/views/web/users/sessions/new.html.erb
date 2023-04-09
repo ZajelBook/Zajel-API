@@ -1,0 +1,86 @@
+<div>
+  <div class="bradcam_area bradcam_bg_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="bradcam_text text-center">
+            <h3></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-signin' }) do |f| %>
+    <%= render "web/users/shared/error_messages", resource: resource %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "Email", id: 'inputEmail', class: 'form-control', required: true %>
+
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password", id: 'inputPassword', class: 'form-control', required: true %>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="checkbox mb-3">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="text-center justify-content-center btn-margin">
+      <%= f.submit 'Register', class: 'genric-btn btn-block danger circle' %>
+    </div>
+
+    <div class="text-center mt-10">
+      <%= link_to "Don't have an account? Create one now!", new_user_registration_path, class: 'text-center link' %>
+      <%= link_to 'Forgot your password?', new_user_password_path, class: 'text-center link' %>
+    </div>
+
+<% end %>
+</div>
+
+<style scoped>
+    .form-signin {
+        width: 100%;
+        max-width: 350px;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .form-signin .checkbox {
+        font-weight: 400;
+    }
+
+    .form-signin .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-signin .form-control:focus {
+        z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .form-signin input[type="checkbox"] {
+        display: none;
+    }
+
+    span {
+        font-size: .9em;
+        color: #f22435;
+    }
+
+</style>

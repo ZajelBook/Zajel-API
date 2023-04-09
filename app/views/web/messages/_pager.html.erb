@@ -1,0 +1,14 @@
+<div id="pager" class="min-w-full my-8 flex justify-center">
+  <div class="d-flex align-items-center justify-content-center">
+    <% if pagy.next %>
+      <%= link_to(
+            "Load more messages",
+            conversation_messages_path(page: pagy.next),
+            class: "text-center genric-btn default circle",
+            data: {
+              turbo_frame: "page_handler"
+            }
+          ) %>
+    <% end %>
+  </div>
+</div>

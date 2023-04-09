@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Update Book</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <%= form_for @book, url: admins_book_path(@book.id) do |f| %>
+        <div class="card-body">
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control', required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :author %>
+            <%= f.text_field :author, class: 'form-control', required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :language %>
+            <%= f.select :language, Language.pluck(:name), {}, class: 'form-control', required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :genre_id %>
+            <%= f.select :genre_id, Genre.pluck(:name, :id), {}, class: 'form-control', required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: 'form-control', required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.file_field :image %>
+          </div>
+
+        </div>
+
+        <div class="card-footer">
+          <%= f.submit "Submit", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div>
+  <div class="bradcam_area bradcam_bg_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="bradcam_text text-center">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explorer_europe list_wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12">
+          <h3 class="exp_title text-center">Notification Center</h3>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col" class="text-center">Message</th>
+              <th scope="col">Time</th>
+            </tr>
+            </thead>
+            <tbody>
+              <% if @notifications.empty? %>
+                <tr>
+                  <td colspan="2" class="text-center">No notifications found</td>
+                </tr>
+              <% else %>
+                <% @notifications.each do |notification| %>
+                  <tr>
+                    <td scope="row" class="text-center"><%= link_to notification.content, notification_path(notification) %></td>
+                    <td><%= time_ago_in_words(notification.created_at) %> ago</td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+          <% if @notifications.size > 0 %>
+            <div class="col-xl-12 page_nation text-center mt-5">
+              <%= tag.template data: { controller: 'notification', notification_url_value: read_notifications_url } %>
+
+              <%== render partial: 'web/pagy/bootstrap_nav', locals: { pagy: @pagy } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    td a {
+        display: block;
+    }
+</style>
