@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  include PreRequest
+  protect_from_forgery unless: -> { request.format.json? }
 
-  protect_from_forgery with: :null_session, unless: -> { request.format.json? }
+  include PreRequest
 
   before_action :configure_permitted_parameters, if: :devise_controller?, except: :callback
 
@@ -11,9 +11,5 @@ class ApplicationController < ActionController::Base
                                                        :birth_date,
                                                        :phone_number,
                                                        :fcm_token])
-  end
-
-  def after_sign_out_path_for(_scope)
-    admins_root_path
   end
 end
