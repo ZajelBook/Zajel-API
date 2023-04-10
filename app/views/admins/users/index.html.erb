@@ -10,32 +10,34 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body p-0">
-        <table class="table table-responsive">
-          <thead>
-          <tr>
-            <th style="width: 10px">#</th>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Confirmed?</th>
-            <th>Locale</th>
-            <th>Registered at</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td><%= link_to user.email, admins_user_path(user) %></td>
-              <td><%= user.full_name %></td>
-              <td><%= user.phone_number %></td>
-              <td><%= user_verification_badge(user) %></td>
-              <td><%= user.locale %></td>
-              <td><%= user.created_at %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 10px">#</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Confirmed?</th>
+                <th>Locale</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= link_to user.email, admins_user_path(user) %></td>
+                <td><%= user.full_name %></td>
+                <td><%= user.phone_number %></td>
+                <td><%= user_verification_badge(user) %></td>
+                <td><%= user.locale %></td>
+                <td><%= user.created_at %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

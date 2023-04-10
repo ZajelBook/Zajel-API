@@ -9,18 +9,19 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body">
-        <table class="table table-responsive">
-          <thead>
-          <tr>
-            <th style="width: 10px">#</th>
-            <th style="width: 20rem">title</th>
-            <th>owner</th>
-            <th>Approval</th>
-            <th>Status</th>
-            <th>Added at</th>
-          </tr>
-          </thead>
-          <tbody>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th style="width: 20rem">title</th>
+                <th>owner</th>
+                <th>Approval</th>
+                <th>Status</th>
+                <th>Added at</th>
+              </tr>
+            </thead>
+            <tbody>
             <% @books.each do |book| %>
               <tr>
                 <td><%= book.id %></td>
@@ -31,23 +32,11 @@
                 <td><%= book.created_at %></td>
               </tr>
             <% end %>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
       <!-- /.card-body -->
-      <div class="card-footer clearfix">
-        <paginate
-          :page-count="this.metadata.total_pages || 1"
-          :click-handler="paginateCallback"
-          containerClass="pagination pagination-sm m-0 float-right"
-          page-class="page-item"
-          page-link-class="page-link"
-          prev-link-class="page-link"
-          next-link-class="page-link"
-          v-if="this.metadata.count">
-        </paginate>
-      </div>
-
     </div>
     <!-- /.card -->
   </div>
