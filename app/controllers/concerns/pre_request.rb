@@ -7,7 +7,13 @@ module PreRequest
 
     def switch_locale(&action)
       current_user.update_columns(locale: request.headers['locale']) if current_user && current_user.locale != request.headers['locale']
-      locale = request.headers['locale'] || I18n.default_locale
+
+      locale = if I18n.available_locales.include?(params[:locale]&.to_sym)
+                 params[:locale]
+               else
+                 request.headers['locale'] || I18n.default_locale
+               end
+
       I18n.with_locale(locale, &action)
     end
 
