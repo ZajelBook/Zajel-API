@@ -161,4 +161,4 @@ en:
         privacy_policy: "Privacy policy"
         terms_of_use: "Terms of use"
         play_store_text: "Get it on Google Play"
-        copyright: "Copyright © %{current_year} All rights reserved. | This template is made with <i class='fa fa-heart-o' aria-hidden='true'></i> by <a href='https://colorlib.com' target='_blank' rel='noreferrer'>Colorlib</a>"
+        copyright: "Copyright © %{current_year} All rights reserved. | This template is made with <i class='bi bi-heart-fill'></i> by <a href='https://colorlib.com' target='_blank' rel='noreferrer'>Colorlib</a>"

@@ -16,7 +16,7 @@
           <div class="col-md-4">
             <div class="mb-20">
               <%= image_tag @book.image, class: 'img-fluid' %>
-              <p class="text-center mt-2"><i style="font-size:24px; color: red" class="fa fa-map-marker-alt"></i> <%= book_distance(@distance) %></p>
+              <p class="text-center mt-2"><i class="bi bi-geo-alt-fill" style="font-size: 24px; color: red;"></i> <%= book_distance(@distance) %></p>
             </div>
             <div class="justify-content-center btn-margin">
               <%= book_buttons(@book) %>

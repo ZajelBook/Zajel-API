@@ -34,7 +34,7 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <strong><i class="fas fa-book mr-1"></i> Phone number</strong>
+            <strong><i class="bi bi-telephone-fill mr-1"></i> Phone number</strong>
 
             <p class="text-muted">
               <%= @user.phone_number %>
@@ -42,19 +42,19 @@
 
             <hr>
 
-            <strong><i class="fas fa-map-marker-alt mr-1"></i> Birth date</strong>
+            <strong><i class="bi bi-calendar-event-fill"></i> Birth date</strong>
 
             <p class="text-muted"><%= @user.birth_date %></p>
 
             <hr>
 
-            <strong><i class="fas fa-pencil-alt mr-1"></i> Registerd at</strong>
+            <strong><i class="bi bi-pencil-fill mr-1"></i> Registerd at</strong>
 
             <p class="text-muted"><%= @user.created_at %></p>
 
             <hr>
 
-            <strong><i class="far fa-file-alt mr-1"></i> Location</strong>
+            <strong><i class="bi bi-geo-alt-fill mr-1"></i> Location</strong>
 
             <p class="text-muted"><%= @user.latitude %>, <%= @user.longitude %></p>
           </div>
@@ -96,7 +96,7 @@
                   <% @borrow_requests.each do |borrow_request| %>
                   <div>
                     <div class="timeline-item">
-                      <span class="time"><i class="far fa-clock"></i> <%= borrow_request.created_at %></span>
+                      <span class="time"><i class="bi bi-clock-fill"></i> <%= borrow_request.created_at %></span>
 
                       <h3 class="timeline-header border-0">
                         <%= link_to borrow_request.book.title, admins_book_path(borrow_request.book.id) %>
