@@ -8,17 +8,15 @@
     "@nathanvda/cocoon": "^1.2.14",
     "@rails/actioncable": "^7.0.4-3",
     "@rails/request.js": "^0.0.8",
+    "admin-lte": "3.1.0",
     "bootstrap": "^4.5.3",
-    "bootstrap-icons": "^1.10.3",
     "chart.js": "^4.2.1",
     "chartkick": "^5.0.1",
     "date-fns": "^2.29.3",
     "esbuild": "^0.17.9",
     "jquery": "^3.6.1",
     "js-cookie": "^3.0.1",
-    "popper.js": "^1.16.1",
-    "sass": "^1.58.3",
-    "stimulus-use": "^0.52.0"
+    "sass": "^1.58.3"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",

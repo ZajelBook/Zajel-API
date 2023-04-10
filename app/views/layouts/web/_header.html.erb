@@ -11,21 +11,21 @@
                     <%= image_tag 'logo.png', width: '60px' %>
                   <% end %>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <% if user_signed_in? %>
                   <div class="offset-2 col-9 collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav text-center">
-                      <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to t('.books'), books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to t('.my_books'), my_books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to t('.borrow_requests'), borrow_requests_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to t('.lend_requests'), lend_requests_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to t('.add_book'), new_book_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link' %></li>
+                      <li class="nav-item"><%= link_to t('.books'), books_path, class: 'nav-link' %></li>
+                      <li class="nav-item"><%= link_to t('.my_books'), my_books_path, class: 'nav-link' %></li>
+                      <li class="nav-item"><%= link_to t('.borrow_requests'), borrow_requests_path, class: 'nav-link' %></li>
+                      <li class="nav-item"><%= link_to t('.lend_requests'), lend_requests_path, class: 'nav-link' %></li>
+                      <li class="nav-item"><%= link_to t('.add_book'), new_book_path, class: 'nav-link' %></li>
                       <li class="nav-item">
-                        <%= link_to notifications_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } do %>
+                        <%= link_to notifications_path, class: 'nav-link' do %>
                           <%= t('.notifications') %> <span class="badge badge-pill badge-danger"><%= current_user.notifications.unread.count %></span>
                         <% end %>
                       </li>
@@ -35,10 +35,10 @@
                 <% else %>
                   <div class="offset-4 col-7 collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav text-center">
-                      <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to t('.books'), books_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to t('.login'), new_user_session_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                      <li class="nav-item"><%= link_to t('.register'), new_user_registration_path, class: 'nav-link', data: { bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
+                      <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link' %></li>
+                      <li class="nav-item"><%= link_to t('.books'), books_path, class: 'nav-link' %></li>
+                      <li class="nav-item"><%= link_to t('.login'), new_user_session_path, class: 'nav-link' %></li>
+                      <li class="nav-item"><%= link_to t('.register'), new_user_registration_path, class: 'nav-link' %></li>
                     </ul>
                   </div>
                 <% end %>
