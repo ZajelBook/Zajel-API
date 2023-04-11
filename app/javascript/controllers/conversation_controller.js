@@ -7,11 +7,23 @@ export default class extends Controller {
   static values = { recordId: Number, userId: Number }
 
   connect() {
-    this.channel = consumer.subscriptions.create({ channel: 'ConversationChannel', id: this.recordIdValue },{
-      connected: this._cableConnected.bind(this),
-      disconnected: this._cableDisconnected.bind(this),
-      received: this._cableReceived.bind(this),
-    });
+    let existingSubscription = this._find_active_subscriptions();
+
+    if (existingSubscription.length !== 0) {
+      // Subscription already exists, so you don't need to create a new one
+      this.channel = existingSubscription[0]
+    } else {
+      // No existing subscription found, create a new one
+      this._create_new_subscription();
+    }
+  }
+
+  disconnect() {
+    let existingSubscription = this._find_active_subscriptions();
+
+    consumer.subscriptions.remove(existingSubscription[0]);
+
+    consumer.disconnect();
   }
 
   _cableConnected() {
@@ -48,5 +60,18 @@ export default class extends Controller {
 
     let objDiv = document.getElementById('list');
     objDiv.scrollTop = objDiv.scrollHeight;
+  }
+
+  _create_new_subscription() {
+    this.channel = consumer.subscriptions.create({ channel: 'ConversationChannel', id: this.recordIdValue },{
+      connected: this._cableConnected.bind(this),
+      disconnected: this._cableDisconnected.bind(this),
+      received: this._cableReceived.bind(this),
+    });
+  }
+
+  _find_active_subscriptions() {
+    let identifier = JSON.stringify({ channel: 'ConversationChannel', id: this.recordIdValue })
+    return consumer.subscriptions.findAll(identifier);
   }
 }
