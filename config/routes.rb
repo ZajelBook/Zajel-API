@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'web' do
+    get '/forget_password', to: redirect('/users/password/new')
     get '/about', to: 'static_pages#about'
     get '/policy', to: 'static_pages#policy'
     get '/terms', to: 'static_pages#terms'
