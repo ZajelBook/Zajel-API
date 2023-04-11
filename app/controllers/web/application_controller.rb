@@ -2,17 +2,12 @@ class Web::ApplicationController < ActionController::Base
   include Pagy::Backend
   include PreRequest
 
-  before_action :set_cookies
   before_action :turbo_frame_request_variant
   before_action :set_location, unless: :static_pages_controller?
 
   protected
   def turbo_frame_request_variant
     request.variant = :turbo_frame if turbo_frame_request?
-  end
-
-  def set_cookies
-    cookies[:user_id] = self.current_user.id if self.current_user && cookies[:user_id].blank?
   end
 
   def set_location

@@ -14,7 +14,7 @@ module Web
     def read
       current_user.notifications.unread.update_all(read: true)
 
-      render plain: :ok
+      head :ok
     end
   end
 end

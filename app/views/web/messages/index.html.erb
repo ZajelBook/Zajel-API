@@ -20,7 +20,9 @@
               <%= conversation_header(@book_activity) %>
             </div>
           </div>
-          <div id="list" class="card-body msg_card_body">
+          <div id="list" class="card-body msg_card_body" data-controller="conversation"
+               data-conversation-record-id-value="<%= @conversation.id %>"
+               data-conversation-user-id-value="<%= current_user.id %>">
             <%= turbo_frame_tag "page_handler" %>
             <%= render "pager", pagy: @pagy %>
             <% @messages.each do |message| %>
