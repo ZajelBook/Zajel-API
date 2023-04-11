@@ -1,25 +1,25 @@
 import { Controller } from "@hotwired/stimulus"
 import consumer from '../channels/consumer';
-import {formatDistance} from "date-fns";
+import { formatDistance } from "date-fns";
 
 // Connects to data-controller="conversation"
 export default class extends Controller {
   static values = { recordId: Number, userId: Number }
 
   connect() {
-    let existingSubscription = this._find_active_subscriptions();
+    let existingSubscription = this._findActiveSubscriptions();
 
     if (existingSubscription.length !== 0) {
       // Subscription already exists, so you don't need to create a new one
       this.channel = existingSubscription[0]
     } else {
       // No existing subscription found, create a new one
-      this._create_new_subscription();
+      this._createNewSubscription();
     }
   }
 
   disconnect() {
-    let existingSubscription = this._find_active_subscriptions();
+    let existingSubscription = this._findActiveSubscriptions();
 
     consumer.subscriptions.remove(existingSubscription[0]);
 
@@ -62,7 +62,7 @@ export default class extends Controller {
     objDiv.scrollTop = objDiv.scrollHeight;
   }
 
-  _create_new_subscription() {
+  _createNewSubscription() {
     this.channel = consumer.subscriptions.create({ channel: 'ConversationChannel', id: this.recordIdValue },{
       connected: this._cableConnected.bind(this),
       disconnected: this._cableDisconnected.bind(this),
@@ -70,7 +70,7 @@ export default class extends Controller {
     });
   }
 
-  _find_active_subscriptions() {
+  _findActiveSubscriptions() {
     let identifier = JSON.stringify({ channel: 'ConversationChannel', id: this.recordIdValue })
     return consumer.subscriptions.findAll(identifier);
   }
