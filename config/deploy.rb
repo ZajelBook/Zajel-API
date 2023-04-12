@@ -5,7 +5,7 @@ lock '~> 3.17.0'
 
 set :application, 'zajel'
 set :repo_url, 'git@github.com:Bernovia/Zajel-API.git'
-
+set :branch, 'main'
 set :deploy_to, '/home/ubuntu/apps/zajel'
 
 append :linked_files, 'config/master.key', '.env'
