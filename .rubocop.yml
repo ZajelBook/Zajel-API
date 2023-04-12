@@ -6,5 +6,47 @@ require:
 AllCops:
   Exclude:
     - 'db/**/*.rb'
+    - 'config/initializers/**'
+    - 'bin/*'
+
+RSpec/LetSetup:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Style/HashLikeCase:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
 Style/HashSyntax:
   EnforcedShorthandSyntax: never

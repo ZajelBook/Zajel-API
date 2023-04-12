@@ -7,7 +7,7 @@ FactoryBot.define do
     title { 'Book Title' }
     author  { 'Book Author' }
     description  { 'Book Description goes here' }
-    published_at { (Date.today - 20.years).to_s }
+    published_at { (Date.current - 20.years).to_s }
     language { 'English' }
     page_count { 423 }
 

@@ -2,7 +2,7 @@
 
 module ConversationsHelper
   def conversation_header(book_activity)
-    chat_with = if @book_activity.borrower_id == current_user.id
+    chat_with = if book_activity.borrower_id == current_user.id
                   book_activity.lender.full_name
                 else
                   book_activity.borrower.full_name

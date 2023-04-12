@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GetIpInfoJob < ApplicationJob
+class IpAddressLookupJob < ApplicationJob
   def perform(request_id)
     request = Request.find_by(id: request_id)
 

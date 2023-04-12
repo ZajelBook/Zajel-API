@@ -5,7 +5,7 @@ module PreRequest
 
   included do
     around_action :switch_locale, unless: :status_controller?
-    before_action :get_request, unless: :status_controller?
+    before_action :log_request, unless: :status_controller?
 
     def switch_locale(&action)
       if current_user && current_user.locale != request.headers['locale']
@@ -21,7 +21,7 @@ module PreRequest
       I18n.with_locale(locale, &action)
     end
 
-    def get_request
+    def log_request
       return if Rails.env.development?
 
       Request.create(user_email: current_user&.email,

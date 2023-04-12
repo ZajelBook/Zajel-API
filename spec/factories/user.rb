@@ -6,7 +6,7 @@ FactoryBot.define do
     last_name  { 'User' }
     email { "test_#{User.count + 1}@zajelbook.com" }
     password { '12345678' }
-    birth_date { Date.today - 20.years }
+    birth_date { Date.current - 20.years }
     locale { 'en' }
     latitude { '50.110924' }
     longitude { '8.682127' }

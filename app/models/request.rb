@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Request < ApplicationRecord
-  after_create_commit :get_ip_info
+  after_create_commit :ip_address_lookup
 
-  def get_ip_info
-    GetIpInfoJob.perform_later(id)
+  def ip_address_lookup
+    IpAddressLookupJob.perform_later(id)
   end
 end
