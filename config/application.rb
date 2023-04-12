@@ -33,5 +33,6 @@ module ZajelApi
     # config.api_only = true
 
     config.autoload_paths += %W[#{config.root}/lib]
+    config.active_storage.analyzers = [ActiveStorage::Analyzer::ImageAnalyzer::Vips]
   end
 end

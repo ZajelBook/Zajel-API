@@ -15,7 +15,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="mb-20">
-              <%= image_tag @book.image, class: 'img-fluid' %>
+              <%= image_tag @book.image.variant(format: :webp, convert: :webp), class: 'img-fluid' %>
               <p class="text-center mt-2"><i class="bi bi-geo-alt-fill" style="font-size: 24px; color: red;"></i> <%= book_distance(@distance) %></p>
             </div>
             <div class="justify-content-center btn-margin">

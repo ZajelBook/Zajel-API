@@ -78,7 +78,7 @@
                   <% @books.each do |book| %>
                     <div class="col-6 mb-3">
                       <div class="user-block">
-                        <%= image_tag book.image, class: 'img-bordered-sm' %>
+                        <%= image_tag book.image.variant(format: :webp, convert: :webp), class: 'img-bordered-sm' %>
                         <span class="username">
                           <%= link_to book.title, admins_book_path(book.id) %>
                          </span>

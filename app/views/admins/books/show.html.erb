@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-3">
             <div class="col-12">
-              <%= image_tag @book.image, class: 'product-image' %>
+              <%= image_tag @book.image.variant(format: :webp, convert: :webp), class: 'product-image' %>
             </div>
           </div>
           <div class="col-9">

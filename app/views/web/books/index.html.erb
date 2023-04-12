@@ -30,7 +30,7 @@
                 <%= link_to by_friendly_id_books_path(book.friendly_id) do %>
                   <div class="single_explorer">
                     <div class="thumb">
-                      <%= image_tag book.image %>
+                      <%= image_tag book.image.variant(format: :webp, convert: :webp) %>
                     </div>
                     <div class="explorer_bottom d-flex">
                       <div class="explorer_info">
