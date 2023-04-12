@@ -1,0 +1,59 @@
+$lite:  #FFF;
+$size: 48px;
+
+.loader-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.loader-95 {
+  width: $size;
+  height: $size;
+  display: inline-block;
+  position: relative;
+  &::after {
+    content: '';
+    width: $size;
+    height: $size;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    border-radius: 50% 50% 0;
+    border: 15px solid $lite;
+    transform: rotate(45deg) translate(0 , 0);
+    animation: animMarker 0.4s ease-in-out infinite alternate;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 150%;
+    width: $size / 2;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(0, 0,0,0.2);
+    animation: animShadow 0.4s ease-in-out infinite alternate;
+   }
+}
+
+@keyframes animMarker {
+  0% { transform: rotate(45deg) translate(5px , 5px) }
+  100% { transform: rotate(45deg) translate(-5px , -5px) }
+}
+
+@keyframes animShadow {
+  0% { transform: scale(0.5) }
+  100% { transform: scale(1) }
+}

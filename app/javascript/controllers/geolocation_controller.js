@@ -1,16 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import Cookies from 'js-cookie'
 
-const options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-};
-
 // Connects to data-controller="geolocation"
 export default class extends Controller {
-    static targets = ["loadingIndicator"];
-
     connect() {
         const nextTimestamp = Date.now() - 24 * 60 * 60 * 1000;
 
@@ -41,9 +33,8 @@ export default class extends Controller {
             },
             error => {
                 // Hide the loading indicator
-                const modal = document.querySelector('#myModal');
-                const body = modal.querySelector('.modal-content');
-                body.innerHTML = `ERROR(${error.code}): ${error.message}`;
+                const loaderText = document.querySelector('#loader-text');
+                loaderText.innerHTML = "We couldn't access your location. Please enable your location services and try again";
             }
         );
     }

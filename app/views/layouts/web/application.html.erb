@@ -11,17 +11,8 @@
   </head>
 
   <body>
-    <div data-controller="geolocation">
+    <div>
       <%= render 'layouts/web/header' %>
-
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <%= t('.location_request_text') %>
-          </div>
-        </div>
-      </div>
-
       <%= yield %>
       <%= render 'layouts/web/footer' %>
     </div>
