@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PreRequest
   extend ActiveSupport::Concern
 
@@ -6,7 +8,9 @@ module PreRequest
     before_action :get_request, unless: :status_controller?
 
     def switch_locale(&action)
-      current_user.update_columns(locale: request.headers['locale']) if current_user && current_user.locale != request.headers['locale']
+      if current_user && current_user.locale != request.headers['locale']
+        current_user.update_columns(locale: request.headers['locale'])
+      end
 
       locale = if I18n.available_locales.include?(params[:locale]&.to_sym)
                  params[:locale]

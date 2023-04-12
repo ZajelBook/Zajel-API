@@ -1,0 +1,10 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-capybara
+
+AllCops:
+  Exclude:
+    - 'db/**/*.rb'
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never

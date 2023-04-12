@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GetIpInfoJob < ApplicationJob
   def perform(request_id)
     request = Request.find_by(id: request_id)
@@ -5,7 +7,7 @@ class GetIpInfoJob < ApplicationJob
     return if request.nil?
 
     access_token = ENV['IPINFO_TOKEN']
-    handler = IPinfo::create(access_token)
+    handler = IPinfo.create(access_token)
     details = handler.details(request.remote_ip)
 
     country = details.country_name

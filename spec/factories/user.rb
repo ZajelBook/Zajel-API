@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :user do
     first_name { 'Test' }
     last_name  { 'User' }
-    email  { "test_#{User.count + 1}@zajelbook.com" }
+    email { "test_#{User.count + 1}@zajelbook.com" }
     password { '12345678' }
     birth_date { Date.today - 20.years }
     locale { 'en' }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admins
   class DashboardController < ApplicationController
     def index
@@ -8,7 +10,7 @@ module Admins
 
       @requests_per_month = Request.group_by_month(:created_at, last: 12).count
 
-      @requests_per_country = Request.group(:country).count.sort_by { |_,v| -v }.first(5)
+      @requests_per_country = Request.group(:country).count.sort_by { |_, v| -v }.first(5)
 
       @users_locales = User.group(:locale).count
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :book do
     owner { create :user }
@@ -25,8 +27,8 @@ FactoryBot.define do
       approved { true }
     end
 
-    factory :approved_book, traits: [:available, :approved]
-    factory :unavailable_book, traits: [:unavailable, :approved]
-    factory :borrowed_book, traits: [:borrowed, :approved]
+    factory :approved_book, traits: %i[available approved]
+    factory :unavailable_book, traits: %i[unavailable approved]
+    factory :borrowed_book, traits: %i[borrowed approved]
   end
 end

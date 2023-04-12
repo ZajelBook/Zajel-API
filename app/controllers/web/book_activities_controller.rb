@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Web
   class BookActivitiesController < ApplicationController
     before_action :authenticate_user!
@@ -5,10 +7,12 @@ module Web
 
     def index
       book_activities = if params[:type].eql?('sent')
-                           current_user.borrow_requests
-                         elsif params[:type].eql?('received')
-                           current_user.lend_requests.active
-                         end.includes(:conversation, :borrower, :lender, book: [:book_activities, :genre, image_attachment: :blob]).order(updated_at: :desc)
+                          current_user.borrow_requests
+                        elsif params[:type].eql?('received')
+                          current_user.lend_requests.active
+                        end.includes(:conversation, :borrower, :lender, book: [:book_activities, :genre, {
+                                       image_attachment: :blob
+                                     }]).order(updated_at: :desc)
 
       @pagy, @book_activities = pagy(book_activities, items: params[:per_page])
     end
@@ -44,6 +48,7 @@ module Web
     end
 
     private
+
     def book_activity_params
       params.permit(:book_id)
     end

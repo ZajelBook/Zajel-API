@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class NotificationsController < ApplicationController
     before_action :authenticate_user!

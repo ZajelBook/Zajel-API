@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admins
   class BooksController < ApplicationController
-    before_action :set_book, only: [:show, :edit, :update, :approve, :mark_as_unavailable, :mark_as_available]
+    before_action :set_book, only: %i[show edit update approve mark_as_unavailable mark_as_available]
 
     def index
       scope = Book.approved
@@ -22,24 +24,25 @@ module Admins
     end
 
     def approve
-      if @book.update(approved: true)
-        redirect_to admins_book_path(@book.id)
-      end
+      return unless @book.update(approved: true)
+
+      redirect_to admins_book_path(@book.id)
     end
 
     def mark_as_unavailable
-      if @book.update(status: :unavailable)
-        redirect_to admins_book_path(@book.id)
-      end
+      return unless @book.update(status: :unavailable)
+
+      redirect_to admins_book_path(@book.id)
     end
 
     def mark_as_available
-      if @book.update(status: :available)
-        redirect_to admins_book_path(@book.id)
-      end
+      return unless @book.update(status: :available)
+
+      redirect_to admins_book_path(@book.id)
     end
 
     private
+
     def book_params
       params.require(:book).permit(:title, :author, :description, :language, :image, :genre_id, :approved, :status)
     end

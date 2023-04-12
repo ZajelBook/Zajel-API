@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Book do
@@ -26,36 +28,36 @@ RSpec.describe Book do
       let!(:book4) { create :book, is_mock: true }
       let!(:book5) { create :book, status: :available, approved: true, is_mock: false }
 
-      it { expect(Book.active).to eq [book5] }
-      it { expect(Book.active).not_to include(book) }
-      it { expect(Book.active).not_to include(book1) }
-      it { expect(Book.active).not_to include(book2) }
-      it { expect(Book.active).not_to include(book3) }
-      it { expect(Book.active).not_to include(book4) }
+      it { expect(described_class.active).to eq [book5] }
+      it { expect(described_class.active).not_to include(book) }
+      it { expect(described_class.active).not_to include(book1) }
+      it { expect(described_class.active).not_to include(book2) }
+      it { expect(described_class.active).not_to include(book3) }
+      it { expect(described_class.active).not_to include(book4) }
     end
 
     describe '.approved' do
       let!(:book) { create :approved_book }
       let!(:book1) { create :book, approved: false }
 
-      it { expect(Book.approved).to eq [book] }
-      it { expect(Book.approved).not_to include(book1) }
+      it { expect(described_class.approved).to eq [book] }
+      it { expect(described_class.approved).not_to include(book1) }
     end
 
     describe '.mocks' do
       let!(:book) { create :book }
       let!(:book1) { create :book, is_mock: true }
 
-      it { expect(Book.mocks).to eq [book1] }
-      it { expect(Book.mocks).not_to include(book) }
+      it { expect(described_class.mocks).to eq [book1] }
+      it { expect(described_class.mocks).not_to include(book) }
     end
 
     describe '.waiting_approval' do
       let!(:book) { create :approved_book }
       let!(:book1) { create :book, approved: false }
 
-      it { expect(Book.waiting_approval).to eq [book1] }
-      it { expect(Book.waiting_approval).not_to include(book) }
+      it { expect(described_class.waiting_approval).to eq [book1] }
+      it { expect(described_class.waiting_approval).not_to include(book) }
     end
 
     describe '.nearby' do
@@ -66,7 +68,7 @@ RSpec.describe Book do
       let!(:book1) { create :approved_book, owner: user1 }
       let!(:book2) { create :approved_book, owner: user2 }
 
-      it { expect(Book.nearby(user.coordinates, user.id)).to eq [book1, book2] }
+      it { expect(described_class.nearby(user.coordinates, user.id)).to eq [book1, book2] }
     end
   end
 
@@ -77,8 +79,8 @@ RSpec.describe Book do
       let(:book) { create :approved_book, owner: create(:user) }
       let!(:book_activity) { create :book_activity, book: book, borrower: user, status: :pending }
 
-      it { expect(book.requested_by?(user.id)).to be_truthy }
-      it { expect(book.requested_by?(user2.id)).to be_falsey }
+      it { expect(book).to be_requested_by(user.id) }
+      it { expect(book).not_to be_requested_by(user2.id) }
     end
 
     describe '#skip_verification' do
@@ -94,8 +96,8 @@ RSpec.describe Book do
       let!(:book1) { create :approved_book, title: 'test1', owner: user }
       let!(:book2) { create :approved_book, title: 'test2', owner: user }
 
-      it { expect(Book.search(user.id, 'test')).to eq [book, book1, book2] }
-      it { expect(Book.search(user.id, 'test1')).to eq [book1] }
+      it { expect(described_class.search(user.id, 'test')).to eq [book, book1, book2] }
+      it { expect(described_class.search(user.id, 'test1')).to eq [book1] }
     end
 
     describe 'display language' do
@@ -103,8 +105,9 @@ RSpec.describe Book do
       let!(:book) { create :approved_book, language: 'English' }
 
       it { expect(book.display_language).to eq 'English' }
+
       it do
-        I18n.with_locale(:ar) { expect(book.display_language).to eq 'انكليزي'}
+        I18n.with_locale(:ar) { expect(book.display_language).to eq 'انكليزي' }
       end
     end
   end

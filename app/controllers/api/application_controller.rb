@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class ApplicationController < ActionController::API
     include DeviseTokenAuth::Concerns::SetUserByToken
@@ -11,7 +13,7 @@ module Api
     protected
 
     def render_pagination_error
-      render json: {errors: []}, status: 200
+      render json: { errors: [] }, status: :ok
     end
 
     def check_user_confirmation_status

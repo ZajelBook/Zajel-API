@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AdminsHelper
   def user_verification_badge(user)
     badge = case user.confirmed_at?

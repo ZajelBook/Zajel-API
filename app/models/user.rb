@@ -22,10 +22,10 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient
 
   before_create :set_confirmation_code
-  after_create -> { notify_admins("We just got a new user: #{self.full_name}") }
+  after_create -> { notify_admins("We just got a new user: #{full_name}") }
   after_create_commit :send_confirmation_code, if: -> { Rails.env.production? }
 
-  scope :nearby, -> (coordinates) { near(coordinates, ENV['SEARCH_RADIUS'].to_i, units: :km)}
+  scope :nearby, ->(coordinates) { near(coordinates, ENV['SEARCH_RADIUS'].to_i, units: :km) }
 
   def full_name
     [first_name, last_name].join(' ')
@@ -47,10 +47,10 @@ class User < ApplicationRecord
     api_instance = SibApiV3Sdk::TransactionalEmailsApi.new
 
     send_smtp_email = SibApiV3Sdk::SendSmtpEmail.new(
-        sender: { email: ENV['SENDER_EMAIL'] },
-        to: [{ email: self.email }],
-        subject: 'Zajel confirmation code',
-        textContent: 'Your Zajel confirmation code is: ' + self.confirmation_token,
+      sender: { email: ENV['SENDER_EMAIL'] },
+      to: [{ email: email }],
+      subject: 'Zajel confirmation code',
+      textContent: "Your Zajel confirmation code is: #{confirmation_token}"
     )
 
     api_instance.send_transac_email(send_smtp_email)

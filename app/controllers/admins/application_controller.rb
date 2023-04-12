@@ -1,5 +1,9 @@
-class Admins::ApplicationController < ActionController::Base
-  include Pagy::Backend
+# frozen_string_literal: true
 
-  before_action :authenticate_admin!
+module Admins
+  class ApplicationController < ActionController::Base
+    include Pagy::Backend
+
+    before_action :authenticate_admin!
+  end
 end

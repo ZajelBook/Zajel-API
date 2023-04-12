@@ -1,19 +1,23 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Auth', type: :request do
   describe 'Sign up' do
     context 'with valid parameters' do
       let(:users_count) { User.count }
-      let!(:params) { {
-        email: "email@test.com",
-        password: "12345678",
-        password_confirmation: "12345678",
-        first_name: "test",
-        last_name: "test",
-        birth_date: "12-12-2013",
-        phone_number: "0105246241",
-        fcm_token: "sdfgdsfgdsgfgdgsdgdfg"
-      } }
+      let!(:params) do
+        {
+          email: 'email@test.com',
+          password: '12345678',
+          password_confirmation: '12345678',
+          first_name: 'test',
+          last_name: 'test',
+          birth_date: '12-12-2013',
+          phone_number: '0105246241',
+          fcm_token: 'sdfgdsfgdsgfgdgsdgdfg'
+        }
+      end
 
       before do
         User.destroy_all
@@ -27,10 +31,12 @@ RSpec.describe 'Auth', type: :request do
 
     context 'with invalid parameters' do
       let(:users_count) { User.count }
-      let!(:params) { {
-        email: "email@test.com",
-        password: "12345"
-      } }
+      let!(:params) do
+        {
+          email: 'email@test.com',
+          password: '12345'
+        }
+      end
 
       before do
         User.destroy_all
@@ -45,11 +51,13 @@ RSpec.describe 'Auth', type: :request do
 
   describe 'Sign in' do
     context 'with valid parameters' do
-      let!(:user) { create(:user, email: 'email@test.com')}
-      let!(:params) { {
-        email: "email@test.com",
-        password: "12345678",
-      } }
+      let!(:user) { create(:user, email: 'email@test.com') }
+      let!(:params) do
+        {
+          email: 'email@test.com',
+          password: '12345678'
+        }
+      end
 
       before do
         post '/api/auth/sign_in', params: params
@@ -59,11 +67,13 @@ RSpec.describe 'Auth', type: :request do
     end
 
     context 'with invalid parameters' do
-      let!(:user) { create(:user, email: 'email@test.com')}
-      let!(:params) { {
-        email: "email@test.com",
-        password: "87654321",
-      } }
+      let!(:user) { create(:user, email: 'email@test.com') }
+      let!(:params) do
+        {
+          email: 'email@test.com',
+          password: '87654321'
+        }
+      end
 
       before do
         post '/api/auth/sign_in', params: params

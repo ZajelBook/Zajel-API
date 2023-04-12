@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :book_activity do
     book { create :approved_book }
@@ -10,7 +12,6 @@ FactoryBot.define do
     trait :rejected do
       status { 'rejected' }
     end
-
 
     factory :accepted_request, traits: [:accepted]
     factory :rejected_request, traits: [:rejected]

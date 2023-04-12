@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -25,54 +27,57 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rpush'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
+gem 'brakeman'
+gem 'bundler-audit'
 gem 'devise'
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
-gem 'faker'
-gem 'pagy', '~> 6.0'
-gem 'geocoder'
-gem 'friendly_id', '~> 5.2.4'
 gem 'dotenv-rails'
+gem 'faker'
+gem 'friendly_id', '~> 5.2.4'
+gem 'geocoder'
+gem 'globalize', '~> 6.1'
+gem 'IPinfo'
+gem 'mini_magick'
+gem 'newrelic_rpm'
+gem 'oj'
+gem 'pagy', '~> 6.0'
+gem 'pg_search'
+gem 'rack-cors'
 gem 'sib-api-v3-sdk'
 gem 'telegram-bot-ruby'
-gem 'globalize', '~> 6.1'
-gem 'pg_search'
-gem "mini_magick"
-gem 'oj'
-gem 'IPinfo'
-gem 'newrelic_rpm'
-gem 'bundler-audit'
-gem 'brakeman'
 
-gem "sprockets-rails"
-gem "jsbundling-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "cssbundling-rails"
-gem "cocoon"
-gem "chartkick"
-gem "groupdate"
+gem 'chartkick'
+gem 'cocoon'
+gem 'cssbundling-rails'
+gem 'groupdate'
+gem 'jsbundling-rails'
+gem 'sprockets-rails'
+gem 'stimulus-rails'
+gem 'turbo-rails'
 
 group :development do
-  gem "capistrano", "~> 3.12", require: false
-  gem "capistrano-rails", require: false
-  gem 'capistrano-rbenv',     require: false
+  gem 'capistrano', '~> 3.12', require: false
   gem 'capistrano3-nginx'
   gem 'capistrano3-puma', '~> 5.0'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rbenv', require: false
   gem 'letter_opener'
+  gem 'rubocop-capybara', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   gem 'web-console'
 end
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :test do
   gem 'simplecov', require: false
-  gem 'simplecov-json', :require => false
+  gem 'simplecov-json', require: false
 
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end

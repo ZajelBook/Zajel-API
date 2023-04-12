@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ConversationsHelper
   def conversation_header(book_activity)
     chat_with = if @book_activity.borrower_id == current_user.id

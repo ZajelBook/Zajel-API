@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NotificationsHelper
   def notification_path(notification)
     case notification.payload['type']

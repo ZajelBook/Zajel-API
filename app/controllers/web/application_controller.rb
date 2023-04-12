@@ -1,25 +1,32 @@
-class Web::ApplicationController < ActionController::Base
-  include Pagy::Backend
-  include PreRequest
+# frozen_string_literal: true
 
-  before_action :turbo_frame_request_variant
-  before_action :set_location, if: :books_controller?
+module Web
+  class ApplicationController < ActionController::Base
+    include Pagy::Backend
+    include PreRequest
 
-  protected
-  def turbo_frame_request_variant
-    request.variant = :turbo_frame if turbo_frame_request?
-  end
+    before_action :turbo_frame_request_variant
+    before_action :set_location, if: :books_controller?
 
-  def set_location
-    return redirect_to books_path(redirect: request.url) if cookies['latitude'].nil? && cookies['longitude'].nil? && params[:redirect].nil?
-    return unless current_user
+    protected
 
-    current_user.update(latitude: cookies['latitude'], longitude: cookies['longitude'])
-  end
+    def turbo_frame_request_variant
+      request.variant = :turbo_frame if turbo_frame_request?
+    end
 
-  private
+    def set_location
+      if cookies['latitude'].nil? && cookies['longitude'].nil? && params[:redirect].nil?
+        return redirect_to books_path(redirect: request.url)
+      end
+      return unless current_user
 
-  def books_controller?
-    is_a?(Web::BooksController)
+      current_user.update(latitude: cookies['latitude'], longitude: cookies['longitude'])
+    end
+
+    private
+
+    def books_controller?
+      is_a?(Web::BooksController)
+    end
   end
 end

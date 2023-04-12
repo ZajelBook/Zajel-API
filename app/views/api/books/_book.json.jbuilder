@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 json.id book.id
 json.title book.title
 json.author book.author
@@ -6,7 +7,11 @@ json.published_at book.published_at
 json.language book.display_language
 json.page_count book.page_count
 json.image rails_blob_url book.image if book.image.present?
-json.status (book.try(:distance) ? book.distance.to_i : @distance.to_i) > ENV['AVAILABLE_BOOK_RADIUS'].to_i ? 'unavailable' : I18n.t("book.status.#{book.status}")
+if (book.try(:distance) ? book.distance.to_i : @distance.to_i) > ENV['AVAILABLE_BOOK_RADIUS'].to_i
+  json.status 'unavailable'
+else
+  json.status I18n.t("book.status.#{book.status}")
+end
 json.approved book.approved
 json.genre book.genre.name
 json.genre_id book.genre_id

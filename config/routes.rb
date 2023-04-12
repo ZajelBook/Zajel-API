@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'web/home#index'
 
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   devise_for :admins, controllers: {
-    sessions: 'admins/admins/sessions',
+    sessions: 'admins/admins/sessions'
   }
 
   namespace :admins do
@@ -20,8 +22,8 @@ Rails.application.routes.draw do
     end
     resources :book_activities
     resources :users
-    resources :genres, only: [:index, :new, :create, :edit, :update]
-    resources :languages, only: [:index, :new, :create, :edit, :update]
+    resources :genres, only: %i[index new create edit update]
+    resources :languages, only: %i[index new create edit update]
     resources :metadata, only: [:index]
     resources :requests, only: [:index]
   end
@@ -53,9 +55,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' }, path: '/api' do
     mount_devise_token_auth_for 'User', at: 'auth',
-                                :controllers => {
-                                  :passwords => "api/passwords"
-                                }
+                                        controllers: {
+                                          passwords: 'api/passwords'
+                                        }
 
     resources :users do
       put :confirm, on: :collection

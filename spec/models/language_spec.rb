@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Language do
@@ -23,11 +25,13 @@ RSpec.describe Language do
 
     context 'when locale = en' do
       before { I18n.locale = :en }
+
       it { expect(language.name).to eq('English') }
     end
 
     context 'when locale = ar' do
       before { I18n.locale = :ar }
+
       it { expect(language.name).to eq('انكليزي') }
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admins
   class LanguagesController < ApplicationController
     def index
@@ -32,12 +34,13 @@ module Admins
     end
 
     private
+
     def language_params
-      params.require(:language).permit(:name, translations_attributes: [
-        :id, :_destroy,
-        :locale,
-        :name,
-      ])
+      params.require(:language).permit(:name, translations_attributes: %i[
+                                         id _destroy
+                                         locale
+                                         name
+                                       ])
     end
   end
 end

@@ -1,15 +1,16 @@
+# frozen_string_literal: true
+
 class BookActivity < ApplicationRecord
   belongs_to :book
   belongs_to :borrower, polymorphic: true
   belongs_to :lender, polymorphic: true
   belongs_to :conversation, optional: true
 
-  enum status: [:pending, :accepted, :rejected]
+  enum status: { pending: 0, accepted: 1, rejected: 2 }
 
   ANDROID_NOTIFICATION_TYPES = { accepted: 'request_accepted',
                                  rejected: 'request_rejected',
-                                 pending: 'borrow_request'
-  }
+                                 pending: 'borrow_request' }.freeze
 
   before_validation :set_lender
 
@@ -23,7 +24,7 @@ class BookActivity < ApplicationRecord
     after_update :update_book_status
   end
 
-  after_create_commit -> { notify_admins("a new borrow request has been sent") }
+  after_create_commit -> { notify_admins('a new borrow request has been sent') }
 
   scope :active, -> { where.not(status: :rejected) }
 
@@ -38,43 +39,41 @@ class BookActivity < ApplicationRecord
   def create_conversation
     conversation = Conversation.find_by(borrower: [borrower, lender], lender: [borrower, lender])
     conversation = Conversation.create(borrower: borrower, lender: lender) if conversation.nil?
-    self.update_columns(conversation_id: conversation.id)
+    update_columns(conversation_id: conversation.id)
   end
 
   def notify_lender
-    BookActivityNotificationJob.set(wait: 1.minute).perform_later(self.id, 'lender_notification')
+    BookActivityNotificationJob.set(wait: 1.minute).perform_later(id, 'lender_notification')
   end
 
   def notify_borrower
-    BookActivityNotificationJob.perform_later(self.id, 'borrower_notification')
+    BookActivityNotificationJob.perform_later(id, 'borrower_notification')
   end
 
   def borrower_and_lender
-    borrower_id == lender_id ? errors.add("invalid", "can't borrow your own book") : true
+    borrower_id == lender_id ? errors.add('invalid', "can't borrow your own book") : true
   end
 
   def book_availability
-    errors.add("invalid", "Book is not available") unless book.available?
+    errors.add('invalid', 'Book is not available') unless book.available?
   end
 
   private
 
   def lender_notification
     I18n.with_locale(lender.locale || I18n.default_locale) do
-      content, title, type = [
-        I18n.t('notifications.book_activities.notify_lender.content',
-               borrower_full_name: borrower.full_name,
-               book_title: book.title),
-        I18n.t('notifications.book_activities.notify_lender.title'),
-        ANDROID_NOTIFICATION_TYPES[status.to_sym]
-      ]
+      content = I18n.t('notifications.book_activities.notify_lender.content',
+                       borrower_full_name: borrower.full_name,
+                       book_title: book.title)
+      title = I18n.t('notifications.book_activities.notify_lender.title')
+      type = ANDROID_NOTIFICATION_TYPES[status.to_sym]
 
       Notification.create(
         content: content,
         payload: {
           title: title,
           subject: content,
-          type: type,
+          type: type
         },
         recipient: lender
       )
@@ -83,13 +82,11 @@ class BookActivity < ApplicationRecord
 
   def borrower_notification
     I18n.with_locale(borrower.locale || I18n.default_locale) do
-      content, title, type = [
-        I18n.t("notifications.book_activities.notify_borrower.#{status}.content",
-               lender_full_name: lender.full_name,
-               book_title: book.title),
-        I18n.t("notifications.book_activities.notify_borrower.#{status}.title"),
-        ANDROID_NOTIFICATION_TYPES[status.to_sym]
-      ]
+      content = I18n.t("notifications.book_activities.notify_borrower.#{status}.content",
+                       lender_full_name: lender.full_name,
+                       book_title: book.title)
+      title = I18n.t("notifications.book_activities.notify_borrower.#{status}.title")
+      type = ANDROID_NOTIFICATION_TYPES[status.to_sym]
 
       Notification.create(
         content: content,

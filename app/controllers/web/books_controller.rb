@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Web
   class BooksController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
-    before_action :set_book, only: [:show, :edit, :update]
+    before_action :authenticate_user!, except: %i[index show]
+    before_action :set_book, only: %i[show edit update]
 
     def index
       @books = Book.nearby(set_coordinates, current_user.try(:id))
@@ -17,11 +19,11 @@ module Web
     end
 
     def show
-      if @book.is_mock?
-        @distance = rand(100)
-      else
-        @distance = @book.owner.distance_to(set_coordinates, :km)
-      end
+      @distance = if @book.is_mock?
+                    rand(100)
+                  else
+                    @book.owner.distance_to(set_coordinates, :km)
+                  end
     end
 
     def new
@@ -48,8 +50,10 @@ module Web
     end
 
     private
+
     def book_params
-      params.require(:book).permit(:title, :author, :description, :page_count, :language, :image, :published_at, :genre_id, :status)
+      params.require(:book).permit(:title, :author, :description, :page_count, :language, :image, :published_at,
+                                   :genre_id, :status)
     end
 
     def set_book

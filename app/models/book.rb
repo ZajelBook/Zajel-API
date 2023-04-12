@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Book < ApplicationRecord
   extend FriendlyId
   include PgSearch::Model
@@ -5,7 +7,7 @@ class Book < ApplicationRecord
   pg_search_scope :search_by_title,
                   against: :title,
                   using: {
-                      tsearch: { prefix: true }
+                    tsearch: { prefix: true }
                   }
 
   friendly_id :title, use: :slugged
@@ -16,7 +18,7 @@ class Book < ApplicationRecord
   belongs_to :owner, polymorphic: true
   belongs_to :genre
 
-  enum status: [:available, :unavailable, :borrowed]
+  enum status: { available: 0, unavailable: 1, borrowed: 2 }
 
   scope :approved, -> { where(approved: true) }
 
@@ -26,23 +28,23 @@ class Book < ApplicationRecord
 
   scope :mocks, -> { where(is_mock: true) }
 
-  scope :nearby, -> (coordinates, current_user_id) do
+  scope :nearby, lambda { |coordinates, current_user_id|
     joins('INNER JOIN users ON books.owner_id = users.id AND books.owner_type = \'User\' ')
       .merge(User.where.not(id: current_user_id).nearby(coordinates))
       .active
       .select('books.*, books.id AS id')
-  end
+  }
 
   before_create :skip_verification, if: -> { owner.verified? }
 
-  after_create_commit -> { notify_admins("We just got a new book: #{self.title} added by #{self.owner.full_name}") }
+  after_create_commit -> { notify_admins("We just got a new book: #{title} added by #{owner.full_name}") }
 
   def requested_by?(user_id)
     book_activities.find do |book_activity|
       book_activity.borrower_type.eql?('User') &&
         book_activity.borrower_id.eql?(user_id) &&
         book_activity.pending? &&
-        self.available?
+        available?
     end
   end
 
@@ -59,7 +61,7 @@ class Book < ApplicationRecord
   end
 
   def display_language
-    translation = Language::Translation.find_by(name: self.language)
+    translation = Language::Translation.find_by(name: language)
     language = Language.find_by(id: translation.language_id)
     language&.name || self.language
   end

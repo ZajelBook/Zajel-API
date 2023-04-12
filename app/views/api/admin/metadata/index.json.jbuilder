@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.metadata do
   json.users_count @users_count
   json.books_count @books_count

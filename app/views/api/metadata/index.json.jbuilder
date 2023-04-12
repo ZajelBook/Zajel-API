@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.confirmed @confirmed
 json.genres do
   json.array! @genres do |genre|

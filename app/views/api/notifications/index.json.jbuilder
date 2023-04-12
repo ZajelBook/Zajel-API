@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.metadata do
   json.total_pages @pagy.pages
   json.current_page @pagy.page

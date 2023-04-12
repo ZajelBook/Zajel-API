@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class BookActivitiesController < ApplicationController
     before_action :authenticate_user!
@@ -5,10 +7,12 @@ module Api
 
     def index
       book_activities = if params[:type].eql?('sent')
-                           current_user.borrow_requests
-                         elsif params[:type].eql?('received')
-                           current_user.lend_requests.active
-                         end.includes(:conversation, :borrower, :lender, book: [:book_activities, :genre, image_attachment: :blob]).order(updated_at: :desc)
+                          current_user.borrow_requests
+                        elsif params[:type].eql?('received')
+                          current_user.lend_requests.active
+                        end.includes(:conversation, :borrower, :lender, book: [:book_activities, :genre, {
+                                       image_attachment: :blob
+                                     }]).order(updated_at: :desc)
 
       @pagy, @book_activities = pagy(book_activities, items: params[:per_page])
     end
@@ -16,7 +20,7 @@ module Api
     def create
       book_activity = current_user.borrow_requests.new(book_activity_params)
       if book_activity.save
-        render json: {status: I18n.t('book_activities.request_sent')}
+        render json: { status: I18n.t('book_activities.request_sent') }
       else
         @error_message = book_activity.errors
         render 'shared/errors', status: :unprocessable_entity
@@ -26,7 +30,8 @@ module Api
     def update
       if params[:type].eql?('accept')
         @book_activity.accepted!
-        render json: { status: I18n.t('book_activities.request_accepted'), conversation_id: @book_activity.conversation_id }
+        render json: { status: I18n.t('book_activities.request_accepted'),
+                       conversation_id: @book_activity.conversation_id }
       elsif params[:type].eql?('reject')
         @book_activity.rejected!
         render json: { status: I18n.t('book_activities.request_rejected') }
@@ -44,6 +49,7 @@ module Api
     end
 
     private
+
     def book_activity_params
       params.permit(:book_id)
     end

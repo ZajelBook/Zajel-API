@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class MyBooksController < ApplicationController
     before_action :authenticate_user!
@@ -9,4 +11,3 @@ module Api
     end
   end
 end
-

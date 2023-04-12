@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BookActivitiesHelper
   def lend_request_status(status)
     badge = status_badge(status)

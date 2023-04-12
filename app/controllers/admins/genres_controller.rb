@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admins
   class GenresController < ApplicationController
     def index
@@ -32,12 +34,13 @@ module Admins
     end
 
     private
+
     def genre_params
-      params.require(:genre).permit(:name, translations_attributes: [
-        :id, :_destroy,
-        :locale,
-        :name,
-      ])
+      params.require(:genre).permit(:name, translations_attributes: %i[
+                                      id _destroy
+                                      locale
+                                      name
+                                    ])
     end
   end
 end
