@@ -135,12 +135,6 @@ GEM
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
     date (3.3.3)
-    ddtrace (1.10.1)
-      debase-ruby_core_source (>= 0.10.16, <= 3.2.0)
-      libdatadog (~> 2.0.0.1.0)
-      libddwaf (~> 1.6.2.0.0)
-      msgpack
-    debase-ruby_core_source (3.2.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.9.2)
@@ -217,9 +211,6 @@ GEM
       addressable (~> 2.8)
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
-    libdatadog (2.0.0.1.0)
-    libddwaf (1.6.2.0.0)
-      ffi (~> 1.0)
     loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -457,7 +448,6 @@ DEPENDENCIES
   chartkick
   cocoon
   cssbundling-rails
-  ddtrace
   devise
   devise_token_auth!
   dotenv-rails
