@@ -10,4 +10,12 @@ RSpec.describe User do
     it { expect(user.confirmed_at).to be_nil  }
     it { expect(user.full_name).to eq 'Test User'  }
   end
+
+  describe 'methods' do
+    let(:user) { create :user }
+
+    it { expect(user.coordinates).to eq [50.110924, 8.682127] }
+    it { expect(user.full_name).to eq 'Test User' }
+    it { expect(user.set_confirmation_code).to be_present }
+  end
 end

@@ -31,6 +31,10 @@ class User < ApplicationRecord
     [first_name, last_name].join(' ')
   end
 
+  def coordinates
+    [latitude, longitude]
+  end
+
   def set_confirmation_code
     self.confirmation_token = rand(3000..9000)
   end

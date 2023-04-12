@@ -20,22 +20,30 @@ class Book < ApplicationRecord
 
   scope :approved, -> { where(approved: true) }
 
-  scope :active, -> (owner_id) { available.approved.where(is_mock: false).where.not(owner_id: owner_id) }
+  scope :active, -> { available.approved.where(is_mock: false) }
 
   scope :waiting_approval, -> { where(approved: false) }
 
   scope :mocks, -> { where(is_mock: true) }
 
-  scope :nearby, -> (coordinates, except_user_id) { joins('INNER JOIN users ON books.owner_id = users.id').where(books: {owner_type: 'User'}).merge(User.where.not(id: except_user_id).nearby(coordinates)).active(except_user_id).select('books.*, books.id AS id') }
+  scope :nearby, -> (coordinates, current_user_id) do
+    joins('INNER JOIN users ON books.owner_id = users.id AND books.owner_type = \'User\' ')
+      .merge(User.where.not(id: current_user_id).nearby(coordinates))
+      .active
+      .select('books.*, books.id AS id')
+  end
 
-  before_create :skip_verification, if: Proc.new { owner.verified? }
+  before_create :skip_verification, if: -> { owner.verified? }
 
   after_create_commit -> { notify_admins("We just got a new book: #{self.title} added by #{self.owner.full_name}") }
 
   def requested_by?(user_id)
-    book_activities.select do |book_activity|
-      book_activity.borrower_type.eql?('User') && book_activity.borrower_id.eql?(user_id) && book_activity.pending? && self.available?
-    end.any?
+    book_activities.find do |book_activity|
+      book_activity.borrower_type.eql?('User') &&
+        book_activity.borrower_id.eql?(user_id) &&
+        book_activity.pending? &&
+        self.available?
+    end
   end
 
   def skip_verification

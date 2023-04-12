@@ -11,7 +11,7 @@ RSpec.describe Language do
     end
 
     context 'when providing locales' do
-      let(:language) { create :language, attributes: { name: 'عربي', locale: 'ar' } }
+      let(:language) { create :language, attributes: { name: 'انكليزي', locale: 'ar' } }
 
       it { expect(language.translations.count).to eq(2) }
       it { expect(language.translations.pluck(:locale)).to match_array(%w[ar en]) }
@@ -19,7 +19,7 @@ RSpec.describe Language do
   end
 
   describe 'accessing a language' do
-    let(:language) { create :language, attributes: { name: 'عربي', locale: 'ar' } }
+    let(:language) { create :language, attributes: { name: 'انكليزي', locale: 'ar' } }
 
     context 'when locale = en' do
       before { I18n.locale = :en }
@@ -28,7 +28,7 @@ RSpec.describe Language do
 
     context 'when locale = ar' do
       before { I18n.locale = :ar }
-      it { expect(language.name).to eq('عربي') }
+      it { expect(language.name).to eq('انكليزي') }
     end
   end
 end
