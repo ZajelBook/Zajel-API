@@ -8,6 +8,7 @@
     "@rails/actioncable": "^7.0.4-3",
     "@rails/request.js": "^0.0.8",
     "admin-lte": "3.1.0",
+    "autoprefixer": "^10.4.14",
     "bootstrap": "^4.5.3",
     "bootstrap-icons": "^1.10.4",
     "chart.js": "^4.2.1",
@@ -16,10 +17,13 @@
     "esbuild": "^0.17.9",
     "jquery": "^3.6.1",
     "js-cookie": "^3.0.1",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
     "sass": "^1.58.3"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/web/application.scss:./app/assets/builds/application.css ./app/assets/stylesheets/admins/application.scss:./app/assets/builds/application_admin.css --no-source-map --load-path=node_modules"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets --minify",
+    "build:css": "sass ./app/assets/stylesheets/web/application.scss:./app/assets/builds/application.css ./app/assets/stylesheets/admins/application.scss:./app/assets/builds/application_admin.css --no-source-map --load-path=node_modules --style=compressed",
+    "build:postcss": "postcss ./app/assets/builds/*.css --dir ./app/assets/builds/ --use autoprefixer"
   }
 }
