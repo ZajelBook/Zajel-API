@@ -32,12 +32,10 @@ gem 'bundler-audit'
 gem 'devise'
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 gem 'dotenv-rails'
-gem 'faker'
-gem 'friendly_id', '~> 5.2.4'
+gem 'friendly_id', '~> 5.5'
 gem 'geocoder'
 gem 'globalize', '~> 6.1'
 gem 'IPinfo'
-gem 'mini_magick'
 gem 'newrelic_rpm'
 gem 'oj'
 gem 'pagy', '~> 6.0'
@@ -61,6 +59,7 @@ group :development do
   gem 'capistrano3-puma', '~> 6.0.0.beta.1'
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
+  gem 'faker', require: false
   gem 'letter_opener'
   gem 'rubocop-capybara', require: false
   gem 'rubocop-rails', require: false

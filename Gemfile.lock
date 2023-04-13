@@ -184,7 +184,7 @@ GEM
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
     ffi (1.15.5)
-    friendly_id (5.2.5)
+    friendly_id (5.5.0)
       activerecord (>= 4.0.0)
     geocoder (1.8.1)
     globalid (1.1.0)
@@ -458,7 +458,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
-  friendly_id (~> 5.2.4)
+  friendly_id (~> 5.5)
   geocoder
   globalize (~> 6.1)
   groupdate
@@ -466,7 +466,6 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jsbundling-rails
   letter_opener
-  mini_magick
   newrelic_rpm
   oj
   pagy (~> 6.0)
