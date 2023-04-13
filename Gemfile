@@ -58,7 +58,7 @@ gem 'turbo-rails'
 group :development do
   gem 'capistrano', '~> 3.12', require: false
   gem 'capistrano3-nginx'
-  gem 'capistrano3-puma', '~> 5.0'
+  gem 'capistrano3-puma', '~> 6.0.0.beta.1'
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
   gem 'letter_opener'

@@ -112,10 +112,10 @@ GEM
       sshkit (~> 1.3)
     capistrano3-nginx (3.0.4)
       capistrano (~> 3.0)
-    capistrano3-puma (5.2.0)
+    capistrano3-puma (6.0.0.beta.1)
       capistrano (~> 3.7)
       capistrano-bundler
-      puma (>= 4.0, < 6.0)
+      puma (>= 5.1, < 7.0)
     capybara (3.39.0)
       addressable
       matrix
@@ -265,7 +265,7 @@ GEM
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     public_suffix (5.0.1)
-    puma (5.6.5)
+    puma (6.2.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
@@ -448,7 +448,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv
   capistrano3-nginx
-  capistrano3-puma (~> 5.0)
+  capistrano3-puma (~> 6.0.0.beta.1)
   capybara
   chartkick
   cocoon
