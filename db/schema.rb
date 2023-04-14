@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_01_224718) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_04_14_210832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,8 +52,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.datetime "remember_created_at"
     t.string "email"
     t.json "tokens"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_admins_on_uid_and_provider", unique: true
@@ -67,8 +66,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.string "lender_type"
     t.integer "lender_id"
     t.integer "status", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "conversation_id"
     t.index ["book_id"], name: "index_book_activities_on_book_id"
     t.index ["borrower_type", "borrower_id"], name: "index_book_activities_on_borrower_type_and_borrower_id"
@@ -88,8 +87,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.string "owner_type"
     t.integer "owner_id"
     t.bigint "genre_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
     t.boolean "is_mock", default: false
     t.index ["genre_id"], name: "index_books_on_genre_id"
@@ -102,8 +101,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.integer "borrower_id"
     t.string "lender_type"
     t.integer "lender_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["borrower_type", "borrower_id"], name: "index_conversations_on_borrower_type_and_borrower_id"
     t.index ["lender_type", "lender_id"], name: "index_conversations_on_lender_type_and_lender_id"
   end
@@ -122,8 +121,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
   create_table "genre_translations", force: :cascade do |t|
     t.bigint "genre_id", null: false
     t.string "locale", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.index ["genre_id"], name: "index_genre_translations_on_genre_id"
     t.index ["locale"], name: "index_genre_translations_on_locale"
@@ -131,15 +130,15 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "language_translations", force: :cascade do |t|
     t.bigint "language_id", null: false
     t.string "locale", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.index ["language_id"], name: "index_language_translations_on_language_id"
     t.index ["locale"], name: "index_language_translations_on_locale"
@@ -147,8 +146,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -158,8 +157,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.integer "receiver_id"
     t.text "content"
     t.bigint "conversation_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["receiver_type", "receiver_id"], name: "index_messages_on_receiver_type_and_receiver_id"
     t.index ["sender_type", "sender_id"], name: "index_messages_on_sender_type_and_sender_id"
@@ -170,8 +169,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.json "payload"
     t.string "recipient_type"
     t.integer "recipient_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "read", default: false
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
   end
@@ -182,8 +181,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.string "controller_class"
     t.string "original_path"
     t.string "method"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "country"
     t.string "city"
   end
@@ -194,8 +193,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.text "certificate"
     t.string "password"
     t.integer "connections", default: 1, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "type", null: false
     t.string "auth_key"
     t.string "client_id"
@@ -212,8 +211,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
   create_table "rpush_feedback", force: :cascade do |t|
     t.string "device_token"
     t.datetime "failed_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "app_id"
     t.index ["device_token"], name: "index_rpush_feedback_on_device_token"
   end
@@ -232,8 +231,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.integer "error_code"
     t.text "error_description"
     t.datetime "deliver_after"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "alert_is_json", default: false, null: false
     t.string "type", null: false
     t.string "collapse_key"
@@ -278,9 +277,8 @@ ActiveRecord::Schema.define(version: 2022_01_01_224718) do
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.json "tokens"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "online", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "verified", default: false
     t.string "locale"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

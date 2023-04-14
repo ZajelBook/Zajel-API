@@ -8,7 +8,7 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   reverse_geocoded_by :latitude, :longitude
-
+  kredis_boolean :online
   has_many :books, as: :owner
   has_many :borrow_requests, as: :borrower, class_name: 'BookActivity'
   has_many :lend_requests, as: :lender, class_name: 'BookActivity'

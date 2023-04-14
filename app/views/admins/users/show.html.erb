@@ -19,7 +19,7 @@
                 <b>Mobile User?</b> <a class="float-right"><%= @user.fcm_token? %></a>
               </li>
               <li class="list-group-item">
-                <b>Online?</b> <a class="float-right"><%= @user.online %></a>
+                <b>Online?</b> <a class="float-right"><%= @user.online.value.eql?(true) %></a>
               </li>
             </ul>
           </div>

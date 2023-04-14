@@ -25,7 +25,7 @@ class Message < ApplicationRecord
                                              sender_name: sender_name,
                                              conversation_id: conversation_id,
                                              created_at: created_at } }
-    notify_receiver unless receiver.online?
+    notify_receiver unless receiver.online.value.eql?(true)
   end
 
   def sender_name
