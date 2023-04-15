@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/lynndylanhurley/devise_token_auth.git
-  revision: 30b6d30037ea646646e58ba2ec5ff4682b654f2c
+  revision: d03606c8e839b48dab608947a7fc99b73e3168b0
   specs:
     devise_token_auth (1.2.1)
       bcrypt (~> 3.0)
@@ -79,7 +79,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.3)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     airbrussh (1.4.1)
       sshkit (>= 1.6.1, != 1.7.0)
@@ -158,7 +158,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faker (3.1.1)
+    faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     faraday (1.10.3)
       faraday-em_http (~> 1.0)
@@ -254,10 +254,10 @@ GEM
     net-ssh (7.1.0)
     newrelic_rpm (9.1.0)
     nio4r (2.5.9)
-    nokogiri (1.14.2)
+    nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    oj (3.14.2)
+    oj (3.14.3)
     orm_adapter (0.5.0)
     pagy (6.0.3)
     parallel (1.22.1)
@@ -360,7 +360,7 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
-    rubocop-rspec (2.18.1)
+    rubocop-rspec (2.19.0)
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
     ruby-progressbar (1.13.0)
