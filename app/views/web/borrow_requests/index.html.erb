@@ -29,7 +29,7 @@
                   <div class="col-sm-3 col-3">
                     <div class="mb-20 text-center">
                       <%= image_tag request.book.image.variant(format: :webp, convert: :webp), class: 'img-fluid mb-3' %>
-                      <%= borrow_request_status(request.status) %>
+                      <%= book_activity_status(request.status) %>
                     </div>
                   </div>
                   <div class="col-9">
