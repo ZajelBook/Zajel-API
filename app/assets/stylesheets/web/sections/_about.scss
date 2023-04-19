@@ -1,0 +1,70 @@
+// About 02
+.aboutArea{
+    // left content
+    .about-caption{
+        @media #{$tab}{
+            margin-bottom: 35px;
+        }
+    }
+    // Right img
+    .aboutImg{
+        img{
+            width: 100%;
+        }
+       &.aboutImg5{
+            position: absolute;
+            top: -312px;
+            left: 0;
+            @media #{$tab}{
+                position: unset;
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            img{
+
+                width: 100%;
+            }
+        }
+    }
+
+    // Shape
+    .aboutShape {
+        position: absolute;
+
+        @media #{$sm}{
+            display: none;
+        }
+        @media #{$xs}{
+            display: none;
+        }
+        & > img{
+            width: auto;
+        }
+        &.aboutShape1 {
+            left: 0;
+            top: 50%;
+            z-index: 1;
+            transform: translateY(-50%);
+            @media #{$lg}{
+                width: 16%;
+            }
+            @media #{$tab}{
+                display: none;
+            }
+        }
+        &.aboutShape2 {
+            right: 0;
+            top: 50%;
+            z-index: 1;
+            transform: translateY(-50%);
+            @media #{$tab}{
+                display: none;
+            }
+            @media #{$lg}{
+                width: 16%;
+            }
+        }
+    }
+}
+
+

@@ -1,14 +1,320 @@
-<div class="slider_area">
-  <div class="single_slider  d-flex align-items-center slider_bg_1">
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-xl-10">
-          <div class="slider_text text-center justify-content-center">
-            <h3>Zajel - Book Sharing</h3>
-            <a href="/books" class="genric-btn danger circle">Find Nearby Books</a>
+<div class="sliderArea heroWhiteStyle">
+  <div class="slider-active">
+    <div class="single-slider heroPadding3 d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xxl-7 col-xl-7 col-lg-7 ">
+            <div class="heroCaption text-center">
+              <h1 class="tittle" data-animation="fadeInUp" data-delay="0.0s">Anything you need sell anything you want</h1>
+              <p class="pera" data-animation="fadeInUp" data-delay="0.2s">Countrys most loved and trusted classified ad listing website classified ad.randomised words which don't look even slightly Browse thousand of items near you</p>
+            </div>
+          </div>
+          <div class="col-xxl-10 col-xl-10 col-lg-10 ">
+            <!-- form -->
+            <form action="#" class="search-box text-center" data-animation="fadeInUp" data-delay="0.3s">
+              <div class="select-form" >
+                <div class="select-itms">
+                  <select name="select"  class="niceSelect">
+                    <option value="">New York, USA</option>
+                    <option value="">Location PK</option>
+                    <option value="">Location US</option>
+                    <option value="">Location UK</option>
+                  </select>
+                  <i class="las la-map-marker-alt  icon"></i>
+                </div>
+              </div>
+              <div class="searchBox-wrapper" >
+                <div class="input-form">
+                  <input type="text" class="input keyup-input" placeholder="Search...">
+                </div>
+                <!-- search-suggestions -->
+                <div class="category-searchbar search-showHide">
+                  <!-- Closed Icon -->
+                  <span class="closed-icon"><i class="las la-times"></i></span>
+                  <div class="search-suggestions" id="search_suggestions_wrap">
+                    <div class="search-inner">
+                      <div class="category-suggestion item-suggestions">
+                        <h6 class="item-title">Category Suggestions</h6>
+                        <ul class="category-suggestion-list" >
+                          <li class="list"> <a href="#" class="item">Fruits &amp; Vegetables</a>
+                          </li>
+                          <li class="list"><a href="#" class="item">Cooking</a>
+                          </li><li class="list"> <a href="#" class="item">Dairy</a> </li>
+                        </ul>
+                      </div>
+                      <div class="product-suggestion item-suggestions">
+                        <h6 class="item-title">
+                                                          <span>
+                                                              Product Suggestions
+                                                          </span>
+                          <a href="#" target="_blank" id="search_result_all" class="showAll">Show all</a>
+                        </h6>
+                        <ul class="product-suggestion-list mt-4" id="search_result_products">
+                          <li class="list">
+                            <a href="#" class="item">
+                              <div class="product-image"><img src="assets/gallery/wishlist1.jpg" alt="img"></div>
+                              <div class="product-info">
+                                <div class="product-info-top">
+                                  <h6 class="product-name">Fresh Fruits</h6>
+                                </div>
+                                <div class="product-price">
+                                  <div class="price-update-through">
+                                    <span class="flash-price fw-500">$200.00</span>
+                                    <span class="flash-old-prices">$240</span>
+                                  </div>
+                                  <span class="stock-out">In Stock</span>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End suggestions -->
+              </div>
+              <div class="search-form" >
+                <button class="search-Btn">Search</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<section class="browseCategory section-bg-1 padding-top-100 padding-bottom-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-7 col-md-10 col-sm-10">
+        <div class="section-tittle text-center mb-50">
+          <h2 class="tittle"><span class="shape"></span>Browse By Categories</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInLeft" data-wow-delay=".0s">
+          <div class="icon">
+            <i class="las la-laptop-medical"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Electronics </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInLeft" data-wow-delay=".1s">
+          <div class="icon">
+            <i class="las la-mobile"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Mobile </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInLeft" data-wow-delay=".2s">
+          <div class="icon">
+            <i class="las la-car"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Car </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInLeft" data-wow-delay=".3s">
+          <div class="icon">
+            <i class="lar la-lightbulb"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Vehicles </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInLeft" data-wow-delay=".4s">
+          <div class="icon">
+            <i class="las la-tshirt"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Appliance </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInLeft" data-wow-delay=".5s">
+          <div class="icon">
+            <i class="las la-clock"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Education </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInRight" data-wow-delay=".5s">
+          <div class="icon">
+            <i class="las la-home"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Property </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInRight" data-wow-delay=".4s">
+          <div class="icon">
+            <i class="las la-paw"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Pets </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInRight" data-wow-delay=".3s">
+          <div class="icon">
+            <i class="las la-business-time"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> Business </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInRight" data-wow-delay=".2s">
+          <div class="icon">
+            <i class="lab la-servicestack"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> services </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInRight" data-wow-delay=".1s">
+          <div class="icon">
+            <i class="las la-futbol"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> sports </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="singleCategory mb-24 wow fadeInRight" data-wow-delay=".0s">
+          <div class="icon">
+            <i class="las la-synagogue"></i>
+          </div>
+          <div class="catContent">
+            <h4><a href="ad_lists_category.html" class="title"> jobs </a> </h4>
+            <span class="para">12,990 items</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricingCard sectionBg1 section-padding">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-7 col-md-10 col-sm-10">
+        <div class="section-tittle text-center mb-50">
+          <h2 class="tittle  "><span class="shape"></span>Post and Promote Your Listings</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <!-- Single -->
+        <div class="singlePrice mb-24 wow fadeInLeft" data-wow-delay=".2s">
+          <h4 class="priceTittle">Free</h4>
+          <ul class="listing">
+            <li class="listItem"><i class="las la-check icon"></i><blockquote class="priceTag">Your ad will be promoted for 3 days</blockquote></li>
+            <li class="listItem"><i class="las la-check icon"></i><blockquote class="priceTag">Get upto 10x times more responses</blockquote> </li>
+            <li class="listItem"><i class="las la-check icon"></i><blockquote class="priceTag">Your Ad will be featured for 1st day</blockquote></li>
+          </ul>
+          <span class="price">$0 <span class="subTittle"> /For Lifetime</span></span>
+
+          <div class="btn-wrapper">
+            <a href="#" class="cmn-btn-outline1">Get Started</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <!-- Single -->
+        <div class="singlePrice mb-24 wow fadeInDown" data-wow-delay=".1s">
+          <h4 class="priceTittle">Standard</h4>
+          <ul class="listing">
+            <li class="listItem"><i class="las la-check icon"></i>Your ad will be promoted for 3 days</li>
+            <li class="listItem"><i class="las la-check icon"></i>Get upto 10x times more responses</li>
+            <li class="listItem"><i class="las la-check icon"></i>Your Ad will be featured for 1st day</li>
+          </ul>
+          <span class="price">$49<span class="subTittle"> /For 3 Days</span></span>
+
+          <div class="btn-wrapper">
+            <a href="#" class="cmn-btn-outline1">Get Started</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <!-- Single -->
+        <div class="singlePrice mb-24 wow fadeInRight" data-wow-delay=".2s">
+          <h4 class="priceTittle">Premium</h4>
+          <ul class="listing">
+            <li class="listItem"><i class="las la-check icon"></i>Your ad will be promoted for 3 days</li>
+            <li class="listItem"><i class="las la-check icon"></i>Get upto 10x times more responses</li>
+            <li class="listItem"><i class="las la-check icon"></i>Your Ad will be featured for 1st day</li>
+          </ul>
+          <span class="price">$99<span class="subTittle"> /For 4 days</span></span>
+
+          <div class="btn-wrapper">
+            <a href="#" class="cmn-btn-outline1">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="aboutArea section-padding2">
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-xxl-6 col-xl-7 col-lg-6">
+        <div class="about-caption">
+          <!-- Section Tittle -->
+          <div class="section-tittle section-tittle2 mb-40">
+            <h2 class="tittle wow fadeInUp" data-wow-delay="0.0s">Earn cash by selling<br> or Find anything you desire</h2>
+            <p  class="wow fadeInUp" data-wow-delay="0.2s">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humo or randomised words which don't look even slightlys</p>
+          </div>
+          <div class="btn-wrapper">
+            <a href="add_listing_Details.html" class="cmn-btn2 mr-15 mb-10 wow fadeInLeft" data-wow-delay="0.3s">Post your ad</a>
+            <a href="ad_lists_category.html" class="cmn-btn3 mb-10 wow fadeInRight" data-wow-delay="0.3s">Browse ads</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-5 col-xl-5 col-lg-6">
+        <!-- about-img -->
+        <div class="aboutImg tilt-effect wow fadeInRight" data-wow-delay="0.1s">
+          <img src="assets/gallery/about4.png" alt="images" class="bouncingAnimation">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

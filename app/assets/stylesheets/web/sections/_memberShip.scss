@@ -1,0 +1,173 @@
+// My Listings
+.memberShipCart{
+    .singleMember{
+        background: #FFFFFF;
+        box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+        padding: 20px;
+        padding-bottom: 0;
+        border-radius: 12px;
+
+        @include flexbox();
+        @include align-items(start);
+        @include justify-content(space-between);
+        @include transition(.4s);
+       
+        cursor: pointer;
+        @media #{$tab2}{
+            @include flex-wrap(wrap);
+        }
+        .memberDetails{
+            margin-bottom: 20px;
+            .memberTittle {
+                
+                font-family: var(--heading-font);
+                margin-bottom: 9px;
+                line-height: 1.5;
+                color: var(--heading-color);
+                font-weight: 500;
+                font-size: 20px;
+                display: block;
+                .activeUser{
+                    font-family:var(--heading-font);
+                    color: #4CAF50;
+                    background: rgba(76, 175, 80,0.15);
+                    font-size: 14px;
+                    border-radius: 8px;
+                    padding: 7px 12px;
+                    margin-left: 10px;
+                }
+                &:hover{
+                    color: var(--heading-color);
+                }
+                @media #{$large1}{
+                    font-size: 15px;
+                }
+                @media #{$lg}{
+                    font-size: 21px;
+                }
+                @media #{$md}{
+                    font-size: 18px;
+                }
+                @media #{$xs}{
+                    font-size: 18px;
+                }
+            }
+            .memberCap{
+                font-family: var(--heading-font);
+                font-size: 15px;
+                color: var(--heading-font);
+                margin-bottom: 20px;
+                @media #{$large1}{
+                    font-size: 12px;
+                    margin-bottom: 7px;
+                }
+                .subCap{
+                    font-family: var(--heading-font);
+                    font-family: var(--heading-font);
+                    color: var(--main-color-two);
+                    font-weight: 400;
+
+                    @media #{$large1}{
+                        font-size: 12px;
+                        
+                    }
+                }
+            }
+            // infoSingle
+            .infoSingle{
+                .listing{
+                    .listItem{
+                        font-family: var(--heading-font);
+                        color: $font_color4;
+                        display: inline-block;
+                        margin-right: 9px;
+                        font-size: 15px;
+                        border-right: 1px solid #EAECF0;
+                        padding-right: 11px;
+                        line-height: 1;
+                        &:last-child{
+                            margin-right: 0px;
+                            padding-right: 0;
+                            border-right:0 ;
+                        }
+                        .icon{
+                            margin-right: 9px;
+                            color: $font_color1;
+                        }
+                        @media #{$sm}{
+                            margin-right: 10px;
+                            font-size: 13px
+                        }
+                    }
+                }
+            }
+        } 
+    }
+}
+
+// My Listings
+.paymentTable{
+    background: #FFFFFF;
+    box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+    padding: 20px;
+    border-radius: 12px;
+    padding-bottom: 0;
+    .singleMember{
+        @include flexbox();
+        @include align-items(start);
+        @include justify-content(space-between);
+        @include transition(.4s);
+        @media #{$tab2}{
+            @include flex-wrap(wrap);
+        }
+        border-bottom: 1px solid #EAECF0;
+        margin-bottom: 18px;
+        padding-bottom: 1px;
+        &:last-child{
+            border: 0;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+        .memberInfo {
+            font-family: var(--heading-font);
+            margin-bottom: 9px;
+            color: var(--heading-color);
+            font-weight: 400;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .price{
+            font-family: var(--heading-font);
+            margin-bottom: 9px;
+            color: var(--heading-color);
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .lastDegit{
+            color: var(--heading-color);
+            font-weight: 600;
+        }
+        .memberCap{
+            font-family: var(--heading-font);
+            font-size: 15px;
+            color: var(--heading-font);
+            margin-bottom: 20px;
+            @media #{$large1}{
+                font-size: 12px;
+                margin-bottom: 7px;
+            }
+            .subCap{
+                font-family: var(--heading-font);
+                font-family: var(--heading-font);
+                color: var(--main-color-two);
+                font-weight: 400;
+
+                @media #{$large1}{
+                    font-size: 12px;
+                    
+                }
+            }
+        }
+    }
+}
+

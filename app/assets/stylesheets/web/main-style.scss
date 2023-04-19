@@ -1,0 +1,48 @@
+// Global Design
+    @import "global/mixins";
+    @import "global/variables";
+    @import "global/global";
+    @import "global/extend";
+    @import "global/button";
+    @import "global/animation";
+
+
+// Section -- Home Page -- 01
+    @import "sections/navbar";
+    @import "sections/header";
+    @import "sections/hero";
+    @import "sections/services";
+    @import "sections/featuredListing";
+    @import "sections/recentListing";
+    @import "sections/pricing";
+    @import "sections/testimonial";
+    @import "sections/about";
+    @import "sections/footer";
+
+// Section -- Home Page -- 04
+    @import "sections/categories";
+
+// Section -- Home Page -- 03
+    @import "sections/browseCate";
+
+// inner Section
+    @import "sections/pagination"; 
+    @import "sections/adLists";
+    @import "sections/breadCrumb";
+    @import "sections/addDetails";
+
+// Account page
+    @import "sections/myAccount";
+    @import "sections/memberShip";
+    @import "sections/promotedAddList";
+    @import "sections/promoSetting";
+    @import "sections/wishList";
+    @import "sections/help";
+    
+    @import "sections/payment";
+    @import "sections/listingDetails";
+    @import "sections/imgUplode";
+    @import "sections/contact";
+    @import "sections/login";
+    @import "sections/messages";
+    @import "sections/team";

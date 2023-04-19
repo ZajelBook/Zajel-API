@@ -2,7 +2,14 @@
 <html lang="<%= I18n.locale %>">
   <head>
     <title>Zajel</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name = "keywords" content = "ads, advertise, advertising, classified, classified ads, database, directory, jobs, listing, local, portal" />
+    <meta name = "description" content = "Choose from 72 Premium classified ads Templates from the #1 source for classified ads Templates. Created by our Global Community of independent Web Developers." />
+    <link rel="icon" type="image/x-icon" sizes="20x20" href="assets/icon/favicon.png">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,10 +18,22 @@
   </head>
 
   <body>
-    <div>
-      <%= render 'layouts/web/header' %>
+    <%= render 'layouts/web/header' %>
+    <main>
+      <!-- Modal -->
+      <div class="body-overlay-desktop"></div>
+      <div class="modal-wrapper text-center">
+        <div class="close-icon">
+          <i class="las la-times"></i>
+        </div>
+        <h2 class="modialTittle">Post Your <span>Ad</span> ?</h2>
+        <div class="btn-wrapper">
+          <a href="add_listing_Details.html" class="cmn-btn02">Yes , Post ad</a>
+        </div>
+      </div>
+
       <%= yield %>
-      <%= render 'layouts/web/footer' %>
-    </div>
+    </main>
+    <%= render 'layouts/web/footer' %>
   </body>
 </html>

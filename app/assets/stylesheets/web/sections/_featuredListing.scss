@@ -1,0 +1,91 @@
+.featureListing{
+    .singleFeature{
+        .featureImg{
+            img {
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+        .featureCaption {
+            background: $white;
+            padding: 18px 31px 25px 25px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            margin-top: -30px;
+            border-radius: 20px;
+            // box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+            box-shadow: 0 3px 12px rgba(45,23,191,0.09);
+            position: relative;
+            z-index: 0; 
+            margin-bottom: 24px;
+
+            @media #{$md}{
+                width: 95%;
+            }
+            @media #{$lg}{
+                width: 94%;
+                padding: 33px 15px 16px 15px;
+            }
+            @media #{$md}{
+                width: 94%;
+                padding: 33px 15px 16px 15px;
+            }
+            @media #{$sm}{
+                width: 94%;
+                padding: 33px 15px 16px 15px;
+            }
+            @media #{$xs}{
+                width: 97%;
+                padding: 33px 18px 16px 18px;
+                margin-top: -30px;
+            }
+            .featureTittle {
+                
+                font-family: var(--heading-font);
+                margin-bottom: 2px;
+                line-height: 1.5;
+                color: var(--heading-color);
+                font-weight: 500;
+                font-size: 22px;
+                display: block;
+                &:hover{
+                    color: var(--heading-color);
+                }
+                @media #{$large1}{
+                    font-size: 21px;
+                }
+                @media #{$lg}{
+                    font-size: 21px;
+                }
+                @media #{$md}{
+                    font-size: 18px;
+                }
+                @media #{$xs}{
+                    font-size: 18px;
+                }
+            }
+            .featureCap{
+                font-family: var(--heading-font);
+                font-size: 15px;
+                color: var(--heading-font);
+                margin-bottom: 2px;
+                .subCap{
+                    font-family: var(--heading-font);
+                    font-family: var(--heading-font);
+                    color: var(--main-color-two);
+                    font-weight: 400;
+                }
+            }
+            .featurePricing {
+                margin-bottom: 18px;
+                font-family: var(--heading-font);
+                color: var(--heading-color);
+                font-weight: 500;
+                font-size: 20px;
+                display: block;
+
+            }
+        }
+    }
+}

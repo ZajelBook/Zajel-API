@@ -1,0 +1,343 @@
+.accountSidebar{
+    box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+    border-radius: 12px;
+    background: $white;
+    padding:  30px 20px 30px 30px;
+    height: 100vh;
+    position: relative;
+    margin-bottom: 25px;
+    height: calc(100vh - 71px);
+    overflow: hidden;
+    // listing
+    .listing{
+        height: calc(100vh - 180px);
+        position: relative;
+        padding: 0px 10px 0 0;
+        .listItem{
+            @include flexbox();
+            @include align-items(center);
+            margin-bottom: 10px;
+
+            &:last-child{
+                margin-bottom: 0px;
+            }
+            .icon{
+                margin-right: 15px;
+                font-size: 25px;
+                vertical-align: -4px;
+
+            }
+            .items{
+                font-family: var(--heading-font);
+                color: $font-color1;
+                background: $white;
+                font-size: 16px;
+                width: 100%;
+                border-radius: 8px;
+                padding: 14px 12px;
+                &:hover{
+                    background: var(--main-color-two);
+                    color: #fff;
+                    letter-spacing: .6px;
+                    .icon{
+                        color: $white;
+                    }
+                }
+                &.active{
+                    background: var(--main-color-two);
+                    color: #fff;
+                    .icon{
+                        color: $white;
+                    }
+                }
+            }
+            .icon{
+                color: $font-color1;
+                margin-right: 15px;
+                font-weight: 700;
+            }
+            .priceTag{
+                margin: 0;
+            }
+        }
+    }
+}
+// btn
+.accessAccount{
+    position: absolute;
+    bottom: 31px;
+    left: 15px;
+    .account-btn{
+        font-family: var(--heading-font);
+        color: $font-color1;
+        font-size: 16px;
+        width: 100%;
+        border-radius: 8px;
+        // position: absolute;
+        // bottom: 31px;
+        // left: 25px;
+        padding: 5px;
+        margin-left: 10px;
+        &:hover{
+            color: var(--main-color-two);
+            letter-spacing: .9px;
+        }
+        .icon{
+            margin-right: 15px;
+            font-size: 25px;
+            vertical-align: -4px;
+        }
+    }
+}
+
+
+// My Listings
+.myListing{
+    .singleFlexitem{
+        background: #FFFFFF;
+        box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+        padding: 20px;
+        padding-bottom: 0;
+        border-radius: 12px;
+        @include flexbox();
+        @include align-items(start);
+        @include justify-content(space-between);
+        @include transition(.4s);
+       
+        cursor: pointer;
+        @media #{$tab2}{
+            @include flex-wrap(wrap);
+        }
+        .listCap{
+            @include flexbox();
+            @include align-items(center);
+            @include transition(.4s);
+            margin-bottom: 20px;
+            cursor: pointer;
+                left: auto;
+            @media #{$large1}{
+                padding: 10px;
+            }
+            @media #{$tab}{
+                @include flex-wrap(wrap);
+                margin-bottom: 10px;
+            }
+            .recentImg{
+                margin-right: 20px;
+                @media #{$xs}{
+                    margin-bottom:15px;
+                }
+                @media #{$large1}{
+                    width: 29%;
+                    margin-right: 9px;
+                }
+                
+                img{
+                    border-radius: 12px;
+                    @media #{$large1}{
+                        width: 100%;
+                    }
+                }
+            }
+            .recentCaption{
+                .featureTittle {
+                    
+                    font-family: var(--heading-font);
+                    margin-bottom: 9px;
+                    line-height: 1.5;
+                    color: var(--heading-color);
+                    font-weight: 500;
+                    font-size: 20px;
+                    display: block;
+                    &:hover{
+                        color: var(--heading-color);
+                    }
+                    @media #{$large1}{
+                        font-size: 15px;
+                    }
+                    @media #{$lg}{
+                        font-size: 21px;
+                    }
+                    @media #{$md}{
+                        font-size: 18px;
+                    }
+                    @media #{$xs}{
+                        font-size: 18px;
+                    }
+                }
+                .featureCap{
+                    font-family: var(--heading-font);
+                    font-size: 15px;
+                    color: var(--heading-font);
+                    margin-bottom: 20px;
+                    @media #{$large1}{
+                        font-size: 12px;
+                        margin-bottom: 7px;
+                    }
+                    .subCap{
+                        font-family: var(--heading-font);
+                        font-family: var(--heading-font);
+                        color: var(--main-color-two);
+                        font-weight: 400;
+    
+                        @media #{$large1}{
+                            font-size: 12px;
+                            
+                        }
+                    }
+                }
+                .featurePricing {
+                    margin-bottom: 18px;
+                    font-family: var(--heading-font);
+                    color: var(--heading-color);
+                    font-weight: 500;
+                    font-size: 24px;
+                    display: block;
+                    @media #{$large1}{ 
+                        font-size: 17px;
+                        margin-bottom: 7px;
+                    }
+                }
+            }
+        }
+
+        &:hover{
+            .cat-caption{
+                .product-price{
+                    i{
+                        color: var(--main-color-two);
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// accountWrapper
+.accountWrapper{
+	background: #FFFFFF;
+	box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+	padding: 20px;
+	border-radius: 12px;
+	
+	// Single 
+	.userProfile{
+		background: #FFFFFF;
+		@include flexbox();
+		@include align-items(center);
+		@include transition(.4s);
+		cursor: pointer;
+		border-bottom: 1px solid #EAECF0;
+		margin-bottom: 22px;
+		padding-bottom: 20px;
+        @media #{$large1}{
+			padding: 10px;
+		}
+		@media #{$tab}{
+			@include flex-wrap(wrap);
+		}
+		.recentImg{
+			margin-right: 20px;
+			@media #{$xs}{
+				margin-bottom:15px;
+			}
+			// @media #{$large1}{
+			// 	width: 29%;
+			// 	margin-right: 9px;
+			// }
+			
+			img{
+				border-radius: 12px;
+				// @media #{$large1}{
+				// 	width: 100%;
+				// }
+			}
+		}
+		.recentCaption{
+			@include flexbox();
+			@include align-items(center);
+			@include justify-content(space-between);
+			width: 100%;
+            @media #{$xs}{
+                @include flex-wrap(wrap);
+            }
+			.featureTittle {
+				font-family: var(--heading-font);
+				margin-bottom: 9px;
+				line-height: 1.5;
+				color: var(--heading-color);
+				font-weight: 500;
+				font-size: 20px;
+				display: block;
+				.icon{
+					margin-left: 6px;
+				}
+				&:hover{
+					color: var(--heading-color);
+				}
+				@media #{$large1}{
+					font-size: 15px;
+				}
+				@media #{$lg}{
+					font-size: 21px;
+				}
+				@media #{$md}{
+					font-size: 18px;
+				}
+				@media #{$xs}{
+					font-size: 18px;
+				}
+			}
+			.featureCap{
+				font-family: var(--heading-font);
+				font-size: 15px;
+				color: var(--heading-font);
+				margin-bottom: 10px;
+				@media #{$large1}{
+					font-size: 12px;
+				}
+				.subCap{
+					font-family: var(--heading-font);
+					font-family: var(--heading-font);
+					color: var(--main-color-two);
+					font-weight: 400;
+	
+					@media #{$large1}{
+						font-size: 12px;
+						
+					}
+				}
+			}
+	
+		}
+	}
+	// infoSingle
+	.infoSingle{
+		.listing{
+			.listItem{
+				font-family: var(--heading-font);
+				color: $font_color4;
+				display: inline-block;
+                margin-right: 9px;
+                font-size: 15px;
+                border-right: 1px solid #EAECF0;
+                padding-right: 11px;
+                line-height: 1;
+				&:last-child{
+					margin-right: 0px;
+					padding-right: 0;
+					border-right:0 ;
+				}
+				.icon{
+					margin-right: 9px;
+					color: $font_color1;
+				}
+				@media #{$sm}{
+					margin-right: 10px;
+					font-size: 13px
+				}
+			}
+		}
+	}
+}

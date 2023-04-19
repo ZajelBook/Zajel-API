@@ -1,0 +1,490 @@
+.messagesWrapper {
+	background: #FFFFFF;
+	box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+	border-radius: 12px;
+	padding: 20px;
+
+	border-radius: 8px;
+    
+    // userList
+    .userList{
+        @media #{$tab}{
+            margin-bottom: 40px;
+        }
+        .singleUser{
+            background: #FFFFFF;
+            // box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+            padding: 20px;
+            padding-bottom: 0;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            position: relative;
+            margin-bottom: 38px;
+            cursor: pointer;
+            &:last-child{
+                margin: 0;
+                &::before {
+                    position: unset;
+                    width: 0;
+                    height:0px;
+                    background-color: none;
+                }
+            }
+            &::before {
+                content: "";
+                bottom: -20px;
+                left: 0;
+                position: absolute;
+                width: 100%;
+                height:1px;
+                background-color: $border-color2;
+            }
+            @include flexbox();
+            @include justify-content(space-between);
+            @include transition(.4s);
+        
+            cursor: pointer;
+            @media #{$tab2}{
+                @include flex-wrap(wrap);
+            }
+            .listCap{
+                @include flexbox();
+                @include align-items(start);
+                flex: 1;
+                margin-bottom: 20px;
+                @media #{$tab}{
+                    @include flex-wrap(wrap);
+                }
+                // product img
+                .userProduct-group{
+                    @include flexbox();
+                    @include align-items(center);
+                    margin-right: 20px;
+                    @media #{$xs}{
+                        margin-bottom:15px;
+                    }
+                    @media #{$large1}{
+                        width: 29%;
+                        margin-right: 9px;
+                    }
+                    // user & pro img
+                    .userProduct-img{
+                        @include flexbox();
+                        @include align-items(center);
+                        position: relative;
+                        .productImg{
+                            border-radius: 50%;
+                            width: 71px;
+                            height: 71px;
+                        }
+                        .userImg{
+                            border: 3px solid $white;
+                            position: absolute;
+                            right: 0;
+                            bottom: -17px;
+                            border-radius: 50%;
+                            border: 3px solid #fff;
+                            width: 44px;
+                            height: 44px;
+                        }
+                    }
+                    // Check Mark
+                    .checkWrap{
+                        
+                        font-size: 16px;
+                        color: var(--heading-color);
+                        font-family: var(--heading-font);
+                        display: block;
+                        position: relative;
+                        padding-left: 33px;
+                        margin-bottom: 25px;
+                        cursor: pointer;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        @media #{$xs}{
+                            font-size: 14px;
+                        }
+                    input {
+                        position: absolute;
+                        opacity: 0;
+                        cursor: pointer;
+                        height: 0;
+                        width: 0;
+                        &:checked ~ .checkmark {
+                            background-color:var(--main-color-two);
+                            border: 2px solid transparent;
+                        }
+                        &:checked ~ .checkmark:after {
+                            display: block;
+                        }
+                    }
+                    .checkmark {
+                        position: absolute;
+                        top:2px;
+                        left: 0;
+                        height: 20px;
+                        width: 20px;
+                        border: 1px solid #93959E;
+                        border-radius: 5px;
+                        &::after {
+                            @include transition(.4s);
+                            left: 5px;
+                            top: 3px;
+                            width: 6px;
+                            height: 10px;
+                            border: solid white;
+                            border-width: 0px 2px 2px 0;
+                            -webkit-transform: rotate(45deg);
+                            -ms-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                        }
+                    }
+                    .checkmark:after {
+                        content: "";
+                        position: absolute;
+                        display: none;
+                    }
+                
+                    }
+                }
+                .proCaption{
+                    .messageTittle {
+                        font-family: var(--heading-font);
+                        margin-bottom: 9px;
+                        line-height: 1.5;
+                        color: var(--heading-color);
+                        font-weight: 500;
+                        font-size: 20px;
+                        display: block;
+                        &:hover{
+                            color: var(--heading-color);
+                        }
+                        @media #{$large1}{
+                            font-size: 15px;
+                        }
+                        @media #{$lg}{
+                            font-size: 21px;
+                        }
+                        @media #{$md}{
+                            font-size: 18px;
+                        }
+                        @media #{$xs}{
+                            font-size: 18px;
+                        }
+                    }
+                    .messageCap{
+                        font-family: var(--heading-font);
+                        font-size: 15px;
+                        color: var(--heading-font);
+                        margin-bottom: 10px;
+                        @media #{$large1}{
+                            font-size: 12px;
+                            margin-bottom: 7px;
+                        }
+                        .subCap{
+                            font-family: var(--heading-font);
+                            font-family: var(--heading-font);
+                            color: var(--main-color-two);
+                            font-weight: 400;
+        
+                            @media #{$large1}{
+                                font-size: 12px;
+                                
+                            }
+                        }
+                    }
+                    .pricing {
+                        margin-bottom: 10px;
+                        font-family: var(--heading-font);
+                        color: var(--main-color-two);
+                        font-weight: 400;
+                        font-size: 15px;
+                        display: block;
+                        @media #{$large1}{ 
+                            font-size: 17px;
+                            margin-bottom: 7px;
+                        }
+                    }
+                }
+            }
+            .timmer{
+                .time{
+                    color: var(--heading-color);
+                    font-size: 16px;
+                }
+            }
+            // active
+            &.active{
+                border: 1px solid var(--main-color-two);
+                background: rgba(82, 78, 183,.07);
+                // Check mark
+                .checkWrap {
+                    .checkmark {
+                        background-color:var(--main-color-two);
+                        border: 1px solid transparent !important;
+                    }
+                    .checkmark:after {
+                        display: block !important;
+                    }
+                }
+            }
+            &:hover{
+                border: 1px solid var(--main-color-two);
+                background: rgba(82, 78, 183,.07);
+            }
+        }
+    }
+    .messagesDetails{
+        border-left: 1px solid $border-color2;
+        height: 100%;
+        // show Product
+        .showProduct{
+            background: #FFFFFF;
+            border-bottom: 1px solid $border-color2;
+            padding-left: 24px;
+           
+            @include flexbox();
+            @include align-items(center);
+            @include justify-content(space-between);
+            @include transition(.4s);
+           
+            cursor: pointer;
+            @media #{$tab2}{
+                @include flex-wrap(wrap);
+            }
+            .proCap{
+                @include flexbox();
+                @include align-items(center);
+                @include transition(.4s);
+                margin-bottom: 20px;
+                cursor: pointer;
+                    left: auto;
+                @media #{$large1}{
+                    padding: 10px;
+                }
+                @media #{$tab}{
+                    @include flex-wrap(wrap);
+                    margin-bottom: 10px;
+                }
+                .proImg{
+                    margin-right: 20px;
+                    @media #{$xs}{
+                        margin-bottom:15px;
+                    }
+                    @media #{$large1}{
+                        width: 29%;
+                        margin-right: 9px;
+                    }
+                    
+                    img{
+                        border-radius: 12px;
+                        @media #{$large1}{
+                            width: 100%;
+                        }
+                    }
+                }
+                .proCaption{
+                    .proTittle {
+                        
+                        font-family: var(--heading-font);
+                        margin-bottom: 8px;
+                        line-height: 1.5;
+                        color: var(--heading-color);
+                        font-weight: 500;
+                        font-size: 20px;
+                        display: block;
+                        &:hover{
+                            color: var(--heading-color);
+                        }
+                        @media #{$large1}{
+                            font-size: 15px;
+                        }
+                        @media #{$lg}{
+                            font-size: 21px;
+                        }
+                        @media #{$md}{
+                            font-size: 18px;
+                        }
+                        @media #{$xs}{
+                            font-size: 18px;
+                        }
+                    }
+                    .proPera{
+                        font-family: var(--heading-font);
+                        font-size: 15px;
+                        color: var(--heading-font);
+                        margin-bottom: 0px;
+                        font-weight: 400;
+                        @media #{$large1}{
+                            font-size: 12px;
+                            margin-bottom: 7px;
+                        }
+                        .subCap{
+                            font-family: var(--heading-font);
+                            font-family: var(--heading-font);
+                            color: var(--main-color-two);
+                            font-weight: 400;
+        
+                            @media #{$large1}{
+                                font-size: 12px;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            .flag{
+                .icon{
+                    font-size: 30px;
+                }
+            }
+        }
+        // MessageBox
+        .messageBox{
+            .messageShow{
+                padding-left: 24px;
+                border-bottom: 1px solid $border-color2;
+                margin-bottom: 20px;
+                
+                max-height: 356px;
+                overflow-y: auto;
+                // left
+                .leftMessage{
+                    .singleLeft-message{
+                        margin-bottom: 24px;
+                        .messageText{
+                            @include flexbox();
+                            margin-bottom: 20px;
+                            cursor: pointer;
+                            .messageImg{
+                                margin-right: 20px;
+                                img{
+                                    width: 36px;
+                                    height: 36px;
+                                    border-radius: 50%;
+                                }
+                            }
+                            .messageCaption{
+                                flex: 1;
+                                .messagePera{
+                                    font-family: var(--heading-font);
+                                    font-size: 15px;
+                                    color: var(--heading-font);
+                                    margin-bottom: 5px;
+                                    font-weight: 400;
+                                    display: inline-block;
+                                    border: 1px solid $border-color2;
+                                    padding: 20px 30px;
+                                    border-radius: 0 16px 16px 16px;
+                                    @media #{$large1}{
+                                        font-size: 12px;
+                                        margin-bottom: 7px;
+                                    }
+                                    @media #{$sm}{
+                                        padding: 10px;
+                                    }
+                                    @media #{$xs}{
+                                        padding: 10px;
+                                    }
+                                }
+                                .sendTime{
+                                    color: $font-color1;
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+                // right
+                .rightMessage{
+                    .singleRight-message{
+                        margin-bottom: 24px;
+                        .messageText{
+                            @include flexbox();
+                            @include justify-content(flex-end);
+                            margin-bottom: 20px;
+                            cursor: pointer;
+                            .messageImg{
+                                margin-left: 20px;
+                                img{
+                                    width: 36px;
+                                    height: 36px;
+                                    border-radius: 50%;
+                                }
+                            }
+                            .messageCaption{
+                                flex: 1;
+                                text-align: right;
+                                .messagePera{
+                                    font-family: var(--heading-font);
+                                    font-size: 15px;
+                                    color: $white;
+                                    margin-bottom: 5px;
+                                    font-weight: 400;
+                                    padding: 20px 30px;
+                                    border-radius: 16px 0px 16px 16px;
+                                    background: var(--main-color-two);
+                                    display: inline-block;
+                                    @media #{$large1}{
+                                        font-size: 12px;
+                                        margin-bottom: 7px;
+                                    }
+                                    @media #{$sm}{
+                                        padding: 10px;
+                                    }
+                                    @media #{$xs}{
+                                        padding: 10px;
+                                    }
+                                }
+                                .sendTime{
+                                    color: $font-color1;
+                                    text-align: right;
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .messageSend{
+                position: relative;
+                z-index: 0;
+                padding-left: 24px;
+                    .input{
+                            border-radius: 8px;
+                            border: 1px solid $border-color2;
+                            width: 100%;
+                            height: 52px;
+                            padding: 10px 20px;
+                            padding-right: 147px;
+                            background:none;
+                            color: $font-color3;
+                            &::placeholder{
+                                color: $font-color3;
+                                font-size: 14px;
+                            }
+                            
+                    }
+                   
+                    .imgSlector{
+                        color: $font-color1;
+                        position: absolute;
+                        right: 121px;
+                        top: 50%;
+                        -webkit-transform: translateY(-50%);
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        font-size: 24px;
+                        border-radius: 30px;
+                        .icon{
+                            border-radius: 30px;
+                        }
+                    }
+            }
+        }
+    }
+}
+
+

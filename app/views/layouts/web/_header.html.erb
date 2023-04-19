@@ -1,75 +1,184 @@
-<header>
-  <div class="header-area">
-    <div id="sticky-header" class="main-header-area">
-      <div class="container-fluid ">
-        <div class="header_bottom_border">
-          <div class="row align-items-center">
-            <div class="col-xl-12 col-lg-12 col-sm-12">
-              <nav class="main-menu navbar navbar-expand-lg navbar-dark">
-                <div class="logo">
-                  <%= link_to root_path do %>
-                    <%= image_tag 'logo.png', width: '60px' %>
-                  <% end %>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <% if user_signed_in? %>
-                  <div class="offset-2 col-9 collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav text-center">
-                      <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link' %></li>
-                      <li class="nav-item"><%= link_to t('.books'), books_path, class: 'nav-link' %></li>
-                      <li class="nav-item"><%= link_to t('.my_books'), my_books_path, class: 'nav-link' %></li>
-                      <li class="nav-item"><%= link_to t('.borrow_requests'), borrow_requests_path, class: 'nav-link' %></li>
-                      <li class="nav-item"><%= link_to t('.lend_requests'), lend_requests_path, class: 'nav-link' %></li>
-                      <li class="nav-item"><%= link_to t('.add_book'), new_book_path, class: 'nav-link' %></li>
-                      <li class="nav-item">
-                        <%= link_to notifications_path, class: 'nav-link' do %>
-                          <%= t('.notifications') %> <span class="badge badge-pill badge-danger"><%= current_user.notifications.unread.count %></span>
-                        <% end %>
-                      </li>
-                      <li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete, bs_toggle: 'collapse', target: '.navbar-collapse.show' } %></li>
-                    </ul>
-                  </div>
-                <% else %>
-                  <div class="offset-4 col-7 collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav text-center">
-                      <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link' %></li>
-                      <li class="nav-item"><%= link_to t('.books'), books_path, class: 'nav-link' %></li>
-                      <li class="nav-item"><%= link_to t('.login'), new_user_session_path, class: 'nav-link' %></li>
-                      <li class="nav-item"><%= link_to t('.register'), new_user_registration_path, class: 'nav-link' %></li>
-                    </ul>
-                  </div>
-                <% end %>
-              </nav>
-            </div>
-          </div>
+<header class="header-style-01">
+  <nav class="navbar navbar-area whiteHeaderTwo headerBg3 navbar-expand-lg  plr">
+    <div class="container-fluid container-two nav-container">
+      <div class="responsive-mobile-menu">
+        <div class="logo-wrapper">
+          <a href="index.html" class="logo">
+            <img src="assets/logo/logo1.png" alt="images">
+          </a>
+        </div>
+        <!-- Click Menu Mobile right menu -->
+        <a href="#0" class="click_show_icon"><i class="las la-ellipsis-v"></i> </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bizcoxx_main_menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="NavWrapper">
+        <!-- Main Menu -->
+        <div class="collapse navbar-collapse" id="bizcoxx_main_menu">
+          <ul class="navbar-nav">
+            <li><a href="ad_Lists.html">All Ads</a></li>
+            <li class="menu-item-has-children">
+              <a href="#" class="menuArrow">Pages</a>
+              <ul class="sub-menu">
+                <li><a href="index.html">Home One</a></li>
+                <li><a href="index_2.html">Home Two</a></li>
+                <li><a href="index_3.html">Home Three</a></li>
+                <li><a href="index_4.html">Home Four</a></li>
+                <li><a href="ad_Lists.html">Ad Lists</a></li>
+                <li><a href="ad_lists_category.html">Add Details</a></li>
+                <li><a href="ad_lists_category.html">ad lists category</a></li>
+                <li><a href="add_listing_Details.html">Add listing Details</a></li>
+                <li><a href="add_setting.html">Add Setting</a></li>
+                <li><a href="my_account.html">My Account</a></li>
+                <li><a href="memberShip.html">Member Ship</a></li>
+                <li><a href="wish_list.html">Wish list</a></li>
+                <li><a href="promoted_add_list.html">Promoted add_list</a></li>
+                <li><a href="image_uploded.html">Image Uploded</a></li>
+                <li><a href="payment.html">Payment</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="messages.html">Messages All</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
+      <!-- Menu Right -->
+      <div class="nav-right-content">
+        <!-- new -->
+        <ul class="header-cart">
+          <li class="single chatBar">
+            <button class="chat"><i class="lab la-rocketchat icon"></i><span class="text">Chat</span></button>
+            <!-- Chat List Wrapper -->
+            <div class="chatList-wrapper">
+              <h6 class="chat-title">All Messages </h6>
+              <ul class="chat-list">
+                <li class="list">
+                  <div class="chat-list-flex">
+                    <div class="item-icon">
+                      <img src="assets/gallery/user.png" alt="img">
+                    </div>
+                    <div class="chat-contents">
+                      <a class="list-title" href="messages.html"> Rupak </a>
+                      <span class="list-sub"> 4 hours ago </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="list">
+                  <div class="chat-list-flex">
+                    <div class="item-icon">
+                      <img src="assets/gallery/user.png" alt="img">
+                    </div>
+                    <div class="chat-contents">
+                      <a class="list-title" href="messages.html">Md. Shahin </a>
+                      <span class="list-sub"> 8 hours ago </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="list">
+                  <div class="chat-list-flex">
+                    <div class="item-icon">
+                      <img src="assets/gallery/user.png" alt="img">
+                    </div>
+                    <div class="chat-contents">
+                      <a class="list-title" href="messages.html"> Shariful Rahman </a>
+                      <span class="list-sub"> 1 day ago </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="list">
+                  <div class="chat-list-flex">
+                    <div class="item-icon">
+                      <img src="assets/gallery/user.png" alt="img">
+                    </div>
+                    <div class="chat-contents">
+                      <a class="list-title" href="messages.html"> Suzon islam </a>
+                      <span class="list-sub"> 3 day ago </span>
+                    </div>
+                  </div>
+                </li>
+                <li class="list">
+                  <div class="chat-list-flex">
+                    <div class="item-icon">
+                      <img src="assets/gallery/user.png" alt="img">
+                    </div>
+                    <div class="chat-contents">
+                      <a class="list-title" href="messages.html"> Md Zahid </a>
+                      <span class="list-sub"> 7 day ago </span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <a href="messages.html" class="all-chat"> See All Messages </a>
+            </div>
+            <!-- end Chat List -->
+          </li>
+          <li class="single"><a href="wish_list.html" class="heart"><i class="lar la-heart icon"></i></a></li>
+          <li class="single userAccount">
+            <!-- <button class="user"><img src="assets/gallery/user.png" alt="images"></button> -->
+            <button class="user"><i class="las la-user-alt"></i></button>
+
+            <!--
+                After Logged in
+                User AC Wrapper
+            -->
+            <div class="userAccount-wrapper">
+              <h6 class="ac-title">User Account</h6>
+              <ul class="ac-list">
+                <li class="list">
+                  <a class="list-title" href="my_account.html"> <i class="lar la-user-circle icon"></i> My Account </a>
+                </li>
+                <li class="list">
+                  <a class="list-title" href="memberShip.html"> <i class="las la-address-card icon"></i> Membership </a>
+                </li>
+                <li class="list">
+                  <a class="list-title" href="promoted_add_list.html"><i class="las la-ad icon"></i> Promoted Ads </a>
+                </li>
+                <li class="list">
+                  <a class="list-title" href="wish_list.html"><i class="lar la-heart icon"></i> Wishlist </a>
+                </li>
+                <li class="list">
+                  <a class="list-title" href="help.html"> <i class="lar la-question-circle icon"></i> Help</a>
+                </li>
+                <li class="list">
+                  <a class="list-title" href="#"> <i class="las la-sign-out-alt icon"></i> Logout</a>
+                </li>
+              </ul>
+            </div>
+
+            <!--
+                Before Logged in
+                User AC Wrapper
+            -->
+            <!-- <div class="userAccount-wrapper">
+                <h6 class="ac-title">User Account</h6>
+                <ul class="ac-list">
+                    <li class="list">
+                        <a class="list-title" href="#"> <i class="las la-lock icon"></i> Login / Sin-Up</a>
+                    </li>
+                </ul>
+            </div> -->
+
+            <!-- End User AC -->
+          </li>
+          <li class="single">
+            <div class="btn-wrapper">
+              <a href="#"  class="cmn-btn1 popup-modal">
+                <i class="las la-plus-square"></i><span class="text">Post your ad</span>
+              </a>
+            </div>
+          </li>
+          <li class="single">
+            <!-- Select Language -->
+            <div class="select-itms">
+              <select name="select" class="niceSelect">
+                <option value="">English</option>
+                <option value="">Arabic</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </nav>
 </header>
-
-<style>
-    @media only screen and (max-width : 768px) {
-        .navbar-collapse {
-            background: white;
-        }
-        .navbar-dark .navbar-toggler {
-            border-color: white;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 991px) {
-        .navbar-collapse {
-            background: white;
-        }
-        .navbar-dark .navbar-toggler {
-            border-color: white;
-        }
-    }
-    .logo {
-        margin-top: -10px;
-    }
-</style>

@@ -1,0 +1,43 @@
+.pagination {
+    @include justify-content(center);
+    .pagination-list {
+        margin: 0 auto;
+        li {
+            display: inline-block;
+            .page-number {
+                font-family: var(--heading-font);
+                color: $font-color1;
+                display: inline-block;
+                text-align: center;
+                width: 45px;
+                height: 45px;
+                line-height: 45px;
+                margin: 0 6px;
+                transition: all linear 0.2s;
+                border: 0;
+                font-weight: 500;
+                border-radius: 8px;
+                font-size: 20px;
+                @media #{$xs}{
+                    width: 29px;
+                    height: 29px;
+                    line-height: 29px;
+                    margin: 0 2px;
+                    font-weight: 500;
+                    border-radius: 8px;
+                    font-size: 13px;
+                }
+        
+                &.current {
+                    background-color:var(--main-color-two);
+                    color: $white;
+                }
+
+                &:hover {
+                    background-color: var(--main-color-two);
+                    color: $white;
+                }
+            }
+        }
+    }
+}

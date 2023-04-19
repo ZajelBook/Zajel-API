@@ -1,0 +1,40 @@
+// breadcrumb
+
+.breadcrumb {
+    background: none;
+    padding: 0;
+    margin: 0;
+    @include justify-content(flex-start);
+    a {
+        font-family: var(--body-font);
+        color: $font-color1;
+        font-size: 16px;
+        text-transform: capitalize;
+        line-height: 1;
+        font-weight: 400;
+    }
+    .breadcrumb-item{
+        line-height: 1;
+        padding: 0;
+        &:last-child{
+            a{
+            color: var(--heading-color);
+            }
+        }
+    }
+    .breadcrumb-item + .breadcrumb-item{
+        &::before {
+            display: inline-block;
+            color: $font-color1;
+            content: "\f105";
+            font-family: "Line Awesome Free";
+            font-size: 16px;
+            padding: 0 0px;
+            margin: 0 5px;
+            font-weight: 700;
+            position: relative;
+            top: 1px;
+            padding-right: 3px;
+        }
+    }    
+}

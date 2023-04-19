@@ -1,0 +1,217 @@
+
+.paymentWrapper {
+	background: #FFFFFF;
+	box-shadow: 0px 1px 80px 12px rgba(26, 40, 68, 0.06);
+	border-radius: 12px;
+	padding: 20px;
+
+	border-radius: 8px;
+}
+
+
+.paymentDetails{
+    padding: 25px 22px;
+    padding-bottom: 16px;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    // Single 
+    .paymentDetailsTop{
+        border-bottom: 1px solid $border-color2;
+        .listing{
+            .listItem{
+                @include flexbox();
+                @include align-items(center);
+                font-family: var(--heading-font);
+                color: $font_color2;
+                margin-bottom: 22px;
+                font-size: 16px;
+                &:last-child{
+                    margin-bottom: 30px;
+                }
+                .icon{
+                    color:#4CAF50;
+                    margin-right: 15px;
+                    font-weight: 700;
+                }
+                .priceTag{
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    // Bottom 
+    .paymentDetailsBottom{
+        .input-form{
+            position: relative;
+            input{
+                background: none;
+                color: var(--heading-color);
+                height: 50px;
+                width: 100%;
+                font-size: 16px;
+                font-weight: 300;
+                padding: 9px 18px 9px 52px;
+                position: relative;
+                border: 1px solid #EAECF0;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                &::placeholder {
+                    color:var(--heading-color);
+                    font-size: 16px;
+                    font-weight: 400;
+                    @media #{$md}{
+                        font-size: 13px;
+                    }
+                    @media #{$xs}{
+                        font-size: 13px;
+                    }
+                }
+            }
+            .icon{
+                color: $font-color1 ;
+                position: absolute;
+                left: 13px;
+                top: 13px;
+                text-align: center;
+                line-height: 17px;
+                font-size: 23px;
+            }
+        }
+        // Payment Method
+        .paymentMethod{
+            padding-bottom: 20px;
+            .radio {
+                display: inline-block;
+            }
+            .radio input[type="radio"] + .radio-label:before {
+                top: 4px;
+            }
+            .radio {
+                margin-right: 5px;
+                margin-bottom: 13px;
+                display: inline-block;
+                input[type="radio"] {
+                    position: absolute;
+                    opacity: 0;
+                    + .radio-label {
+                        &:before {
+                            content: '';
+                            border-radius: 100%;
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            position: relative;
+                            top: 5px;
+                            margin-right: 8px;
+                            vertical-align: top;
+                            cursor: pointer;
+                            text-align: center;
+                            transition: all 250ms ease;
+                            background: #fff;
+                            border: 1px solid var(--main-color-two);
+                        }
+                    }
+                    &:checked {
+                        + .radio-label {
+                            &:before {
+                                box-shadow: inset 0 0 0 4px $white;
+                                background: var(--main-color-two);
+
+                            }
+                        }
+                    }
+                    &:focus {
+                        + .radio-label {
+                            &:before {
+                                outline: none;
+                            }
+                        }
+                    }
+                    + .radio-label {
+                        &:empty {
+                            &:before {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                label {
+                    display: inline-block;
+                    font-size: 16px;
+                    color: $font-color1;
+                    cursor: pointer;
+                    margin-right: 10px;
+                }
+                .icon{
+                    color: $font-color1;
+                    margin-right: 10px;
+                    font-size: 24px;
+                    position: relative;
+                    top: 3px;
+                }
+            }
+        }
+    }
+}
+
+// audience
+.audience{
+    .listing{
+        .listItem{
+            @include flexbox();
+            @include justify-content(space-between);
+            margin-bottom: 21px;
+            border-bottom: 1px solid #ddd;
+            &:last-child{
+                border-bottom: 0;
+                margin-bottom: 0;
+            }
+            .leftCap{
+                font-family: var(--heading-font);;
+                font-size: 16px;
+                color:$font-color1;
+                display: block;
+            }
+            .rightCap{
+                font-family: var(--heading-font);;
+                font-size: 16px;
+                color:var(--heading-color);
+                display: block;
+            }
+        }
+    }
+}
+//paymentPricing
+.paymentPricing{
+    .listing{
+        .listItem{
+            @include flexbox();
+            @include justify-content(space-between);
+            margin-bottom: 21px;
+            border-bottom: 1px solid #ddd;
+            &:last-child{
+                border-bottom: 0;
+                margin-bottom: 0;
+            }
+            .leftCap{
+                font-family: var(--heading-font);;
+                font-size: 16px;
+                color:$font-color1;
+                display: block;
+            }
+            .rightCap{
+                font-family: var(--heading-font);;
+                font-size: 16px;
+                color:var(--heading-color);
+                display: block;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+
+

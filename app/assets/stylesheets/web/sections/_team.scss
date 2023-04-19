@@ -1,0 +1,126 @@
+.teamArea{
+    @media #{$lg}{
+        padding-top: 150px;
+        padding-bottom: 150px;
+    }
+    @media #{$md}{
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    @media #{$sm}{
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    @media #{$xs}{
+        padding-top: 70px;
+        padding-bottom: 0px;
+    }
+    .singleTeam{
+        .teamImg {
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 12px;
+            border-radius: 17px;
+            img {
+                width: 100%;
+                transform: scale(1);
+                transition: all 0.6s ease-out 0s;
+                border-radius: 8px;
+            }
+            // Team Social
+            .teamSocial{
+                position: absolute;
+                bottom: 10%;
+                transform: translateY(-10%);
+                left: 0;
+                right: 0;
+                text-align: center;
+                .list{
+                    display: inline-block;
+                    .singleSocial {
+                        color: $white;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        font-size: 20px;
+                        line-height: 40px;
+                        text-align: center;
+                        margin-left: 8px;
+                        display: inline-block;
+                        background: var(--main-color-one) ;
+                        @include transform(.4s);
+                        .icon {
+                            display: inline-block;
+                            line-height: inherit;
+                        }
+            
+                        // Effect
+                        transform: translateY(30px);
+                        opacity: 0;
+                        visibility: hidden;
+                        &:hover{
+                            background: var(--main-color-one) ;
+                        }
+            
+                    }
+                    &:nth-child(1) .singleSocial{
+                        transition-delay: 0.0s;
+                    }
+                    &:nth-child(2) .singleSocial{
+                        transition-delay: 0.1s;
+                    }
+                    &:nth-child(3) .singleSocial{
+                        transition-delay: 0.3s;
+                    }
+                }
+            } 
+        }
+        .teamCaption {
+            .title{
+                color: var(--heading-color);
+                font-weight: 500;
+                font-size: 24px;
+                @media #{$md}{
+                    font-size: 18px;
+                }
+                &:hover{
+                    color: var(--main-color-one) ;
+                }
+            }
+            .pera{
+                font-family: var(--heading-font);
+                color:$font-color1;
+                font-size: 16px;
+            }
+        }
+        // Hover
+        &:hover{
+            .teamImg{
+                img {
+                    transform: scale(1.06);
+                }
+
+                // Effect
+                .teamSocial{
+                    .singleSocial{
+                        transform: translateY(0px);
+                        opacity: 1;
+                        visibility: visible;
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+.wantWorking{
+    padding: 50px 50px 45px 50px;
+    border-radius: 17px;
+    @media #{$sm}{
+        padding: 30px 20px;
+    }
+    @media #{$xs}{
+        padding: 25px 15px;
+    }
+}

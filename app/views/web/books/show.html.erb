@@ -1,39 +1,79 @@
-<div>
-  <div class="bradcam_area bradcam_bg_2">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="bradcam_text text-center">
+<div class="proDetails section-padding2">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-7 col-lg-12">
+        <!-- Product Slider -->
+        <div class="product-view-wrap" id="myTabContent">
+          <div class="shop-details-gallery-slider global-slick-init slider-inner-margin sliderArrow">
+            <div class="single-main-image">
+              <a href="#" class="long-img">
+                <%= image_tag @book.image.variant(resize_and_pad: [600, 600], format: :webp, convert: :webp), class: 'img-fluid' %>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- proDescription -->
+        <div class="proDescription">
+          <!-- Top -->
+          <div class="descriptionTop">
+            <h4><a href="add_details.html" class="detailsTittle"><%= @book.title %> <i class="lar la-heart icon"></i></a></h4>
+            <p class="detailsCap">Added on <%= @book.created_at.to_date %></p>
+<!--            <span class="detailsPricing">$146,300</span>-->
+            <div class="infoSingle">
+              <ul class="listing">
+                <li class="listItem"><i class="las la-bed icon"></i><%= @book.language %></li>
+                <li class="listItem"><i class="las la-bed icon"></i><%= @book.genre.name %></li>
+                <li class="listItem"><i class="las la-bath icon"></i><%= @book.author %></li>
+                <li class="listItem"><i class="las la-map-marker-alt icon"></i><%= book_distance(@distance) %></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Mid -->
+          <div class="descriptionMid">
+            <h4 class="priceTittle">Description</h4>
+            <p class="pera"><%= @book.description %></p>
+          </div>
+          <!-- Footer -->
+          <div class="descriptionFooter">
+            <div class="btn-wrapper">
+              <a href="#" class="cmn-btn-outline2"><i class="lab la-font-awesome-flag icon"></i>Report</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="whole-wrap">
-    <div class="container box_1170">
-      <div class="section-top-border">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="mb-20">
-              <%= image_tag @book.image.variant(format: :webp, convert: :webp), class: 'img-fluid' %>
-              <p class="text-center mt-2"><i class="bi bi-geo-alt-fill" style="font-size: 24px; color: red;"></i> <%= book_distance(@distance) %></p>
+      <div class="col-xl-5 col-lg-12">
+        <div class="sellerMessage mb-24">
+          <div class="singleFlexitem mb-24">
+            <div class="recentImg">
+              <img src="/assets/gallery/seller1.png" alt="images">
             </div>
-            <div class="justify-content-center btn-margin">
-              <%= book_buttons(@book) %>
+            <div class="recentCaption">
+              <h5><a href="add_details.html" class="featureTittle"><%= @book.owner.full_name %> <img src="/assets/icon/checkMark.svg" class="icon" alt="images"></a></h5>
+              <p class="featureCap">Member since <%= @book.owner.created_at.to_date.year %></p>
             </div>
           </div>
-          <div class="col-md-8 mt-sm-20">
-            <div class="mb-30">
-              <h2><%= @book.title %></h2>
-              <small>By: <b><%= @book.author %></b></small>
-              |
-              <%= book_status(@book) %>
-            </div>
-
-            <p><%= @book.language %> | <%= @book.genre.name %></p>
-            <span style="white-space: pre-wrap;"><%= @book.description %></span>
+          <div class="btn-wrapper">
+            <a href="#" class="cmn-btn-outline2 w-100"><i class="las la-comments icon"></i>Message seller</a>
           </div>
         </div>
+        <section class="recentListing">
+          <div class="borderStyle style1 fadeInLeft social">
+            <div class="singleFlexitem mb-24">
+              <div class="recentImg">
+                <img  src="/assets/gallery/recentListings1.jpg" alt="images">
+              </div>
+              <div class="recentCaption">
+                <h5><a href="add_details.html" class="featureTittle">Galaxy M32</a></h5>
+                <p class="featureCap">Dallas, Texas · <strong class="subCap">24hrs ago</strong></p>
+                <span class="featurePricing">$124.80</span>
+                <div class="btn-wrapper">
+                  <span class="pro-btn1">RENOVETED</span>
+                  <span class="pro-btn2">PROMOTED</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   </div>
