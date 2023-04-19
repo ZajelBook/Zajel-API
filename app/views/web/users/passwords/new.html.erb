@@ -1,80 +1,37 @@
-<div>
-  <div class="bradcam_area bradcam_bg_2">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="bradcam_text text-center">
-            <h3></h3>
+<div class="loginArea section-padding2">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-5 col-lg-5 p-0 loginLeft-img">
+        <div class="loginLeft-img">
+          <div class="login-cap">
+            <h3 class="tittle">Borrow & Lend books</h3>
+            <p class="pera">secondary text goes here.</p>
+          </div>
+          <div class="login-img">
+            <img src="assets/img/gallery/login.png" alt="img" class="loginImg">
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="section-top-border">
-    <div class="row">
-      <div class="col-lg-6 col-md-6 offset-md-3 col-10 offset-1">
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-signin' }) do |f| %>
-          <p class="mb-30"><%= t('.password_reset') %></p>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'col-xl-7 col-lg-7 login-Wrapper' }) do |f| %>
+        <p class="mb-30"><%= t('.password_reset') %></p>
 
-          <div class="mb-3">
-            <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "Email", id: 'inputEmail', class: 'form-control', required: true %>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="infoTitle">Email</label>
+            <div class="input-form">
+              <%= f.email_field :email, placeholder: 'Enter your Email', autofocus: true, autocomplete: "Email", id: 'inputEmail', class: 'form-control', required: true %>
+              <div class="icon"><i class="lar la-envelope icon"></i></div>
+            </div>
           </div>
 
-          <div class="text-center justify-content-center mt-10">
-            <%= f.submit "Send me reset password instructions", class: 'genric-btn btn-block danger circle' %>
+          <div class="col-sm-12">
+            <div class="btn-wrapper text-center">
+              <%= f.submit 'Send me reset password instructions', class: 'cmn-btn4 w-100 mb-60' %>
+            </div>
           </div>
-
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
-
-<style scoped>
-    .form-signin {
-        width: 100%;
-        max-width: 350px;
-        padding: 15px;
-        margin: auto;
-    }
-
-    .form-signin .checkbox {
-        font-weight: 400;
-    }
-
-    .form-signin .form-control {
-        position: relative;
-        box-sizing: border-box;
-        height: auto;
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .form-signin .form-control:focus {
-        z-index: 2;
-    }
-
-    .form-signin input[type="email"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    .form-signin input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-
-    .form-signin input[type="checkbox"] {
-        display: none;
-    }
-
-    span {
-        font-size: .9em;
-        color: #f22435;
-    }
-
-</style>

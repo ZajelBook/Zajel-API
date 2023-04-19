@@ -17,7 +17,7 @@
         <!-- Main Menu -->
         <div class="collapse navbar-collapse" id="bizcoxx_main_menu">
           <ul class="navbar-nav">
-            <li><a href="ad_Lists.html">All Ads</a></li>
+            <li><%= link_to 'Books', books_path %></li>
             <li class="menu-item-has-children">
               <a href="#" class="menuArrow">Pages</a>
               <ul class="sub-menu">
@@ -47,117 +47,123 @@
       <div class="nav-right-content">
         <!-- new -->
         <ul class="header-cart">
-          <li class="single chatBar">
-            <button class="chat"><i class="lab la-rocketchat icon"></i><span class="text">Chat</span></button>
-            <!-- Chat List Wrapper -->
-            <div class="chatList-wrapper">
-              <h6 class="chat-title">All Messages </h6>
-              <ul class="chat-list">
-                <li class="list">
-                  <div class="chat-list-flex">
-                    <div class="item-icon">
-                      <img src="assets/gallery/user.png" alt="img">
+          <% if user_signed_in? %>
+            <li class="single chatBar">
+              <button class="chat"><i class="lab la-rocketchat icon"></i><span class="text">Chat</span></button>
+              <!-- Chat List Wrapper -->
+              <div class="chatList-wrapper">
+                <h6 class="chat-title">All Messages </h6>
+                <ul class="chat-list">
+                  <li class="list">
+                    <div class="chat-list-flex">
+                      <div class="item-icon">
+                        <img src="assets/gallery/user.png" alt="img">
+                      </div>
+                      <div class="chat-contents">
+                        <a class="list-title" href="messages.html"> Rupak </a>
+                        <span class="list-sub"> 4 hours ago </span>
+                      </div>
                     </div>
-                    <div class="chat-contents">
-                      <a class="list-title" href="messages.html"> Rupak </a>
-                      <span class="list-sub"> 4 hours ago </span>
+                  </li>
+                  <li class="list">
+                    <div class="chat-list-flex">
+                      <div class="item-icon">
+                        <img src="assets/gallery/user.png" alt="img">
+                      </div>
+                      <div class="chat-contents">
+                        <a class="list-title" href="messages.html">Md. Shahin </a>
+                        <span class="list-sub"> 8 hours ago </span>
+                      </div>
                     </div>
-                  </div>
-                </li>
-                <li class="list">
-                  <div class="chat-list-flex">
-                    <div class="item-icon">
-                      <img src="assets/gallery/user.png" alt="img">
+                  </li>
+                  <li class="list">
+                    <div class="chat-list-flex">
+                      <div class="item-icon">
+                        <img src="assets/gallery/user.png" alt="img">
+                      </div>
+                      <div class="chat-contents">
+                        <a class="list-title" href="messages.html"> Shariful Rahman </a>
+                        <span class="list-sub"> 1 day ago </span>
+                      </div>
                     </div>
-                    <div class="chat-contents">
-                      <a class="list-title" href="messages.html">Md. Shahin </a>
-                      <span class="list-sub"> 8 hours ago </span>
+                  </li>
+                  <li class="list">
+                    <div class="chat-list-flex">
+                      <div class="item-icon">
+                        <img src="assets/gallery/user.png" alt="img">
+                      </div>
+                      <div class="chat-contents">
+                        <a class="list-title" href="messages.html"> Suzon islam </a>
+                        <span class="list-sub"> 3 day ago </span>
+                      </div>
                     </div>
-                  </div>
-                </li>
-                <li class="list">
-                  <div class="chat-list-flex">
-                    <div class="item-icon">
-                      <img src="assets/gallery/user.png" alt="img">
+                  </li>
+                  <li class="list">
+                    <div class="chat-list-flex">
+                      <div class="item-icon">
+                        <img src="assets/gallery/user.png" alt="img">
+                      </div>
+                      <div class="chat-contents">
+                        <a class="list-title" href="messages.html"> Md Zahid </a>
+                        <span class="list-sub"> 7 day ago </span>
+                      </div>
                     </div>
-                    <div class="chat-contents">
-                      <a class="list-title" href="messages.html"> Shariful Rahman </a>
-                      <span class="list-sub"> 1 day ago </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="list">
-                  <div class="chat-list-flex">
-                    <div class="item-icon">
-                      <img src="assets/gallery/user.png" alt="img">
-                    </div>
-                    <div class="chat-contents">
-                      <a class="list-title" href="messages.html"> Suzon islam </a>
-                      <span class="list-sub"> 3 day ago </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="list">
-                  <div class="chat-list-flex">
-                    <div class="item-icon">
-                      <img src="assets/gallery/user.png" alt="img">
-                    </div>
-                    <div class="chat-contents">
-                      <a class="list-title" href="messages.html"> Md Zahid </a>
-                      <span class="list-sub"> 7 day ago </span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <a href="messages.html" class="all-chat"> See All Messages </a>
-            </div>
-            <!-- end Chat List -->
-          </li>
-          <li class="single"><a href="wish_list.html" class="heart"><i class="lar la-heart icon"></i></a></li>
+                  </li>
+                </ul>
+                <a href="messages.html" class="all-chat"> See All Messages </a>
+              </div>
+              <!-- end Chat List -->
+            </li>
+            <li class="single"><a href="wish_list.html" class="heart"><i class="lar la-heart icon"></i></a></li>
+          <% end %>
+
           <li class="single userAccount">
             <!-- <button class="user"><img src="assets/gallery/user.png" alt="images"></button> -->
             <button class="user"><i class="las la-user-alt"></i></button>
 
-            <!--
-                After Logged in
-                User AC Wrapper
-            -->
-            <div class="userAccount-wrapper">
-              <h6 class="ac-title">User Account</h6>
-              <ul class="ac-list">
-                <li class="list">
-                  <a class="list-title" href="my_account.html"> <i class="lar la-user-circle icon"></i> My Account </a>
-                </li>
-                <li class="list">
-                  <a class="list-title" href="memberShip.html"> <i class="las la-address-card icon"></i> Membership </a>
-                </li>
-                <li class="list">
-                  <a class="list-title" href="promoted_add_list.html"><i class="las la-ad icon"></i> Promoted Ads </a>
-                </li>
-                <li class="list">
-                  <a class="list-title" href="wish_list.html"><i class="lar la-heart icon"></i> Wishlist </a>
-                </li>
-                <li class="list">
-                  <a class="list-title" href="help.html"> <i class="lar la-question-circle icon"></i> Help</a>
-                </li>
-                <li class="list">
-                  <a class="list-title" href="#"> <i class="las la-sign-out-alt icon"></i> Logout</a>
-                </li>
-              </ul>
-            </div>
-
-            <!--
-                Before Logged in
-                User AC Wrapper
-            -->
-            <!-- <div class="userAccount-wrapper">
+            <% if user_signed_in? %>
+              <div class="userAccount-wrapper">
                 <h6 class="ac-title">User Account</h6>
                 <ul class="ac-list">
-                    <li class="list">
-                        <a class="list-title" href="#"> <i class="las la-lock icon"></i> Login / Sin-Up</a>
-                    </li>
+                  <li class="list">
+                    <a class="list-title" href="my_account.html"> <i class="lar la-user-circle icon"></i> My Account </a>
+                  </li>
+                  <li class="list">
+                    <a class="list-title" href="memberShip.html"> <i class="las la-address-card icon"></i> Membership </a>
+                  </li>
+                  <li class="list">
+                    <a class="list-title" href="promoted_add_list.html"><i class="las la-ad icon"></i> Promoted Ads </a>
+                  </li>
+                  <li class="list">
+                    <a class="list-title" href="wish_list.html"><i class="lar la-heart icon"></i> Wishlist </a>
+                  </li>
+                  <li class="list">
+                    <a class="list-title" href="help.html"> <i class="lar la-question-circle icon"></i> Help</a>
+                  </li>
+                  <li class="list">
+                    <%= link_to destroy_user_session_path, class: 'list-title', data: { turbo_method: :delete } do %>
+                      <i class="las la-sign-out-alt icon"></i> Logout
+                    <% end %>
+                  </li>
                 </ul>
-            </div> -->
+              </div>
+            <% else %>
+              <div class="userAccount-wrapper">
+                <h6 class="ac-title">User Account</h6>
+                <ul class="ac-list">
+                  <li class="list">
+                    <%= link_to new_user_session_path, class: 'list-title' do %>
+                      <i class="las la-lock icon"></i> Login
+                    <% end %>
+                  </li>
+                  <li class="list">
+                    <%= link_to new_user_registration_path, class: 'list-title' do %>
+                      <i class="las la-lock icon"></i> Sign up
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
 
             <!-- End User AC -->
           </li>

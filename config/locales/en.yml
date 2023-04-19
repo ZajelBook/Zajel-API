@@ -138,7 +138,7 @@ en:
     users:
       passwords:
         new:
-          password_reset: To reset your password, please enter the email address associated with your account. We will send you an email with instructions on how to reset your password. If you don't receive an email within a few minutes, please check your spam folder or try again with a different email address.
+          password_reset: To reset your password, please enter the email address associated with your account. We will send you an email with instructions on how to reset your password. If you don't receive an email within a few minutes, please check your spam folder.
   layouts:
     web:
       application:

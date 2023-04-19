@@ -1,86 +1,60 @@
-<div>
-  <div class="bradcam_area bradcam_bg_2">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="bradcam_text text-center">
-            <h3></h3>
+<div class="loginArea section-padding2">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-5 col-lg-5 p-0 loginLeft-img">
+        <div class="loginLeft-img">
+          <div class="login-cap">
+            <h3 class="tittle">Borrow & Lend books</h3>
+            <p class="pera">secondary text goes here.</p>
+          </div>
+          <div class="login-img">
+            <img src="assets/img/gallery/login.png" alt="img" class="loginImg">
           </div>
         </div>
       </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'col-xl-7 col-lg-7 login-Wrapper' }) do |f| %>
+        <%= render "web/users/shared/error_messages", resource: resource %>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="infoTitle">Email</label>
+            <div class="input-form">
+              <%= f.email_field :email, autofocus: true, placeholder: 'Enter your Email', autocomplete: "Email", id: 'inputEmail', class: 'form-control', required: true %>
+              <div class="icon"><i class="lar la-envelope icon"></i></div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label class="infoTitle">Password</label>
+            <div class="input-form">
+              <%= f.password_field :password, placeholder: 'Enter your password', autocomplete: "current-password", id: 'inputPassword', class: 'form-control', required: true %>
+              <div class="icon"><i class="las la-lock icon"></i></div>
+            </div>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="col-sm-12">
+              <div class="passRemember mt-20">
+                <%= label_tag '', class: 'checkWrap2' do %>
+                  Remember me
+                  <%= check_box_tag :remember_me, '', false, class: 'effectBorder' %>
+                  <span class="checkmark"></span>
+                <% end %>
+
+                <div class="forgetPassword mb-25">
+                  <%= link_to 'Forgot your password?', new_user_password_path, class: 'forgetPass' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="col-sm-12">
+            <div class="btn-wrapper text-center">
+              <%= f.submit 'Log in', class: 'cmn-btn4 w-100 mb-60' %>
+              <p class="sinUp"><span>Don’t have an account? </span><%= link_to "Sign up!", new_user_registration_path, class: 'singApp' %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-signin' }) do |f| %>
-    <%= render "web/users/shared/error_messages", resource: resource %>
-
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "Email", id: 'inputEmail', class: 'form-control', required: true %>
-
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", id: 'inputPassword', class: 'form-control', required: true %>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="checkbox mb-3">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
-
-    <div class="text-center justify-content-center btn-margin">
-      <%= f.submit 'Register', class: 'genric-btn btn-block danger circle' %>
-    </div>
-
-    <div class="text-center mt-10">
-      <%= link_to "Don't have an account? Create one now!", new_user_registration_path, class: 'text-center link' %>
-      <%= link_to 'Forgot your password?', new_user_password_path, class: 'text-center link' %>
-    </div>
-
-<% end %>
 </div>
-
-<style scoped>
-    .form-signin {
-        width: 100%;
-        max-width: 350px;
-        padding: 15px;
-        margin: auto;
-    }
-
-    .form-signin .checkbox {
-        font-weight: 400;
-    }
-
-    .form-signin .form-control {
-        position: relative;
-        box-sizing: border-box;
-        height: auto;
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .form-signin .form-control:focus {
-        z-index: 2;
-    }
-
-    .form-signin input[type="email"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    .form-signin input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-
-    .form-signin input[type="checkbox"] {
-        display: none;
-    }
-
-    span {
-        font-size: .9em;
-        color: #f22435;
-    }
-
-</style>
