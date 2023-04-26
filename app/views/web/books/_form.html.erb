@@ -1,43 +1,62 @@
-<% f.object.errors.full_messages.each do |error_message| %>
-  <%= error_message %>
-<% end %>
+<div class="listingDetails">
+  <div class="row">
+    <% f.object.errors.full_messages.each do |error_message| %>
+      <%= error_message %>
+    <% end %>
 
-<div class="mb-3">
-  <%= f.label :title %>
-  <%= f.text_field :title, required: true, class: 'form-control', placeholder: 'Book title' %>
-</div>
+    <div class="col-lg-12">
+      <%= f.label :title, class: 'infoTitle' %>
+      <div class="input-form input-form2">
+        <%= f.text_field :title, required: true, class: 'form-control' %>
+      </div>
+    </div>
 
-<div class="mb-3">
-  <%= f.label :author %>
-  <%= f.text_field :author, required: true, class: 'form-control', placeholder: 'Book author' %>
-</div>
+    <div class="col-lg-12">
+      <%= f.label :author, class: 'infoTitle' %>
+      <div class="input-form input-form2">
+        <%= f.text_field :author, required: true, class: 'form-control' %>
+      </div>
+    </div>
 
-<div class="mb-3">
-  <%= f.label :language %>
-  <%= f.select :language, Language.pluck(:name), { prompt: 'Select book language' },  required: true, class: 'form-control' %>
-</div>
+    <div class="col-lg-6 col-md-6">
+      <div class="select-itms">
+        <%= f.label :language, class: 'infoTitle' %>
+        <%= f.select :language, Language.pluck(:name), { prompt: 'Select book language' },  required: true, class: 'niceSelect' %>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+      <div class="select-itms">
+        <%= f.label :genre_id, class: 'infoTitle' %>
+        <%= f.select :genre_id, Genre.pluck(:name, :id), { prompt: 'Select book genre' },  required: true, class: 'niceSelect' %>
+      </div>
+    </div>
 
-<div class="mb-3">
-  <%= f.label :genre_id %>
-  <%= f.select :genre_id, Genre.pluck(:name, :id), { prompt: 'Select book genre' },  required: true, class: 'form-control' %>
-</div>
+    <!-- Description -->
+    <div class="col-lg-12">
+      <%= f.label :description, class: 'infoTitle' %>
+      <div class="input-form">
+        <%= f.text_area :description, required: true, placeholder: 'About your book', rows: 4 %>
+      </div>
+    </div>
 
-<div class="mb-3">
-  <%= f.label :description %>
-  <%= f.text_area :description, required: true, class: 'form-control', placeholder: 'Book description', rows: 4 %>
-</div>
+    <div class="col-lg-12">
+      <div class="input-form">
+        <label for="file-upload" class="custom-file-upload" id="file-upload-label">
+          Choose book cover
+        </label>
 
-<div class="mt-10">
-  <label for="file-upload" class="custom-file-upload" id="file-upload-label">
-    <i class="bi bi-cloud-arrow-up-fill"></i> Choose book cover
-  </label>
-  <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %>
-</div>
+        <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %>
+      </div>
+    </div>
 
-<div class="mt-10">
-  <small>* Your book needs to be approved by Zajel moderators after submission </small>
-</div>
+    <div class="col-sm-12">
+      <small><%= t('.approval_note') %></small>
+    </div>
 
-<div class="text-center justify-content-center btn-margin">
-  <%= f.submit 'Save', class: 'genric-btn btn-block danger circle' %>
+    <div class="col-sm-12">
+      <div class="btn-wrapper mb-10 mt-10">
+        <%= f.submit 'Save', class: 'cmn-btn4 w-100' %>
+      </div>
+    </div>
+  </div>
 </div>

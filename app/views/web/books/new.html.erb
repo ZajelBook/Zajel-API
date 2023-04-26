@@ -1,19 +1,11 @@
-<div>
-  <div class="bradcam_area bradcam_bg_2">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="bradcam_text text-center">
-            <h3></h3>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section-top-border">
-    <div class="row">
-      <div class="col-lg-6 col-md-6 offset-md-3 col-10 offset-1 ">
-        <%= form_for @book do |f| %>
+<div class="addList-Details section-padding2">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-12">
+        <nav aria-label="breadcrumb">
+          <h4 class="priceTittle pt-20 pb-20">Add a book</h4>
+        </nav>
+        <%= form_for @book, html: { class: 'listingDetails-Wrapper' } do |f| %>
           <%= render 'form', f: f %>
         <% end %>
       </div>

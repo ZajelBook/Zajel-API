@@ -139,6 +139,9 @@ en:
       passwords:
         new:
           password_reset: To reset your password, please enter the email address associated with your account. We will send you an email with instructions on how to reset your password. If you don't receive an email within a few minutes, please check your spam folder.
+    books:
+      form:
+        approval_note: '* Your book needs to be approved by Zajel moderators after submission.'
   layouts:
     web:
       application:
