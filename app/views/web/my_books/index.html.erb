@@ -1,51 +1,97 @@
-<div>
-  <div class="bradcam_area bradcam_bg_2">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="bradcam_text text-center">
+<div class="section-padding2 plr">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Left Content -->
+      <div class="col-xxl-3  col-xl-3 col-lg-4 col-md-5">
+        <div class="cateSidebar">
+          <h5 class="catTittle2">All Genres</h5>
+          <!-- All Categories -->
+          <ul class="listing listScroll">
+            <% Genre.select(:id, :name).each do |genre| %>
+              <li class="listItem">
+                <%= link_to books_path(genre_id: genre.id), class: 'items' do %>
+                  <%= image_tag 'icon/caticon1.svg', class: 'icon', alt: genre.name %>
+                  <span><%= genre.name %></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          <div class="btn-wrapper">
+            <%= link_to "Reset Filter", books_path, class: 'cmn-btn4 w-100' %>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="explorer_europe list_wrap">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12 col-lg-12">
-          <h3 class="exp_title text-center">We have found <%= @books.count %> books</h3>
-          <%= form_for my_books_path, method: :get, html: { class: 'form-inline justify-content-center' } do %>
-            <div class="mb-5">
-              <%= text_field_tag :query, nil, placeholder: 'Search...', class: 'form-control' %>
-              <%= submit_tag 'Search', class: 'genric-btn danger circle' %>
+      <!-- Right Content -->
+      <div class="col-xxl-9 col-xl-9  col-lg-8 col-md-7">
+        <div class="viewItems">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="select-itms">
+                <select name="select"  class="niceSelect">
+                  <option value="">New York, USA</option>
+                  <option value="">Location PK</option>
+                  <option value="">Location US</option>
+                  <option value="">Location UK</option>
+                </select>
+                <i class="las la-map-marker-alt  icon"></i>
+              </div>
             </div>
-          <% end %>
-          <div class="row mx-xl-5 mx-lg-5 mx-md-3 mx-sm-3 mx-3 mt-5">
-            <% @books.each do |book| %>
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
-                <%= link_to by_friendly_id_books_path(book.friendly_id) do %>
-                  <div class="single_explorer">
-                    <div class="thumb">
-                      <%= image_tag book.image.variant(format: :webp, convert: :webp) %>
-                    </div>
-                    <div class="explorer_bottom d-flex">
-                      <div class="explorer_info">
-                        <div id="book-title"><%= book.title %></div>
-                        <p><%= book.genre.name %></p>
-                        <%= book_status(book) %>
+            <div class="col-lg-7">
+              <div class="SearchWrapper">
+                <div class="searchBox-wrapper">
+                  <!-- Search Box -->
+                  <%= form_for my_books_path, method: :get, html: { class: 'search-box' } do %>
+                    <div class="mb-5">
+                      <div class="input-form">
+                        <%= text_field_tag :query, params[:query], placeholder: 'Search...', class: 'keyup-input' %>
+                        <div class="icon">
+                          <%= button_tag '', name: '', class: 'search-icon' do %>
+                            <i class="las la-search"></i>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="listingView customTab-content customTab-content-2 active">
+          <div class="row ">
+            <% @books.each do |book| %>
+              <div class="col-xl-6 col-lg-12">
+                <div class="singleFlexitem mb-24">
+                  <div class="recentImg">
+                    <%= link_to by_friendly_id_books_path(book.friendly_id) do %>
+                      <%= image_tag book.image.variant(format: :webp, convert: :webp) %>
+                    <% end %>
                   </div>
-                <% end %>
+                  <div class="recentCaption">
+                    <h5><a href="add_details.html" class="featureTittle"><%= book.title %></a></h5>
+                    <p class="featureCap"><%= book.genre.name %></p>
+                    <!--                    <span class="featurePricing">$146,300</span>-->
+                    <div class="btn-wrapper">
+                      <span class="pro-btn1"><%= book.status %></span>
+                      <span class="pro-btn2">PROMOTED</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             <% end %>
           </div>
-          <div class="col-xl-12 page_nation text-center mt-5">
-            <% if @books.size > 0 %>
-              <%== render partial: 'web/pagy/bootstrap_nav', locals: { pagy: @pagy } %>
-            <% end %>
-          </div>
         </div>
+
+        <% if @books.size > 0 %>
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="pagination mt-60">
+                <%== render partial: 'web/pagy/bootstrap_nav', locals: { pagy: @pagy } %>
+              </div>
+            </div>
+          </div>
+          <% end %>
       </div>
     </div>
   </div>

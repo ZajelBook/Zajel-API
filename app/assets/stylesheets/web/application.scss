@@ -5,3 +5,13 @@ $la-font-path: 'assets';
 @import 'plugin';
 @import 'main-style';
 @import "loader";
+
+.search-icon {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
