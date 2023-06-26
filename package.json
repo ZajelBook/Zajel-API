@@ -19,7 +19,8 @@
     "js-cookie": "^3.0.1",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
-    "sass": "^1.58.3"
+    "sass": "^1.58.3",
+    "yaml": "2.2.2"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets --minify",
