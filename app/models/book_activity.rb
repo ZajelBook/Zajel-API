@@ -24,7 +24,7 @@ class BookActivity < ApplicationRecord
     after_update :update_book_status
   end
 
-  after_create_commit -> { notify_admins('a new borrow request has been sent') }
+  # after_create_commit -> { notify_admins('a new borrow request has been sent') }
 
   scope :active, -> { where.not(status: :rejected) }
 

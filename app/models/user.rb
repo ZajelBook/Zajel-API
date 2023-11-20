@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient
 
   before_create :set_confirmation_code
-  after_create -> { notify_admins("We just got a new user: #{full_name}") }
+  # after_create -> { notify_admins("We just got a new user: #{full_name}") }
   after_create_commit :send_confirmation_code, if: -> { Rails.env.production? }
 
   scope :nearby, ->(coordinates) { near(coordinates, ENV['SEARCH_RADIUS'].to_i, units: :km) }

@@ -37,7 +37,7 @@ class Book < ApplicationRecord
 
   before_create :skip_verification, if: -> { owner.verified? }
 
-  after_create_commit -> { notify_admins("We just got a new book: #{title} added by #{owner.full_name}") }
+  # after_create_commit -> { notify_admins("We just got a new book: #{title} added by #{owner.full_name}") }
 
   def requested_by?(user_id)
     book_activities.find do |book_activity|
