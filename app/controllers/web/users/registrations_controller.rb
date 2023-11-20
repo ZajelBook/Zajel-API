@@ -14,9 +14,9 @@ module Web
       # end
 
       # POST /resource
-      # def create
-      #   super
-      # end
+      def create
+        redirect_to new_user_registration_path
+      end
 
       # GET /resource/edit
       # def edit
